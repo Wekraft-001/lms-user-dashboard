@@ -6,6 +6,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen, Play, FileText } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
+import { EvidenceChain } from "@/components/games/EvidenceChain";
+import { VoicesFirst } from "@/components/games/VoicesFirst";
+import { EquityBuilder } from "@/components/games/EquityBuilder";
 
 const Module = () => {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ const Module = () => {
   const moduleContent = {
     title: "Foundations of PPR and CLM",
     description: "Understanding pandemic preparedness and community-led monitoring basics",
-    totalSegments: 4,
+    totalSegments: 7,
     segments: [
       {
         title: "Introduction to Pandemic Preparedness",
@@ -42,12 +45,33 @@ Key principles of CLM:
         duration: "12 min"
       },
       {
+        title: "Evidence Chain Game",
+        type: "game",
+        gameType: "evidence-chain",
+        content: "Arrange CLM stages in the correct sequence to build community trust",
+        duration: "15 min"
+      },
+      {
         title: "The Connection Between CLM and PPR",
         type: "reading",
         content: `Think of CLM as the early warning system for pandemic preparedness. When communities are actively monitoring health services, they notice changes immediately—unusual patterns, supply shortages, or access barriers that could signal the start of an outbreak.
 
 This integration isn't automatic. It requires intentional design, capacity building, and commitment from both communities and health systems. But when done right, it creates resilience that extends far beyond any single pandemic.`,
         duration: "8 min"
+      },
+      {
+        title: "Voices First Game",
+        type: "game",
+        gameType: "voices-first",
+        content: "Match community voices with system responses they can trigger through CLM",
+        duration: "15 min"
+      },
+      {
+        title: "Equity Builder Game",
+        type: "game",
+        gameType: "equity-builder",
+        content: "Distribute pandemic preparedness resources across African regions equitably",
+        duration: "20 min"
       },
       {
         title: "Knowledge Check",
@@ -160,38 +184,46 @@ This integration isn't automatic. It requires intentional design, capacity build
             </div>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="read" className="w-full">
-              <TabsList className="mb-4">
-                <TabsTrigger value="read">Read</TabsTrigger>
-                {currentContent.videoUrl && <TabsTrigger value="watch">Watch</TabsTrigger>}
-              </TabsList>
-              
-              <TabsContent value="read" className="space-y-4">
-                <div className="prose prose-slate max-w-none">
-                  {currentContent.content.split('\n\n').map((paragraph, idx) => (
-                    <p key={idx} className="text-muted-foreground leading-relaxed mb-4">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-
-                {currentContent.type === "interactive" && (
-                  <div className="mt-6 p-6 bg-muted/50 rounded-lg border-2 border-dashed border-primary/30">
-                    <p className="text-center text-muted-foreground italic">
-                      💡 Interactive element: Reflection prompt or mini-activity would appear here
-                    </p>
+            {currentContent.type === "game" ? (
+              <div className="py-4">
+                {currentContent.gameType === "evidence-chain" && <EvidenceChain />}
+                {currentContent.gameType === "voices-first" && <VoicesFirst />}
+                {currentContent.gameType === "equity-builder" && <EquityBuilder />}
+              </div>
+            ) : (
+              <Tabs defaultValue="read" className="w-full">
+                <TabsList className="mb-4">
+                  <TabsTrigger value="read">Read</TabsTrigger>
+                  {currentContent.videoUrl && <TabsTrigger value="watch">Watch</TabsTrigger>}
+                </TabsList>
+                
+                <TabsContent value="read" className="space-y-4">
+                  <div className="prose prose-slate max-w-none">
+                    {currentContent.content.split('\n\n').map((paragraph, idx) => (
+                      <p key={idx} className="text-muted-foreground leading-relaxed mb-4">
+                        {paragraph}
+                      </p>
+                    ))}
                   </div>
-                )}
-              </TabsContent>
 
-              {currentContent.videoUrl && (
-                <TabsContent value="watch">
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                    <p className="text-muted-foreground">Video player would be embedded here</p>
-                  </div>
+                  {currentContent.type === "interactive" && (
+                    <div className="mt-6 p-6 bg-muted/50 rounded-lg border-2 border-dashed border-primary/30">
+                      <p className="text-center text-muted-foreground italic">
+                        💡 Interactive element: Reflection prompt or mini-activity would appear here
+                      </p>
+                    </div>
+                  )}
                 </TabsContent>
-              )}
-            </Tabs>
+
+                {currentContent.videoUrl && (
+                  <TabsContent value="watch">
+                    <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                      <p className="text-muted-foreground">Video player would be embedded here</p>
+                    </div>
+                  </TabsContent>
+                )}
+              </Tabs>
+            )}
           </CardContent>
         </Card>
 
