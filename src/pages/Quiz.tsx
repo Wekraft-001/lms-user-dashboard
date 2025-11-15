@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ArrowRight, CheckCircle2, XCircle, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, XCircle, Trophy, Award } from "lucide-react";
 import { toast } from "sonner";
 
 interface QuizQuestion {
@@ -203,18 +203,31 @@ const Quiz = () => {
 
               {isPassing ? (
                 <div className="bg-gradient-to-br from-alliance-green/10 to-alliance-lime/10 p-6 rounded-lg border border-alliance-green/20">
-                  <h3 className="font-semibold text-lg mb-2 text-foreground">What's Next?</h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Award className="h-5 w-5 text-alliance-green" />
+                    <h3 className="font-semibold text-lg text-foreground">What's Next?</h3>
+                  </div>
                   <p className="text-muted-foreground mb-4">
                     You've demonstrated strong understanding of the foundations of PPR and CLM. 
-                    Continue your journey to unlock more modules and deepen your expertise.
+                    Download your certificate and continue your journey to unlock more modules.
                   </p>
-                  <Button 
-                    onClick={() => navigate("/dashboard")}
-                    className="w-full"
-                  >
-                    Continue to Dashboard
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <div className="flex gap-3">
+                    <Button 
+                      onClick={() => navigate(`/certificate/${id}`)}
+                      className="flex-1"
+                    >
+                      <Award className="mr-2 h-4 w-4" />
+                      View Certificate
+                    </Button>
+                    <Button 
+                      onClick={() => navigate("/dashboard")}
+                      variant="outline"
+                      className="flex-1"
+                    >
+                      Dashboard
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
               ) : (
                 <div className="space-y-3">

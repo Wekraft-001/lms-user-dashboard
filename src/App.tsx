@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Module from "./pages/Module";
 import Quiz from "./pages/Quiz";
 import Library from "./pages/Library";
+import Certificate from "./pages/Certificate";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
         <Route path="/module/:id" element={<Module />} />
         <Route path="/quiz/:id" element={<Quiz />} />
         <Route path="/library" element={<Library />} />
+        <Route path="/certificate/:moduleId" element={<Certificate />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
