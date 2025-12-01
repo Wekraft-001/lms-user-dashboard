@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { EvidenceChain } from "@/components/games/EvidenceChain";
 import { VoicesFirst } from "@/components/games/VoicesFirst";
 import { EquityBuilder } from "@/components/games/EquityBuilder";
+import { KnowledgeCheck } from "@/components/KnowledgeCheck";
 
 const Module = () => {
   const navigate = useNavigate();
@@ -126,15 +127,30 @@ The true power of CLM is that it shifts power to communities, centers lived expe
       },
       {
         title: "CLM Knowledge Check",
-        type: "interactive",
-        content: `**Question:** Which of the following best describes Community-Led Monitoring?
-
-A) Monitoring by government institutions for programme evaluation
-B) A donor-funded mechanism for data collection
-C) Community-owned monitoring for accountability and advocacy ✓
-D) A health survey managed by international partners
-
-**Answer:** C - Community-Led Monitoring is community-owned and used to drive accountability and advocacy, not extraction or top-down evaluation.`,
+        type: "quiz",
+        question: "Which of the following best describes Community-Led Monitoring?",
+        options: [
+          {
+            id: "a",
+            text: "Monitoring by government institutions for programme evaluation",
+            isCorrect: false
+          },
+          {
+            id: "b",
+            text: "A donor-funded mechanism for data collection",
+            isCorrect: false
+          },
+          {
+            id: "c",
+            text: "Community-owned monitoring for accountability and advocacy",
+            isCorrect: true
+          },
+          {
+            id: "d",
+            text: "A health survey managed by international partners",
+            isCorrect: false
+          }
+        ],
         duration: "5 min"
       },
       {
@@ -369,6 +385,11 @@ Next, you'll take a comprehensive assessment to demonstrate your mastery of thes
                 {currentContent.gameType === "voices-first" && <VoicesFirst />}
                 {currentContent.gameType === "equity-builder" && <EquityBuilder />}
               </div>
+            ) : currentContent.type === "quiz" ? (
+              <KnowledgeCheck 
+                question={currentContent.question!}
+                options={currentContent.options!}
+              />
             ) : (
               <Tabs defaultValue="read" className="w-full">
                 <TabsList className="mb-4">
