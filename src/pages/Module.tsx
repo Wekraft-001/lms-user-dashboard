@@ -396,8 +396,14 @@ Next, you'll take a comprehensive assessment to demonstrate your mastery of thes
 
                 {currentContent.videoUrl && (
                   <TabsContent value="watch">
-                    <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                      <p className="text-muted-foreground">Video player would be embedded here</p>
+                    <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                      <video 
+                        controls 
+                        className="w-full h-full"
+                        src={currentContent.videoUrl}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                   </TabsContent>
                 )}
