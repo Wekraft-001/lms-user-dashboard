@@ -16,67 +16,246 @@ const Module = () => {
   const [currentSegment, setCurrentSegment] = useState(0);
 
   const moduleContent = {
-    title: "Foundations of PPR and CLM",
-    description: "Understanding pandemic preparedness and community-led monitoring basics",
-    totalSegments: 7,
+    title: "Understanding the Foundations of PPR and CLM",
+    description: "This module lays the foundation for your learning journey, introducing global and African PPR systems and placing CLM as a mechanism for accountability, justice, and participation.",
+    totalSegments: 16,
     segments: [
       {
-        title: "Introduction to Pandemic Preparedness",
+        title: "Module Overview",
         type: "reading",
-        content: `Pandemic preparedness isn't just about stockpiling medical supplies or having emergency plans on paper. It's about having living, breathing systems that can respond when crisis strikes—systems that include the voices and actions of communities themselves.
+        content: `Who decides what "preparedness" means, and who gets to define whether we are prepared?
 
-Community-Led Monitoring (CLM) has transformed how we approach health accountability. Rather than waiting for problems to be discovered through formal channels, communities identify issues in real-time, creating feedback loops that save lives.
+This module explores how Community-Led Monitoring (CLM) and Pandemic Preparedness and Response (PPR) can reinforce one another, creating health systems that are not only resilient but democratic—where data is not just collected about communities, but by and for them.
 
-When COVID-19 emerged, countries with strong CLM systems were able to identify service gaps, address misinformation, and ensure equitable access to care. Communities weren't just recipients of pandemic response—they were leaders in it.`,
-        videoUrl: "https://example.com/intro-video",
+**Learning Objectives:**
+
+By the end of this module, you will be able to:
+
+1. Explain the basic purpose and structure of PPR systems at global and national levels
+2. Describe the origins, purpose, and principles of CLM in health and development contexts
+3. Identify the linkages and gaps between institutional preparedness systems and community realities
+4. Reflect on why integrating community voices into preparedness is not optional but essential`,
+        duration: "5 min"
+      },
+      {
+        title: "Part 1: The Global Architecture of PPR",
+        type: "reading",
+        content: `The global PPR architecture is made up of a web of frameworks, agreements, and institutions that aim to get us ready for the next emergency.
+
+**The International Health Regulations (IHR, 2005)** form the backbone. They are legally binding for 196 countries and set out what each country must do to detect, assess, report, and respond to public health threats.
+
+To assess compliance, countries undergo two main processes:
+
+**State Party Self-Assessment Annual Reporting (SPAR)**: An annual self-review where countries evaluate their public health capabilities across various domains such as surveillance, laboratory capacity, workforce, and emergency response.
+
+**Joint External Evaluation (JEE)**: A voluntary, external review of national capacities across 19 technical areas spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry.`,
+        videoUrl: "https://extranet.who.int/sph/sites/default/files/IHRMEF%20Tutorial.mp4",
+        duration: "12 min"
+      },
+      {
+        title: "Global PPR Instruments",
+        type: "reading",
+        content: `Supporting the IHR and its assessment processes are newer global instruments:
+
+**WHO Pandemic Agreement**: Adopted by WHO member states on 20 May 2025, this agreement complements the IHR and outlines a framework for pandemic prevention, preparedness, and response (PPR), including equity in access to vaccines, diagnostics, and therapeutics.
+
+**The Pandemic Fund**: Formally titled "Financial Intermediary Fund for Pandemic Prevention, Preparedness and Response," it's housed at the World Bank with WHO as the technical lead. Established following a G20 request in April 2022, it finances capacity building for prevention and response, focusing on low- and middle-income countries.
+
+**Africa CDC's New Public Health Order**: This framework emphasizes five enablers: strong African public health institutions, expanded manufacturing of vaccines/diagnostics/therapeutics in Africa, workforce capacity, disease prevention (One Health), and collaboration.
+
+**Africa's Health Security and Sovereignty Agenda**: Adopted in September 2025, this vision reflects the recognition that achieving universal health coverage and pandemic preparedness requires health sovereignty—the ability of African nations to finance, produce, and govern their own health systems.`,
         duration: "10 min"
       },
       {
-        title: "What is Community-Led Monitoring?",
+        title: "Reflection: COVID-19 in Your Country",
         type: "interactive",
-        content: `CLM puts communities at the center of health system accountability. It's based on a simple but powerful principle: those closest to health services are best positioned to monitor their quality and accessibility.
+        content: `Think about the COVID-19 pandemic in your country.
 
-Key principles of CLM:
-• Community ownership and leadership
-• Evidence-based advocacy
-• Real-time data collection
-• Transparent reporting
-• Actionable feedback loops`,
+**Reflection Questions:**
+
+1. Who noticed the problem first—communities or institutions?
+2. How quickly did local concerns reach decision-makers?
+3. What gaps existed between community experiences and official responses?
+
+Take a moment to consider these questions. Your reflections help contextualize how PPR systems work in practice versus theory.`,
+        duration: "8 min"
+      },
+      {
+        title: "Part 2: What is Community-Led Monitoring?",
+        type: "reading",
+        content: `CLM emerged from the HIV movement and has since been adopted across multiple health and social sectors. It is a rights-based approach in which communities systematically collect and use data to monitor the quality and accessibility of services, policies, and funding.
+
+Unlike traditional monitoring efforts, CLM starts from the bottom up:
+
+• **Who collects the data?** Communities themselves
+• **Whose questions are asked?** The people directly affected shape and frame questions
+• **Who acts on the findings?** Both communities and decision-makers, through evidence-based dialogue and advocacy
+
+**CLM is not just a technical exercise—it is a political act.**
+
+The true power of CLM is that it shifts power to communities, centers lived experience, and ensures that no one speaks about communities without speaking with them.`,
+        duration: "8 min"
+      },
+      {
+        title: "The Five Principles of CLM",
+        type: "reading",
+        content: `At its core, CLM is guided by five principles:
+
+**1. Ownership**: Communities design and lead monitoring activities.
+*Example: Kenya's I-Monitor system puts communities in full control—designing tools, selecting indicators, leading facility assessments, and negotiating service improvements.*
+
+**2. Accountability**: Findings are used to demand and negotiate change.
+*Example: South Africa's Ritshidze collects real-time feedback from thousands of public clinics, escalating issues to authorities and triggering joint action plans.*
+
+**3. Transparency**: Data and decisions are shared openly.
+*Example: In Malawi's malaria CLM programme, findings are openly discussed in Health Centre Advisory Committee meetings, building trust.*
+
+**4. Participation**: All voices, especially those of marginalized groups, are included.
+*Example: In Mozambique, sex workers, MSM, and AGYW lead monitoring, ensuring those most affected shape the agenda.*
+
+**5. Equity**: Monitoring focuses on underserved communities.
+*Example: Nigeria's CLM focuses on remote villages where surveillance is weakest, pushing programs to prioritize marginalized populations.*`,
         duration: "12 min"
       },
       {
         title: "Evidence Chain Game",
         type: "game",
         gameType: "evidence-chain",
-        content: "Arrange CLM stages in the correct sequence to build community trust",
+        content: "Build an evidence chain by arranging CLM elements in the correct sequence: data collection → analysis → community dialogue → advocacy → system change. Complete cycles build trust!",
         duration: "15 min"
       },
       {
-        title: "The Connection Between CLM and PPR",
-        type: "reading",
-        content: `Think of CLM as the early warning system for pandemic preparedness. When communities are actively monitoring health services, they notice changes immediately—unusual patterns, supply shortages, or access barriers that could signal the start of an outbreak.
+        title: "CLM Knowledge Check",
+        type: "interactive",
+        content: `**Question:** Which of the following best describes Community-Led Monitoring?
 
-This integration isn't automatic. It requires intentional design, capacity building, and commitment from both communities and health systems. But when done right, it creates resilience that extends far beyond any single pandemic.`,
-        duration: "8 min"
+A) Monitoring by government institutions for programme evaluation
+B) A donor-funded mechanism for data collection
+C) Community-owned monitoring for accountability and advocacy ✓
+D) A health survey managed by international partners
+
+**Answer:** C - Community-Led Monitoring is community-owned and used to drive accountability and advocacy, not extraction or top-down evaluation.`,
+        duration: "5 min"
+      },
+      {
+        title: "Part 3: Where PPR and CLM Meet",
+        type: "reading",
+        content: `PPR frameworks focus on the capacities of health systems—laboratories, surveillance, emergency operations. CLM focuses on people and how health systems function in reality. When the two intersect, the result is both technical and democratic strength.
+
+**Real-World Examples:**
+
+During COVID-19, community groups in Kenya and South Africa tracked PPE shortages and vaccine access, alerting authorities before official systems registered the gaps.
+
+During Mpox outbreaks, key population networks in Nigeria provided real-time data on stigma and service access, helping shape public communication.
+
+These examples show that CLM can act as:
+• An early warning system within national PPR frameworks
+• A feedback mechanism that captures service quality data
+• A critical enabler of trust between communities and government
+
+**Trust is non-negotiable.** In a crisis, effective public health strategies—from mass vaccination to contact tracing—hinge entirely on public trust.`,
+        duration: "10 min"
+      },
+      {
+        title: "Scenario: Risk Communication",
+        type: "interactive",
+        content: `**Scenario Activity:**
+
+Imagine your country's PPR plan lists "risk communication" as a key objective.
+
+**Question:** How could CLM contribute to ensuring that communication is inclusive, trusted, and grounded in local realities?
+
+Consider:
+• What community data would be valuable?
+• How would you ensure marginalized voices are included?
+• What feedback loops would strengthen trust?
+
+Type your response and reflect on how community evidence makes preparedness more effective and equitable.`,
+        duration: "10 min"
       },
       {
         title: "Voices First Game",
         type: "game",
         gameType: "voices-first",
-        content: "Match community voices with system responses they can trigger through CLM",
+        content: "Match community voices reporting early crisis signs with appropriate system responses. Build the trust bar by correctly connecting community alerts to institutional actions!",
         duration: "15 min"
+      },
+      {
+        title: "Part 4: The Politics of Preparedness",
+        type: "reading",
+        content: `Preparedness is never neutral. It is a mirror of power: who is seen, who is heard, and who is protected when crisis strikes.
+
+Every emergency response carries a quiet hierarchy of concern. Some lives are counted faster. Some data is trusted more. Some communities are remembered only after the damage is done.
+
+For decades, global health systems have prioritized efficiency over equity. During the HIV crisis, data from sex workers and queer communities was dismissed. During COVID-19, migrants, informal workers, and people with disabilities were often invisible to surveillance systems.
+
+**CLM challenges this order.** It insists that preparedness is not a technical checklist but a political contract.
+
+CLM forces PPR frameworks to face uncomfortable questions:
+• Who decides what counts as an emergency?
+• Who sits at the table when budgets are written?
+• Whose voices are heard when global agencies declare success?
+
+When communities define risk, measure readiness, and monitor response, health security stops being charity and becomes justice.`,
+        duration: "10 min"
+      },
+      {
+        title: "Reflection: Invisible Until Counted",
+        type: "interactive",
+        content: `**Reflective Activity: "Invisible Until Counted"**
+
+Think about one community in your country that was overlooked during COVID-19 or another public health emergency.
+
+Ask yourself:
+1. What made them invisible to official systems?
+2. What kind of data or evidence could have made them visible earlier?
+3. How might a CLM approach have changed their outcome?
+
+"Visibility is power. CLM ensures that no life waits for permission to matter."`,
+        duration: "8 min"
       },
       {
         title: "Equity Builder Game",
         type: "game",
         gameType: "equity-builder",
-        content: "Distribute pandemic preparedness resources across African regions equitably",
+        content: "Distribute 10 Preparedness Tokens across five African communities. Balance risk and equity by investing in high-need, low-visibility areas. Fill the Justice Meter!",
         duration: "20 min"
       },
       {
-        title: "Knowledge Check",
-        type: "quiz",
-        content: "Test your understanding of CLM and PPR fundamentals",
+        title: "Case Study: South Africa's Vaccine Roll-Out",
+        type: "reading",
+        content: `**Community Monitoring During South Africa's COVID-19 Vaccine Roll-Out**
+
+In 2021, as South Africa launched its national COVID-19 vaccination drive, official systems reported strong progress. But CLM teams in Gauteng and KwaZulu-Natal began collecting real-time feedback from clinics, taxi ranks, and informal settlements.
+
+**Their data told another story:**
+• Many clinics lacked cold-chain equipment
+• Mobile sites were undersupplied
+• Undocumented migrants were being turned away
+
+CLM partners compiled weekly briefs for provincial health departments and advocacy coalitions. Within weeks, provincial authorities adjusted logistics, retrained site staff, and added mobile units.
+
+**Key Takeaway:** When communities monitor systems from below, national data becomes more honest, equitable, and useful. Preparedness is not built in labs—it is built in trust.
+
+**Reflection:** What would preparedness look like if every community could produce evidence like this?`,
+        duration: "12 min"
+      },
+      {
+        title: "Module Summary",
+        type: "reading",
+        content: `**Key Takeaways:**
+
+• PPR provides the structures for readiness, but structure without justice collapses under pressure
+• CLM provides the eyes, ears, and conscience of preparedness, ensuring that the invisible become visible
+• Together, they redefine preparedness as a matter of equity and shared power
+
+**You've completed Module 1!** You now understand:
+✓ How global PPR frameworks operate
+✓ The five principles of Community-Led Monitoring
+✓ Where CLM strengthens PPR systems
+✓ Why preparedness is a political and ethical imperative
+
+Next, you'll take a comprehensive assessment to demonstrate your mastery of these foundations.`,
         duration: "5 min"
       }
     ]
@@ -150,19 +329,19 @@ This integration isn't automatic. It requires intentional design, capacity build
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="text-primary">•</span>
-                  <span>Understand the fundamentals of pandemic preparedness frameworks</span>
+                  <span>Explain the basic purpose and structure of PPR systems at global and national levels</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary">•</span>
-                  <span>Learn the core principles of Community-Led Monitoring</span>
+                  <span>Describe the origins, purpose, and principles of CLM in health and development contexts</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary">•</span>
-                  <span>Recognize the vital connection between CLM and PPR</span>
+                  <span>Identify the linkages and gaps between institutional preparedness systems and community realities</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary">•</span>
-                  <span>Identify key stakeholders in effective pandemic response</span>
+                  <span>Reflect on why integrating community voices into preparedness is not optional but essential</span>
                 </li>
               </ul>
             </CardContent>
