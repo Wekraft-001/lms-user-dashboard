@@ -19,35 +19,39 @@ const Dashboard = () => {
   const modules = [
     {
       id: 1,
-      title: "Foundations of PPR and CLM",
-      description: "Understanding pandemic preparedness and community-led monitoring basics",
-      status: "completed",
-      progress: 100,
-      duration: "45 min"
+      title: "Understanding the Foundations of PPR and CLM",
+      description: "Introducing global and African PPR systems and CLM as a mechanism for accountability, justice, and participation",
+      status: "in-progress",
+      progress: 35,
+      duration: "90 min",
+      parts: 4
     },
     {
       id: 2,
-      title: "Principles and Practice of CLM",
-      description: "Deep dive into community engagement and accountability mechanisms",
-      status: "in-progress",
-      progress: 60,
-      duration: "60 min"
+      title: "The Principles and Practice of CLM",
+      description: "Deep dive into community engagement methods, data collection, and accountability mechanisms",
+      status: "locked",
+      progress: 0,
+      duration: "85 min",
+      parts: 4
     },
     {
       id: 3,
       title: "Integrating CLM into PPR Systems",
-      description: "Practical frameworks for bringing communities and systems together",
+      description: "Practical frameworks and strategies for bringing communities and health systems together",
       status: "locked",
       progress: 0,
-      duration: "55 min"
+      duration: "80 min",
+      parts: 4
     },
     {
       id: 4,
       title: "Advocacy for Sustainable Integration",
-      description: "Building lasting change through strategic advocacy and policy influence",
+      description: "Building lasting change through strategic advocacy, policy influence, and institutional partnerships",
       status: "locked",
       progress: 0,
-      duration: "50 min"
+      duration: "75 min",
+      parts: 4
     }
   ];
 

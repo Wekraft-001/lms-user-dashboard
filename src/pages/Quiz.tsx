@@ -25,67 +25,67 @@ const Quiz = () => {
   const [answeredQuestions, setAnsweredQuestions] = useState<boolean[]>([]);
   const [quizComplete, setQuizComplete] = useState(false);
 
-  // Quiz data for Module 1 - Foundations of PPR and CLM
+  // Quiz data for Module 1 - Understanding the Foundations of PPR and CLM
   const quizQuestions: QuizQuestion[] = [
     {
       id: 1,
-      question: "What is the primary purpose of Community-Led Monitoring (CLM) in pandemic preparedness?",
+      question: "Which statement best describes the International Health Regulations (2005)?",
       options: [
-        "To replace government health monitoring systems",
-        "To create real-time feedback loops identifying service gaps and ensuring accountability",
-        "To collect data for academic research only",
-        "To provide employment opportunities for community members"
+        "A voluntary global guideline for pandemic response",
+        "A legally binding agreement that sets out core capacities of Member States of the WHO to respond to public health threats",
+        "A financing instrument for the Global Fund",
+        "A regional policy of the Africa CDC"
       ],
       correctAnswer: 1,
-      explanation: "CLM creates real-time feedback loops that help identify service gaps, address issues, and ensure health systems remain accountable to the communities they serve."
+      explanation: "The IHR (2005) are legally binding for 196 countries and define what each must do to detect, assess, and respond to health threats."
     },
     {
       id: 2,
-      question: "Which of the following is NOT a key principle of Community-Led Monitoring?",
+      question: "Which two tools assess a country's PPR capacity under the IHR?",
       options: [
-        "Community ownership and leadership",
-        "Evidence-based advocacy",
-        "Top-down decision making",
-        "Transparent reporting"
+        "Country Performance Review (CPR) and Self-Monitoring Tool (SMT)",
+        "Joint External Evaluation (JEE) and State Party Annual Report (SPAR)",
+        "Global Pandemic Scorecard (GPS) and World Bank Assessment Form (WBAF)",
+        "National Response Index (NRI) and Continental Health Assessment (CHA)"
       ],
-      correctAnswer: 2,
-      explanation: "CLM is based on community ownership and leadership, not top-down decision making. It emphasizes putting communities at the center of health system accountability."
+      correctAnswer: 1,
+      explanation: "The JEE is an external review across 19 technical areas, and SPAR is the annual self-assessment process used by countries."
     },
     {
       id: 3,
-      question: "How did countries with strong CLM systems respond differently to COVID-19?",
+      question: "What distinguishes Community-Led Monitoring from traditional monitoring?",
       options: [
-        "They had more medical supplies stockpiled",
-        "They could identify service gaps, address misinformation, and ensure equitable access in real-time",
-        "They closed borders earlier than other countries",
-        "They relied solely on international aid"
+        "It is conducted solely by international experts",
+        "It relies on top-down data collection from government systems",
+        "It is community-owned and used to drive accountability and advocacy",
+        "It replaces national statistical surveys"
       ],
-      correctAnswer: 1,
-      explanation: "Countries with strong CLM systems were able to identify service gaps, address misinformation, and ensure equitable access to care because communities were active leaders in the response, not just recipients."
+      correctAnswer: 2,
+      explanation: "CLM is designed and implemented by communities to ensure their experiences inform accountability and policy action. It's a rights-based, bottom-up approach."
     },
     {
       id: 4,
-      question: "What role does CLM play in pandemic preparedness frameworks?",
+      question: "Which of the following is NOT one of the five core CLM principles?",
       options: [
-        "It replaces the need for medical professionals",
-        "It serves as an early warning system by monitoring health services in real-time",
-        "It focuses only on post-pandemic recovery",
-        "It operates independently from health systems"
+        "Ownership",
+        "Accountability",
+        "Transparency",
+        "Efficiency"
       ],
-      correctAnswer: 1,
-      explanation: "CLM acts as an early warning system for pandemic preparedness. When communities actively monitor health services, they notice changes immediately—unusual patterns, supply shortages, or access barriers that could signal the start of an outbreak."
+      correctAnswer: 3,
+      explanation: "CLM is a rights-based approach driven by social justice values such as ownership, accountability, transparency, participation, and equity—not efficiency or other technical gains."
     },
     {
       id: 5,
-      question: "What is required to effectively integrate CLM into PPR systems?",
+      question: "Why can CLM serve as an early-warning system within PPR frameworks?",
       options: [
-        "Large financial investments only",
-        "Intentional design, capacity building, and commitment from both communities and health systems",
-        "Government mandate alone",
-        "International organization oversight"
+        "It provides quick financial audits of donor spending",
+        "It gathers real-time community evidence that detects service gaps before formal surveillance systems",
+        "It replaces national epidemic-intelligence networks",
+        "It focuses only on post-crisis evaluations"
       ],
       correctAnswer: 1,
-      explanation: "Effective integration of CLM into PPR requires intentional design, capacity building, and commitment from both communities and health systems. When done right, it creates resilience that extends far beyond any single pandemic."
+      explanation: "Because communities observe and report changes immediately, CLM helps identify issues that may not yet appear in official data. This makes it an invaluable early-warning mechanism."
     }
   ];
 
