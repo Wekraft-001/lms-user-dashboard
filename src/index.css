@@ -22,12 +22,12 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    /* Primary - African Alliance Red #e41f28 */
-    --primary: 357 78% 51%;
+    /* Primary - African Alliance Red #d00000 */
+    --primary: 0 100% 41%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Teal #007a87 */
-    --secondary: 186 100% 26%;
+    /* Secondary - Teal #008000 */
+    --secondary: 120 100% 25%;
     --secondary-foreground: 0 0% 100%;
 
     /* Success - Lime Green #a9d04f */

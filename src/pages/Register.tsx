@@ -2,43 +2,81 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Rocket } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import axios from "axios";
 import authPattern from "@/assets/auth-pattern.jpg";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+  const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    fullName: "",
+  const { handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false);
+
+  const initialValues = {
+    firstName: "",
+    lastName: "",
     email: "",
+    phoneNumber: "",
     password: "",
-    confirmPassword: "",
-    organization: "",
-    role: ""
-  });
+  };
+  const [formData, setFormData] = useState(initialValues);
+  const { firstName, lastName, email, phoneNumber, password } = formData;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-    // Simulate registration
-    toast.success("Welcome to Kujua360! Let's begin your learning journey.");
-    setTimeout(() => navigate("/dashboard"), 1500);
+  const handleRegisteration = () => {
+    setLoading(true);
+
+    const url = `${apiURL}/auth/register`;
+    axios
+      .post(url, formData)
+      .then((response) => {
+        if (response.status === 201) {
+          toast.success(
+            "Welcome to Kujua360! Let's begin your learning journey."
+          );
+          setFormData(initialValues);
+          setTimeout(() => navigate("/login"), 1500);
+        }
+        console.log(response, "response from creating data");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`There was an error creating this profile:`, error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = `${apiURL}/auth/google`;
   };
 
   return (
     <div className="min-h-screen flex">
       {/* Left Panel - Image */}
-      <div 
+      <div
         className="hidden lg:flex lg:w-1/2 relative bg-cover bg-center"
         style={{ backgroundImage: `url(${authPattern})` }}
       >
@@ -46,7 +84,8 @@ const Register = () => {
           <div className="text-white max-w-md">
             <h2 className="text-4xl font-bold mb-4">Join the Movement</h2>
             <p className="text-lg opacity-90 mb-8">
-              Become part of a community driving pandemic preparedness and health justice across Africa.
+              Become part of a community driving pandemic preparedness and
+              health justice across Africa.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -84,86 +123,126 @@ const Register = () => {
 
           <Card className="border-2">
             <CardHeader className="space-y-1">
-              <CardTitle className="text-3xl font-bold">Create Account</CardTitle>
+              <CardTitle className="text-3xl font-bold">
+                Create Account
+              </CardTitle>
               <CardDescription>
                 Start your Kujua360 learning journey today
               </CardDescription>
-              
+
               {/* Progress Dots */}
-              <div className="flex gap-2 pt-4">
-                <div className={`h-2 flex-1 rounded-full ${step >= 1 ? 'bg-primary' : 'bg-muted'}`} />
-                <div className={`h-2 flex-1 rounded-full ${step >= 2 ? 'bg-primary' : 'bg-muted'}`} />
-              </div>
+              {/* <div className="flex gap-2 pt-4">
+                <div
+                  className={`h-2 flex-1 rounded-full ${
+                    step >= 1 ? "bg-primary" : "bg-muted"
+                  }`}
+                />
+                <div
+                  className={`h-2 flex-1 rounded-full ${
+                    step >= 2 ? "bg-primary" : "bg-muted"
+                  }`}
+                />
+              </div> */}
             </CardHeader>
 
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {step === 1 && (
-                  <>
-                    <div className="space-y-2">
-                      <Label htmlFor="fullName">Full Name</Label>
-                      <Input
-                        id="fullName"
-                        placeholder="Enter your full name"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        required
-                      />
-                    </div>
+              <form
+                onSubmit={handleSubmit(handleRegisteration)}
+                className="space-y-4"
+              >
+                <>
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                      id="firstName"
+                      placeholder="Enter your first name"
+                      name="firstName"
+                      value={firstName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="your.email@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
-                      />
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName">Last Name</Label>
+                    <Input
+                      id="lastName"
+                      placeholder="Enter your last name"
+                      name="lastName"
+                      value={lastName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="password">Password</Label>
-                      <Input
-                        id="password"
-                        type="password"
-                        placeholder="Create a strong password"
-                        value={formData.password}
-                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                        required
-                      />
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email Address</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your.email@example.com"
+                      name="email"
+                      value={email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="confirmPassword">Confirm Password</Label>
-                      <Input
-                        id="confirmPassword"
-                        type="password"
-                        placeholder="Re-enter your password"
-                        value={formData.confirmPassword}
-                        onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                        required
-                      />
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input
+                      id="phone"
+                      type="text"
+                      placeholder="+2541236969855"
+                      name="phoneNumber"
+                      value={phoneNumber}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="password">Password</Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="Enter your password"
+                      name="password"
+                      value={password}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-                    <Button
-                      type="button"
-                      className="w-full"
-                      onClick={() => {
-                        if (formData.fullName && formData.email && formData.password && formData.confirmPassword) {
-                          setStep(2);
-                        } else {
-                          toast.error("Please fill in all fields");
-                        }
-                      }}
-                    >
-                      Continue
-                    </Button>
-                  </>
-                )}
+                  <Button type="submit" className="w-full" disabled={loading}>
+                    <Rocket className="w-5 h-5" />
+                    {loading ? (
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.963 7.963 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                    ) : (
+                      "Create Account"
+                    )}
+                  </Button>
+                </>
 
-                {step === 2 && (
+                {/* {step === 2 && (
                   <>
                     <div className="space-y-2">
                       <Label htmlFor="organization">Organization (Optional)</Label>
@@ -209,14 +288,16 @@ const Register = () => {
                       </Button>
                     </div>
                   </>
-                )}
+                )} */}
 
                 <div className="relative my-6">
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+                    <span className="bg-card px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
                   </div>
                 </div>
 
@@ -224,15 +305,7 @@ const Register = () => {
                   type="button"
                   variant="outline"
                   className="w-full"
-                  onClick={async () => {
-                    const { error } = await supabase.auth.signInWithOAuth({
-                      provider: 'google',
-                      options: {
-                        redirectTo: `${window.location.origin}/dashboard`
-                      }
-                    });
-                    if (error) toast.error(error.message);
-                  }}
+                  onClick={handleGoogleLogin}
                 >
                   <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                     <path

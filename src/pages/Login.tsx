@@ -2,30 +2,65 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 import authPattern from "@/assets/auth-pattern.jpg";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const Login = () => {
+  const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulate login
-    toast.success("Welcome back!");
-    setTimeout(() => navigate("/dashboard"), 1000);
+  const initialValues = {
+    email: "",
+    password: "",
   };
 
+  const [loginDetails, setLoginDetails] = useState(initialValues);
+
+  const { email, password } = loginDetails;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginDetails({ ...loginDetails, [name]: value });
+  };
+
+  const onSubmit = async () => {
+    setLoading(true);
+    const url = `${apiURL}/auth/signin`;
+    try {
+      const response = await axios.post(url, loginDetails);
+      console.log(response, "response");
+      let accessToken = response.data.access_token;
+      localStorage.setItem("userToken", accessToken);
+      toast.success("Welcome back!");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error in API call:", error);
+      toast.error("Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = () => {
+    window.location.href = `${apiURL}/auth/google`;
+  };
   return (
     <div className="min-h-screen flex">
       {/* Left Panel - Image */}
-      <div 
+      <div
         className="hidden lg:flex lg:w-1/2 relative bg-cover bg-center"
         style={{ backgroundImage: `url(${authPattern})` }}
       >
@@ -33,7 +68,8 @@ const Login = () => {
           <div className="text-white max-w-md text-center">
             <h2 className="text-4xl font-bold mb-4">Welcome Back!</h2>
             <p className="text-lg opacity-90 mb-6">
-              Continue your learning journey and unlock new knowledge on CLM and PPR integration.
+              Continue your learning journey and unlock new knowledge on CLM and
+              PPR integration.
             </p>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
               <p className="text-sm italic">
@@ -65,15 +101,16 @@ const Login = () => {
             </CardHeader>
 
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address</Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="your.email@example.com"
+                    name="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -81,26 +118,52 @@ const Login = () => {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="password">Password</Label>
-                    <button
+                    {/* <button
                       type="button"
                       className="text-sm text-primary hover:underline"
-                      onClick={() => toast.info("Password reset feature coming soon")}
+                      onClick={() =>
+                        toast.info("Password reset feature coming soon")
+                      }
                     >
                       Forgot password?
-                    </button>
+                    </button> */}
                   </div>
                   <Input
                     id="password"
                     type="password"
                     placeholder="Enter your password"
+                    name="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={handleChange}
                     required
                   />
                 </div>
 
                 <Button type="submit" className="w-full">
-                  Sign In
+                  {loading ? (
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.963 7.963 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  ) : (
+                    "Sign In"
+                  )}
                 </Button>
 
                 <div className="relative my-6">
@@ -108,23 +171,17 @@ const Login = () => {
                     <span className="w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+                    <span className="bg-card px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
                   </div>
                 </div>
 
                 <Button
-                  type="button"
+                  type="submit"
                   variant="outline"
                   className="w-full"
-                  onClick={async () => {
-                    const { error } = await supabase.auth.signInWithOAuth({
-                      provider: 'google',
-                      options: {
-                        redirectTo: `${window.location.origin}/dashboard`
-                      }
-                    });
-                    if (error) toast.error(error.message);
-                  }}
+                  onClick={handleGoogleLogin}
                 >
                   <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                     <path
