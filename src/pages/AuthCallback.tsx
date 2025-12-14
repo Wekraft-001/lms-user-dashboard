@@ -9,7 +9,7 @@ const AuthCallback = () => {
     const token = queryParams.get("token");
 
     if (token) {
-      localStorage.setItem("parentToken", token);
+      localStorage.setItem("userToken", token);
       navigate("/dashboard");
     }
 
