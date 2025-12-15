@@ -7,7 +7,7 @@ import Welcome from "./pages/Welcome";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import Module from "./pages/Module";
+import Module from "./pages/Module/index";
 import Quiz from "./pages/Quiz";
 import Library from "./pages/Library";
 import Certificate from "./pages/Certificate";

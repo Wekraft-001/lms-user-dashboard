@@ -19,7 +19,7 @@ export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
   const [isCorrect, setIsCorrect] = useState(false);
 
   const handleSubmit = () => {
-    const selected = options.find(opt => opt.id === selectedAnswer);
+    const selected = options.find((opt) => opt.id === selectedAnswer);
     if (selected) {
       setIsCorrect(selected.isCorrect);
       setHasSubmitted(true);
@@ -35,9 +35,15 @@ export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
   return (
     <div className="space-y-6">
       <div className="p-6 bg-muted/30 rounded-lg border-2 border-primary/20">
-        <h3 className="text-lg font-semibold mb-4 text-foreground">{question}</h3>
-        
-        <RadioGroup value={selectedAnswer} onValueChange={setSelectedAnswer} disabled={hasSubmitted}>
+        <h3 className="text-lg font-semibold mb-4 text-foreground">
+          {question}
+        </h3>
+
+        <RadioGroup
+          value={selectedAnswer}
+          onValueChange={setSelectedAnswer}
+          disabled={hasSubmitted}
+        >
           <div className="space-y-3">
             {options.map((option) => (
               <div
@@ -53,8 +59,8 @@ export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
                 }`}
               >
                 <RadioGroupItem value={option.id} id={option.id} />
-                <Label 
-                  htmlFor={option.id} 
+                <Label
+                  htmlFor={option.id}
                   className="flex-1 cursor-pointer text-foreground"
                 >
                   {option.text}
@@ -62,17 +68,19 @@ export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
                 {hasSubmitted && option.isCorrect && (
                   <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
                 )}
-                {hasSubmitted && !option.isCorrect && selectedAnswer === option.id && (
-                  <XCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
-                )}
+                {hasSubmitted &&
+                  !option.isCorrect &&
+                  selectedAnswer === option.id && (
+                    <XCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                  )}
               </div>
             ))}
           </div>
         </RadioGroup>
 
         {!hasSubmitted ? (
-          <Button 
-            onClick={handleSubmit} 
+          <Button
+            onClick={handleSubmit}
             disabled={!selectedAnswer}
             className="mt-4 w-full"
           >
@@ -80,17 +88,19 @@ export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
           </Button>
         ) : (
           <div className="mt-4 space-y-3">
-            <div className={`p-4 rounded-lg ${
-              isCorrect 
-                ? "bg-green-100 dark:bg-green-950 text-green-900 dark:text-green-100" 
-                : "bg-red-100 dark:bg-red-950 text-red-900 dark:text-red-100"
-            }`}>
+            <div
+              className={`p-4 rounded-lg ${
+                isCorrect
+                  ? "bg-green-100 dark:bg-green-950 text-green-900 dark:text-green-100"
+                  : "bg-red-100 dark:bg-red-950 text-red-900 dark:text-red-100"
+              }`}
+            >
               <p className="font-medium">
                 {isCorrect ? "✓ Correct!" : "✗ Incorrect"}
               </p>
               <p className="text-sm mt-1">
-                {isCorrect 
-                  ? "Great job! You've understood this concept well." 
+                {isCorrect
+                  ? "Great job! You've understood this concept well."
                   : "Review the material and try again."}
               </p>
             </div>
