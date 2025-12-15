@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, XCircle, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import confetti from "canvas-confetti";
 
 interface Stage {
   id: number;
@@ -18,6 +19,34 @@ const stages: Stage[] = [
   { id: 5, text: "Advocacy for system improvements", correctOrder: 5 },
   { id: 6, text: "Monitoring implementation of changes", correctOrder: 6 },
 ];
+
+const triggerConfetti = () => {
+  const duration = 3000;
+  const end = Date.now() + duration;
+
+  const frame = () => {
+    confetti({
+      particleCount: 3,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ["#e41f28", "#002776", "#007a87", "#a9d04f"],
+    });
+    confetti({
+      particleCount: 3,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ["#e41f28", "#002776", "#007a87", "#a9d04f"],
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  };
+
+  frame();
+};
 
 export const EvidenceChain = () => {
   const [shuffledStages, setShuffledStages] = useState<Stage[]>(() =>
@@ -50,6 +79,7 @@ export const EvidenceChain = () => {
     setIsComplete(true);
     if (correct) {
       setTrustPoints(100);
+      triggerConfetti();
     }
   };
 
