@@ -169,21 +169,23 @@ The true power of CLM is that it shifts power to communities, centers lived expe
     {
       title: "Part 3: Where PPR and CLM Meet",
       type: "reading",
-      content: `PPR frameworks focus on the capacities of health systems—laboratories, surveillance, emergency operations. CLM focuses on people and how health systems function in reality. When the two intersect, the result is both technical and democratic strength.
+      content: `PPR frameworks focus on the capacities of health systems laboratories, surveillance, emergency operations. CLM focuses on people and how health systems function in reality. When the two intersect, the result is both technical and democratic strength.
 
-**Real-World Examples:**
+<b>Real-World Examples:</b>
 
 During COVID-19, community groups in Kenya and South Africa tracked PPE shortages and vaccine access, alerting authorities before official systems registered the gaps.
 
 During Mpox outbreaks, key population networks in Nigeria provided real-time data on stigma and service access, helping shape public communication.
 
 These examples show that CLM can act as:
-• An early warning system within national PPR frameworks
-• A feedback mechanism that captures service quality data
-• A critical enabler of trust between communities and government
+<ul>
+<li>An early warning system within national PPR frameworks</li>
+<li>A feedback mechanism that captures service quality data</li>
+<li>A critical enabler of trust between communities and government</li>
+</ul>
 
-**Trust is non-negotiable.** In a crisis, effective public health strategies—from mass vaccination to contact tracing—hinge entirely on public trust.`,
-      duration: "10 min",
+<b>Trust is non-negotiable.</b> In a crisis, effective public health strategies from mass vaccination to contact tracing hinge entirely on public trust.`,
+      duration: "5 min",
     },
     {
       title: "Scenario: Risk Communication",

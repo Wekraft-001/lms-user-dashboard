@@ -111,7 +111,7 @@ export const EvidenceChain = () => {
             {shuffledStages.map((stage) => (
               <Card
                 key={stage.id}
-                className="p-4 cursor-pointer hover:bg-accent transition-colors"
+                className="p-4 cursor-pointer hover:bg-red-100 transition-colors"
                 onClick={() => handleStageClick(stage)}
               >
                 <p className="text-sm">{stage.text}</p>
@@ -175,27 +175,39 @@ export const EvidenceChain = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-center gap-2 text-success">
                   <CheckCircle2 className="w-6 h-6" />
-                  <p className="font-semibold text-lg">Perfect! You've mastered the CLM evidence chain!</p>
+                  <p className="font-semibold text-lg">
+                    Perfect! You've mastered the CLM evidence chain!
+                  </p>
                 </div>
                 <p className="text-muted-foreground">
-                  This sequence shows how communities build accountability through systematic monitoring.
+                  This sequence shows how communities build accountability
+                  through systematic monitoring.
                 </p>
               </div>
             ) : (
               <div className="space-y-2">
                 <div className="flex items-center justify-center gap-2 text-destructive">
                   <XCircle className="w-6 h-6" />
-                  <p className="font-semibold text-lg">Not quite right. Try again!</p>
+                  <p className="font-semibold text-lg">
+                    Not quite right. Try again!
+                  </p>
                 </div>
                 <p className="text-muted-foreground">
-                  Think about how evidence flows from community observation to system change.
+                  Think about how evidence flows from community observation to
+                  system change.
                 </p>
               </div>
             )}
-            <Button onClick={handleReset} variant="outline" size="lg">
+            {/* <Button onClick={handleReset} variant="outline" size="lg">
               <RotateCcw className="w-4 h-4 mr-2" />
               Try Again
-            </Button>
+            </Button> */}
+            {trustPoints !== 100 && (
+              <Button onClick={handleReset} variant="outline" size="lg">
+                <RotateCcw className="w-4 h-4 mr-2" />
+                Try Again
+              </Button>
+            )}
           </div>
         )}
       </div>
