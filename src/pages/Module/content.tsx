@@ -1,6 +1,21 @@
+export interface ScenarioData {
+  scenario: string;
+  question: string;
+  prompts: string[];
+  sampleResponse?: string;
+}
+
+export interface ReflectionData {
+  title: string;
+  context: string;
+  prompts: Array<{ id: number; question: string }>;
+  closingQuote?: string;
+}
+
 export interface ModuleSegment {
   title: string;
   type: "reading" | "interactive" | "game" | "quiz";
+  interactiveType?: "scenario" | "reflection";
   content?: string;
   duration: string;
   videoUrl?: string;
@@ -11,6 +26,8 @@ export interface ModuleSegment {
     text: string;
     isCorrect: boolean;
   }>;
+  scenarioData?: ScenarioData;
+  reflectionData?: ReflectionData;
 }
 
 export interface ModuleContent {
@@ -78,18 +95,18 @@ To assess compliance, countries undergo two main processes:
     {
       title: "Reflection: COVID-19 in Your Country",
       type: "interactive",
-      content: `Think about the COVID-19 pandemic in your country.
-
-<b>Reflection Questions:</b>
-
-<ol>
-<li>Who noticed the problem first, communities or institutions?</li>
-<li>How quickly did local concerns reach decision-makers?</li>
-<li>What gaps existed between community experiences and official responses?</li>
-</ol>
-
-Take a moment to consider these questions. Your reflections help contextualize how PPR systems work in practice versus theory.`,
-      duration: "1 min",
+      interactiveType: "reflection",
+      reflectionData: {
+        title: "Reflective Activity",
+        context: "Think about the COVID-19 pandemic in your country. Reflect on how communities and institutions responded.",
+        prompts: [
+          { id: 1, question: "Who noticed the problem first—communities or institutions? Share a specific example you witnessed or heard about." },
+          { id: 2, question: "How quickly did local concerns reach decision-makers? What barriers existed?" },
+          { id: 3, question: "What gaps existed between community experiences and official responses?" }
+        ],
+        closingQuote: "Your reflections help contextualize how PPR systems work in practice versus theory."
+      },
+      duration: "5 min",
     },
     {
       title: "Part 2: What is Community-Led Monitoring?",
@@ -190,18 +207,17 @@ These examples show that CLM can act as:
     {
       title: "Scenario: Risk Communication",
       type: "interactive",
-      content: `**Scenario Activity:**
-
-Imagine your country's PPR plan lists "risk communication" as a key objective.
-
-**Question:** How could CLM contribute to ensuring that communication is inclusive, trusted, and grounded in local realities?
-
-Consider:
-• What community data would be valuable?
-• How would you ensure marginalized voices are included?
-• What feedback loops would strengthen trust?
-
-Type your response and reflect on how community evidence makes preparedness more effective and equitable.`,
+      interactiveType: "scenario",
+      scenarioData: {
+        scenario: "Your country's PPR plan lists 'risk communication' as a key objective. The government wants to improve how health information reaches all communities during emergencies.",
+        question: "How could CLM contribute to ensuring that communication is inclusive, trusted, and grounded in local realities?",
+        prompts: [
+          "What community data would be valuable for improving risk communication?",
+          "How would you ensure marginalized voices are included in the process?",
+          "What feedback loops would strengthen trust between communities and authorities?"
+        ],
+        sampleResponse: "CLM could contribute by having community monitors collect data on which communication channels people actually use and trust (radio, WhatsApp groups, community leaders). They could identify language barriers and misinformation patterns. For marginalized groups like migrants or sex workers, trusted peer networks could provide feedback on whether messages reach them. Regular community dialogues would create feedback loops, allowing authorities to adapt messaging based on real-time community input."
+      },
       duration: "10 min",
     },
     {
@@ -234,16 +250,17 @@ When communities define risk, measure readiness, and monitor response, health se
     {
       title: "Reflection: Invisible Until Counted",
       type: "interactive",
-      content: `**Reflective Activity: "Invisible Until Counted"**
-
-Think about one community in your country that was overlooked during COVID-19 or another public health emergency.
-
-Ask yourself:
-1. What made them invisible to official systems?
-2. What kind of data or evidence could have made them visible earlier?
-3. How might a CLM approach have changed their outcome?
-
-"Visibility is power. CLM ensures that no life waits for permission to matter."`,
+      interactiveType: "reflection",
+      reflectionData: {
+        title: "Invisible Until Counted",
+        context: "Think about one community in your country that was overlooked during COVID-19 or another public health emergency.",
+        prompts: [
+          { id: 1, question: "What made them invisible to official systems? (e.g., lack of documentation, geographic isolation, social stigma)" },
+          { id: 2, question: "What kind of data or evidence could have made them visible earlier?" },
+          { id: 3, question: "How might a CLM approach have changed their outcome?" }
+        ],
+        closingQuote: "Visibility is power. CLM ensures that no life waits for permission to matter."
+      },
       duration: "8 min",
     },
     {

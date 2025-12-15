@@ -16,6 +16,8 @@ import { EvidenceChain } from "@/components/games/EvidenceChain";
 import { VoicesFirst } from "@/components/games/VoicesFirst";
 import { EquityBuilder } from "@/components/games/EquityBuilder";
 import { KnowledgeCheck } from "@/components/KnowledgeCheck";
+import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
+import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
 import { moduleContent } from "./content";
 
 const Module = () => {
@@ -163,6 +165,25 @@ const Module = () => {
                 question={currentContent.question!}
                 options={currentContent.options!}
               />
+            ) : currentContent.type === "interactive" ? (
+              <div className="py-4">
+                {currentContent.interactiveType === "scenario" && currentContent.scenarioData && (
+                  <ScenarioActivity
+                    scenario={currentContent.scenarioData.scenario}
+                    question={currentContent.scenarioData.question}
+                    prompts={currentContent.scenarioData.prompts}
+                    sampleResponse={currentContent.scenarioData.sampleResponse}
+                  />
+                )}
+                {currentContent.interactiveType === "reflection" && currentContent.reflectionData && (
+                  <ReflectionActivity
+                    title={currentContent.reflectionData.title}
+                    context={currentContent.reflectionData.context}
+                    prompts={currentContent.reflectionData.prompts}
+                    closingQuote={currentContent.reflectionData.closingQuote}
+                  />
+                )}
+              </div>
             ) : (
               <Tabs defaultValue="read" className="w-full">
                 <TabsList className="mb-4">
@@ -239,14 +260,6 @@ const Module = () => {
                       });
                     })()}
                   </div>
-                  {currentContent.type === "interactive" && (
-                    <div className="mt-6 p-6 bg-muted/50 rounded-lg border-2 border-dashed border-primary/30">
-                      <p className="text-center text-muted-foreground italic">
-                        💡 Interactive element: Reflection prompt or
-                        mini-activity would appear here
-                      </p>
-                    </div>
-                  )}
                 </TabsContent>
 
                 {currentContent.videoUrl && (
