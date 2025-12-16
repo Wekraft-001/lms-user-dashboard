@@ -102,12 +102,12 @@ The SPAR tool provides a comprehensive mechanism for countries to evaluate their
       videos: [
         {
           label: "SPAR Explainer",
-          url: "https://www.youtube.com/embed/PLACEHOLDER_SPAR_VIDEO_ID",
+          url: "https://youtu.be/bzAPYSr6q-M?si=QCPZtJQmn7yZU_G3",
           description: "Understanding the State Party Self-Assessment Annual Reporting (SPAR) process"
         },
         {
           label: "JEE Explainer", 
-          url: "https://www.youtube.com/embed/PLACEHOLDER_JEE_VIDEO_ID",
+          url: "https://www.youtube.com/watch?v=RvLcDOijj6A",
           description: "Understanding the Joint External Evaluation (JEE) framework"
         }
       ],
