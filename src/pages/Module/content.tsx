@@ -165,9 +165,8 @@ The SPAR tool provides a comprehensive mechanism for countries to evaluate their
       type: "reading",
       content: `CLM emerged from the HIV movement and has since been adopted across multiple health and social sectors. It is a rights-based approach in which communities systematically collect and use data to monitor the quality and accessibility of services, policies, and funding.
 
-Unlike traditional monitoring efforts, CLM starts from the bottom up:
-
 <ul>
+<p>Unlike traditional monitoring efforts, CLM starts from the bottom up:</p>
 <li><b>Who collects the data?</b> Communities themselves</li>
 <li><b>Whose questions are asked?</b> The people directly affected shape and frame questions</li>
 <li><b>Who acts on the findings?</b> Both communities and decision-makers, through evidence-based dialogue and advocacy</li>
@@ -187,17 +186,26 @@ The true power of CLM is that it shifts power to communities, centers lived expe
       type: "reading",
       content: `At its core, CLM is guided by five principles:
 
-      <ol>
-      <li><b>Ownership:</b> Communities design and lead monitoring activities.<br/>
-<i>Example: Kenya's I-Monitor system puts communities in full control designing tools, selecting indicators, leading facility assessments, and negotiating service improvements.</i></li>
-      <li><b>Accountability:</b> Findings are used to demand and negotiate change.<br/>
-<i>Example: South Africa's Ritshidze collects real-time feedback from thousands of public clinics, escalating issues to authorities and triggering joint action plans.</i></li>
-      <li><b>Transparency:</b> Data and decisions are shared openly.<br/>
-<i>Example: In Malawi's malaria CLM programme, findings are openly discussed in Health Centre Advisory Committee meetings, building trust.</i></li>
-      <li><b>Participation:</b> All voices, especially those of marginalized groups, are included.<br/>
-<i>Example: In Mozambique, sex workers, MSM, and AGYW lead monitoring, ensuring those most affected shape the agenda.</i></li>
-      <li><b>Equity:</b> Monitoring focuses on underserved communities.<br/>
-<i>Example: Nigeria's CLM focuses on remote villages where surveillance is weakest, pushing programs to prioritize marginalized populations.</i></li>
+    <ol>
+    <li><b>Ownership: Communities design and lead monitoring activities.</b><br/>
+        <p>In Zambia, between 2021 and 2025 Amref Zambia and Grassroots Soccer Zambia implemented a CLM project aimed at ensuring the voices and recommendations of people living with HIV were incorporated into the design and approach of HIV care and treatment. Initially, a standardised questionnaire was used to collect data but each year, the questionnaire was revised by community monitors to ensure local relevance. This is a clear demonstration of community ownership of the project.    
+        </p>
+    </li>
+    <li><b>Accountability: Findings are used to demand and negotiate change. South Africa - Ritshidze Community Monitoring</b><br/>
+        <p>Ritshidze, led by people living with HIV networks such as the Treatment Action Campaign, collects real-time feedback from thousands of public clinics. The community teams escalate issues such as ARV stockouts, long waits, and unfriendly services to district and provincial health authorities. Quarterly reports trigger joint action plans, resulting in documented improvements in staffing, medicine availability, and service quality. This is accountability in practice: community evidence driving system change.
+        </p>
+    </li>
+    <li><b>Transparency: Data and decisions are shared openly. Malawi - CLM for Malaria Service Quality</b><br/>
+        <p>In Malawi’s malaria CLM programme, community monitors share all findings openly with health facilities, district malaria units, and community structures. Data dashboards summarising stockouts, diagnostic quality, and patient experiences are publicly discussed during Health Centre Advisory Committee meetings. This open sharing of evidence builds trust and ensures that decisions are made transparently, with communities seeing both the problems and the responses.</p>
+    </li>
+    <li><b>Participation: All voices, especially those of marginalized groups, are included. Mozambique - Key Population-Led Service Monitoring</b><br/>
+        <p>In Mozambique, key population organisations lead the charge in CLM for HIV prevention services. Sex workers, men who have sex with men (MSM), and adolescent girls and young women (AGYW) are trained as monitors, ensuring those most affected shape the monitoring agenda. The project’s findings focused on stigma, safety, and access barriers and are integrated into national HIV programme reviews. This ensures that those usually left out are meaningfully included.</p>
+    </li>
+    <li><b>Equity: Monitoring focuses on underserved communities. Nigeria – CLM in Hard-to-Reach Malaria-Endemic Communities
+    </b><br/>
+        <p>Nigeria’s community-led malaria monitoring initiative focuses deliberately on remote, underserved villages where surveillance and service delivery are weakest. Community volunteers document stockouts of rapid diagnostic tests, insecticide-treated nets, and treatment interruptions. Their evidence pushes malaria programmes to re-prioritise distribution and re-allocate commodities to the most marginalised populations, an explicit application of equity.
+        </p>
+    </li>
       </ol>
 `,
       duration: "5 min",
@@ -250,15 +258,16 @@ During COVID-19, community groups in Kenya and South Africa tracked PPE shortage
 
 During Mpox outbreaks, key population networks in Nigeria provided real-time data on stigma and service access, helping shape public communication.
 
-These examples show that CLM can act as:
-<ul>
-<li>An early warning system within national PPR frameworks</li>
-<li>A feedback mechanism that captures service quality data</li>
-<li>A critical enabler of trust between communities and government</li>
-</ul>
-
-<b>Trust is non-negotiable.</b> In a crisis, effective public health strategies from mass vaccination to contact tracing hinge entirely on public trust.`,
+These examples show that CLM can act as an early warning system and feedback mechanism within national PPR frameworks, filling gaps that formal surveillance often misses. CLM can also be more effective than other monitoring mechanisms at collecting qualitative data about the quality of health service. Finally, CLM can act as a critical enabler of trust and dialogue between communities and the government. This trust is non-negotiable in the context of pandemic preparedness and response. In a crisis, effective public health strategies, from mass vaccination campaigns and contact tracing to adherence to social distancing measures, can hinge entirely on the public trust.
+`,
       duration: "5 min",
+      videos: [
+        {
+          label: "MPOX Nigeria",
+          url: "https://www.youtube.com/watch?v=keWXhcUdscY",
+          description: ""
+        },
+      ],
     },
     {
       title: "Scenario: Risk Communication",
@@ -287,11 +296,9 @@ These examples show that CLM can act as:
     {
       title: "Part 4: The Politics of Preparedness",
       type: "reading",
-      content: `Preparedness is never neutral. It is a mirror of power: who is seen, who is heard, and who is protected when crisis strikes.
+      content: `Preparedness is never neutral. It is a mirror of power: who is seen, who is heard, and who is protected when crisis strikes. Every emergency response carries a quiet hierarchy of concern. Some lives are counted faster. Some data is trusted more. Some communities are remembered only after the damage is done.
 
-Every emergency response carries a quiet hierarchy of concern. Some lives are counted faster. Some data is trusted more. Some communities are remembered only after the damage is done.
-
-For decades, global health systems have prioritized efficiency over equity. During the HIV crisis, data from sex workers and queer communities was dismissed. During COVID-19, migrants, informal workers, and people with disabilities were often invisible to surveillance systems.
+For decades, global health systems have prioritized efficiency over equity. During the HIV crisis, data from sex workers and queer communities was dismissed as "unreliable". During COVID-19, migrants, informal workers, and people with disabilities were often invisible to surveillance systems that defined who deserved PPE, testing, and vaccines. The result was predictable: those most at risk were protected last.
 
 <b>CLM challenges this order.</b> It insists that preparedness is not a technical checklist but a political contract.
 
@@ -302,7 +309,11 @@ CLM forces PPR frameworks to face uncomfortable questions:
 <li>Whose voices are heard when global agencies declare success?</li>
 </ul>
 
-When communities define risk, measure readiness, and monitor response, health security stops being charity and becomes justice.`,
+By grounding PPR in lived experience, CLM shifts the centre of gravity, from ministries to markets, from boardrooms to town halls, from surveillance systems to social networks. It replaces extraction with participation and token consultation with co-creation.
+
+
+Preparedness becomes not just the ability to respond to crises, but the ability to do so justly. It recognises that community knowledge is not a supplement to science; it is science: deep, experiential, and rooted in care. When communities define risk, measure readiness, and monitor response, health security stops being charity and becomes justice.
+`,
       duration: "4 min",
     },
     {
@@ -332,36 +343,44 @@ When communities define risk, measure readiness, and monitor response, health se
     {
       title: "Case Study: South Africa's Vaccine Roll-Out",
       type: "reading",
-      content: `**Community Monitoring During South Africa's COVID-19 Vaccine Roll-Out**
+      content: `Community Monitoring During South Africa's COVID-19 Vaccine Roll-Out
 
 In 2021, as South Africa launched its national COVID-19 vaccination drive, official systems reported strong progress. But CLM teams in Gauteng and KwaZulu-Natal began collecting real-time feedback from clinics, taxi ranks, and informal settlements.
 
-**Their data told another story:**
-• Many clinics lacked cold-chain equipment
-• Mobile sites were undersupplied
-• Undocumented migrants were being turned away
+Their data told another story:
+<ul>
+<li>Many clinics lacked cold-chain equipment</li>
+<li>Mobile sites were undersupplied</li>
+<li>Undocumented migrants were being turned away</li>
+</ul>
 
 CLM partners compiled weekly briefs for provincial health departments and advocacy coalitions. Within weeks, provincial authorities adjusted logistics, retrained site staff, and added mobile units.
 
-**Key Takeaway:** When communities monitor systems from below, national data becomes more honest, equitable, and useful. Preparedness is not built in labs—it is built in trust.
+<b>Key Takeaway:</b> When communities monitor systems from below, national data becomes more honest, equitable, and useful. Preparedness is not built in labs, it is built in trust.
 
-**Reflection:** What would preparedness look like if every community could produce evidence like this?`,
+<b>Reflection:</b> What would preparedness look like if every community could produce evidence like this?`,
       duration: "12 min",
     },
     {
       title: "Module Summary",
       type: "reading",
-      content: `**Key Takeaways:**
+      content: `<b>Key Takeaways:</b>
 
-• PPR provides the structures for readiness, but structure without justice collapses under pressure
-• CLM provides the eyes, ears, and conscience of preparedness, ensuring that the invisible become visible
-• Together, they redefine preparedness as a matter of equity and shared power
+      <ul>
+      <li><b>PPR</b> provides the structures for readiness, but structure without justice collapses under pressure</li>
+      <li><b>CLM</b> provides the eyes, ears, and conscience of preparedness, ensuring that the invisible become visible</li>
+      <li>Together, they redefine preparedness as a matter of equity and shared power</li>
+      </ul>
 
-**You've completed Module 1!** You now understand:
-✓ How global PPR frameworks operate
-✓ The five principles of Community-Led Monitoring
-✓ Where CLM strengthens PPR systems
-✓ Why preparedness is a political and ethical imperative
+<strong>You've completed Module 1!</strong> 
+
+You now understand:
+<ol>
+<li>How global PPR frameworks operate</li>
+<li>The five principles of Community-Led Monitoring</li>
+<li>Where CLM strengthens PPR systems</li>
+<li>Why preparedness is a political and ethical imperative</li>
+</ol>
 
 Next, you'll take a comprehensive assessment to demonstrate your mastery of these foundations.`,
       duration: "5 min",
