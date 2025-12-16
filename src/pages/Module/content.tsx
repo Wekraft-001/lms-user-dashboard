@@ -92,6 +92,7 @@ The SPAR tool provides a comprehensive mechanism for countries to evaluate their
 </ol>
 
 `,
+      videoUrl: "https://extranet.who.int/sph/sites/default/files/IHRMEF%20Tutorial.mp4",
       videos: [
         {
           label: "SPAR Explainer",
