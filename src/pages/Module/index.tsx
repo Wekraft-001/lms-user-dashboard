@@ -188,24 +188,12 @@ const Module = () => {
               <Tabs defaultValue="read" className="w-full">
                 <TabsList className="mb-4">
                   <TabsTrigger value="read">Read</TabsTrigger>
-                  {currentContent.videoUrl && (
+                  {(currentContent.videoUrl || currentContent.videos) && (
                     <TabsTrigger value="watch">Watch</TabsTrigger>
                   )}
                 </TabsList>
 
                 <TabsContent value="read" className="space-y-4">
-                  {/* <div className="prose prose-slate max-w-none">
-                    {currentContent.content
-                      .split("\n\n")
-                      .map((paragraph, idx) => (
-                        <p
-                          key={idx}
-                          className="text-muted-foreground leading-relaxed mb-4"
-                        >
-                          {paragraph}
-                        </p>
-                      ))}
-                  </div> */}
                   <div className="max-w-none space-y-4">
                     {(() => {
                       // Split content but preserve HTML structure
@@ -262,17 +250,39 @@ const Module = () => {
                   </div>
                 </TabsContent>
 
-                {currentContent.videoUrl && (
+                {(currentContent.videoUrl || currentContent.videos) && (
                   <TabsContent value="watch">
-                    <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                      <video
-                        controls
-                        className="w-full h-full"
-                        src={currentContent.videoUrl}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
+                    {currentContent.videos ? (
+                      <div className="space-y-6">
+                        {currentContent.videos.map((video, idx) => (
+                          <div key={idx} className="space-y-2">
+                            <h4 className="font-semibold text-foreground">{video.label}</h4>
+                            {video.description && (
+                              <p className="text-sm text-muted-foreground mb-2">{video.description}</p>
+                            )}
+                            <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                              <iframe
+                                src={video.url}
+                                className="w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title={video.label}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : currentContent.videoUrl && (
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                        <video
+                          controls
+                          className="w-full h-full"
+                          src={currentContent.videoUrl}
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    )}
                   </TabsContent>
                 )}
               </Tabs>
