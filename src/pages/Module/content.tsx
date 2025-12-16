@@ -110,16 +110,33 @@ The SPAR tool provides a comprehensive mechanism for countries to evaluate their
     {
       title: "Global PPR Instruments",
       type: "reading",
-      content: `Supporting the IHR and its assessment processes are newer global instruments:
+      content: `Supporting the IHR and its assessment processes are newer global instruments and mechanisms:
 
-<b>WHO Pandemic Agreement:</b> Adopted by WHO member states on 20 May 2025, this agreement complements the IHR and outlines a framework for pandemic prevention, preparedness, and response (PPR), including equity in access to vaccines, diagnostics, and therapeutics.
+<b>WHO Pandemic Agreement:</b> Formally titled the "WHO Pandemic Agreement" was adopted by member states of the WHO at the World Health Assenbly on 20 May 2025. The agreement complements the IHR and outlines a framework for pandemic prevention, preparedness, and response (PPR), including equity in access to vaccines, diagnostics, and therapeutics.
 
-<b>The Pandemic Fund:</b> Formally titled "Financial Intermediary Fund for Pandemic Prevention, Preparedness and Response," it's housed at the World Bank with WHO as the technical lead. Established following a G20 request in April 2022, it finances capacity building for prevention and response, focusing on low- and middle-income countries.
+<b>The World Bank's Pandemic Fund:</b> Formally titled the "Financial Intermediary Fund for Pandemic Prevention, Preparedness and Response," the "Pandemic Fund" is housed at the World Bank with WHO as the technical lead. It was established following a G20 request in April 2022 and approved by the Board of the World Bank on the 30th of June 2022. It became operational in September 2022. The Pandemic Fund finances capacity building for prevention and response,  focusing on low- and middle-income countries (LMICs) and investing in various systems: surveillance, labs, workforce, and One Health approaches.
 
-<b>Africa CDC's New Public Health Order:</b> This framework emphasizes five enablers: strong African public health institutions, expanded manufacturing of vaccines/diagnostics/therapeutics in Africa, workforce capacity, disease prevention (One Health), and collaboration.
+<b>The Africa CDC's New Public Health Order for Africa's Health Security:</b> This framework was launched and articulated by Africa CDC in the context of strengthening Africa’s self-reliance, networks, manufacturing capacity and public health institutions. It calls for a stronger, self-reliant, and networked Africa and emphasises five enablers: strong African public health institutions, expanded manufacturing of vaccines/diagnostics/therapeutics in Africa, workforce capacity, disease prevention (One Health) and collaboration. 
 
-<b>Africa's Health Security and Sovereignty Agenda:</b> Adopted in September 2025, this vision reflects the recognition that achieving universal health coverage and pandemic preparedness requires health sovereignty the ability of African nations to finance, produce, and govern their own health systems.`,
-      duration: "2 min",
+<b>Africa's Health Security and Sovereignty Agenda - </i>a new way forward</i>:</b> In light of recent geopolitical shifts, declining donor funding, in September 2025 the Committee of Healds of State and Government of the Africa CDC adopted an even more robust vision for the continent than the NPHO. This new strategic transition, termed Africa’s Health Security and Sovereignty, reflects the growing recognition that achieving universal health coverage, pandemic preparedness, and sustainable development cannot be realised without health sovereignty i.e. the ability of African nations to finance, produce, and govern their own health systems and countermeasures. 
+`,
+      duration: "8 min",
+      videos: [
+        {
+          label: "WHO Pandemic Agreement",
+          url: "https://www.youtube.com/watch?v=FmUirzJ4X-4",
+          description: "Straight facts on pandemic"
+        },
+        {
+          label: "World Bank's Pandemic Fund", 
+          url: "https://www.youtube.com/watch?v=LJyjGQg2Qd4",
+          description: "Financial Intermediary Fund for PPR"
+        },{
+            label: "Africa CDC", 
+            url: "https://www.youtube.com/watch?v=tZJenI6QQX0",
+            description: "Financial Intermediary Fund for PPR"
+          }
+      ],
     },
     {
       title: "Reflection: COVID-19 in Your Country",
@@ -138,7 +155,7 @@ The SPAR tool provides a comprehensive mechanism for countries to evaluate their
       duration: "5 min",
     },
     {
-      title: "Part 2: What is Community-Led Monitoring?",
+      title: "Part 2: What is Community-Led Monitoring (CLM)?",
       type: "reading",
       content: `CLM emerged from the HIV movement and has since been adopted across multiple health and social sectors. It is a rights-based approach in which communities systematically collect and use data to monitor the quality and accessibility of services, policies, and funding.
 
@@ -150,7 +167,7 @@ Unlike traditional monitoring efforts, CLM starts from the bottom up:
 <li><b>Who acts on the findings?</b> Both communities and decision-makers, through evidence-based dialogue and advocacy</li>
 </ul>
 
-<i>CLM is not just a technical exercise, it is a political act.</i>
+<b>CLM is not just a technical exercise, it is a political act.</b>
 
 The true power of CLM is that it shifts power to communities, centers lived experience, and ensures that no one speaks about communities without speaking with them.`,
       duration: "3 min",
