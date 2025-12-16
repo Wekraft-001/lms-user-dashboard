@@ -12,6 +12,12 @@ export interface ReflectionData {
   closingQuote?: string;
 }
 
+export interface VideoItem {
+  label: string;
+  url: string;
+  description?: string;
+}
+
 export interface ModuleSegment {
   title: string;
   type: "reading" | "interactive" | "game" | "quiz";
@@ -19,6 +25,7 @@ export interface ModuleSegment {
   content?: string;
   duration: string;
   videoUrl?: string;
+  videos?: VideoItem[];
   gameType?: "evidence-chain" | "voices-first" | "equity-builder";
   question?: string;
   options?: Array<{
@@ -74,19 +81,29 @@ To assess compliance, countries undergo two main processes:
 <li>
 <b>State Party Self-Assessment Annual Reporting (SPAR):</b> An annual self-review where countries evaluate their public health capabilities across various domains such as surveillance, laboratory capacity, workforce, and emergency response.
 </li>
-<p><i>In the context of global health security, the readiness of individual nations to prevent, detect, and respond to health threats is paramount. This preparedness is closely monitored through tools like the SPAR (State Party Self-Assessment Annual Reporting), which assesses a country’s public health capabilities in relation to the International Health Regulations (IHR). As health risks become increasingly complex and interconnected, having a robust and accurate assessment framework is crucial for identifying vulnerabilities and building resilient health systems.
+<p><i>In the context of global health security, the readiness of individual nations to prevent, detect, and respond to health threats is paramount. This preparedness is closely monitored through tools like the SPAR (State Party Self-Assessment Annual Reporting), which assesses a country's public health capabilities in relation to the International Health Regulations (IHR). As health risks become increasingly complex and interconnected, having a robust and accurate assessment framework is crucial for identifying vulnerabilities and building resilient health systems.
 The SPAR tool provides a comprehensive mechanism for countries to evaluate their public health capacities, address gaps, and develop action plans (including NAPHS) that strengthen their health security infrastructure. The SPAR aims to is approach helps countries nations understand their preparedness levels across various domains, such as surveillance, laboratory capacity, workforce, and emergency response. By using SPAR, countries can prioritise critical areas, ensure that health systems are equipped for future health threats, and make informed decisions to enhance national and global health security
 </i></p>
 <li>
 <b>Joint External Evaluation (JEE):</b> A voluntary, external review of national capacities across 19 technical areas spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry.
 </li>
-<p><i>The JEE Tool is a comprehensive assessment framework designed to evaluate a country’s technical capacities for health security across 19 technical areas. These 19 areas are spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry. By identifying strengths and weaknesses within these areas, the JEE helps countries understand where they need to improve their health security systems. This assessment is crucial for creating action plans (in particular, National Action Plans for Health Security or “NAPHS”) , prioritising resources, and mobilising international support to build robust health systems that can effectively manage health risks.
+<p><i>The JEE Tool is a comprehensive assessment framework designed to evaluate a country's technical capacities for health security across 19 technical areas. These 19 areas are spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry. By identifying strengths and weaknesses within these areas, the JEE helps countries understand where they need to improve their health security systems. This assessment is crucial for creating action plans (in particular, National Action Plans for Health Security or "NAPHS") , prioritising resources, and mobilising international support to build robust health systems that can effectively manage health risks.
 </i></p>
 </ol>
 
 `,
-      videoUrl:
-        "https://extranet.who.int/sph/sites/default/files/IHRMEF%20Tutorial.mp4",
+      videos: [
+        {
+          label: "SPAR Explainer",
+          url: "https://www.youtube.com/embed/PLACEHOLDER_SPAR_VIDEO_ID",
+          description: "Understanding the State Party Self-Assessment Annual Reporting (SPAR) process"
+        },
+        {
+          label: "JEE Explainer", 
+          url: "https://www.youtube.com/embed/PLACEHOLDER_JEE_VIDEO_ID",
+          description: "Understanding the Joint External Evaluation (JEE) framework"
+        }
+      ],
       duration: "12 min",
     },
     {
