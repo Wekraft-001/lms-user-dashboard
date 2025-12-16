@@ -18,6 +18,7 @@ import { EquityBuilder } from "@/components/games/EquityBuilder";
 import { KnowledgeCheck } from "@/components/KnowledgeCheck";
 import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
 import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
+import CycleDiagram from "@/components/interactive/CycleDiagram";
 import { moduleContent } from "./content";
 
 const Module = () => {
@@ -201,7 +202,7 @@ const Module = () => {
                         /(<ol>[\s\S]*?<\/ol>|<ul>[\s\S]*?<\/ul>)/
                       );
 
-                      return parts.map((part, idx) => {
+                      const contentElements = parts.map((part, idx) => {
                         const trimmed = part.trim();
                         if (!trimmed) return null;
 
@@ -246,6 +247,22 @@ const Module = () => {
                             />
                           ));
                       });
+
+                      // Insert cycle diagram after first paragraph if present
+                      if (currentContent.cycleDiagram) {
+                        const firstParagraphIndex = contentElements.findIndex(el => el !== null);
+                        if (firstParagraphIndex !== -1) {
+                          contentElements.splice(firstParagraphIndex + 1, 0, 
+                            <CycleDiagram 
+                              key="cycle-diagram"
+                              title={currentContent.cycleDiagram.title}
+                              steps={currentContent.cycleDiagram.steps}
+                            />
+                          );
+                        }
+                      }
+
+                      return contentElements;
                     })()}
                   </div>
                 </TabsContent>

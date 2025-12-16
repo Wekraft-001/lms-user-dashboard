@@ -18,6 +18,11 @@ export interface VideoItem {
   description?: string;
 }
 
+export interface CycleDiagramData {
+  title?: string;
+  steps: string[];
+}
+
 export interface ModuleSegment {
   title: string;
   type: "reading" | "interactive" | "game" | "quiz";
@@ -35,6 +40,7 @@ export interface ModuleSegment {
   }>;
   scenarioData?: ScenarioData;
   reflectionData?: ReflectionData;
+  cycleDiagram?: CycleDiagramData;
 }
 
 export interface ModuleContent {
@@ -170,6 +176,10 @@ Unlike traditional monitoring efforts, CLM starts from the bottom up:
 <b>CLM is not just a technical exercise, it is a political act.</b>
 
 The true power of CLM is that it shifts power to communities, centers lived experience, and ensures that no one speaks about communities without speaking with them.`,
+      cycleDiagram: {
+        title: "The CLM Cycle",
+        steps: ["Collect", "Analyse", "Share", "Advocate", "Improve"]
+      },
       duration: "3 min",
     },
     {
