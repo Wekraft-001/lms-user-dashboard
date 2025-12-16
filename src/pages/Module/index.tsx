@@ -252,37 +252,40 @@ const Module = () => {
 
                 {(currentContent.videoUrl || currentContent.videos) && (
                   <TabsContent value="watch">
-                    {currentContent.videos ? (
-                      <div className="space-y-6">
-                        {currentContent.videos.map((video, idx) => (
-                          <div key={idx} className="space-y-2">
-                            <h4 className="font-semibold text-foreground">{video.label}</h4>
-                            {video.description && (
-                              <p className="text-sm text-muted-foreground mb-2">{video.description}</p>
-                            )}
-                            <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                              <iframe
-                                src={video.url}
-                                className="w-full h-full"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                title={video.label}
-                              />
-                            </div>
+                    <div className="space-y-6">
+                      {currentContent.videoUrl && (
+                        <div className="space-y-2">
+                          <h4 className="font-semibold text-foreground">Introduction</h4>
+                          <p className="text-sm text-muted-foreground mb-2">IHR Monitoring and Evaluation Framework Tutorial</p>
+                          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                            <video
+                              controls
+                              className="w-full h-full"
+                              src={currentContent.videoUrl}
+                            >
+                              Your browser does not support the video tag.
+                            </video>
                           </div>
-                        ))}
-                      </div>
-                    ) : currentContent.videoUrl && (
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                        <video
-                          controls
-                          className="w-full h-full"
-                          src={currentContent.videoUrl}
-                        >
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    )}
+                        </div>
+                      )}
+                      {currentContent.videos?.map((video, idx) => (
+                        <div key={idx} className="space-y-2">
+                          <h4 className="font-semibold text-foreground">{video.label}</h4>
+                          {video.description && (
+                            <p className="text-sm text-muted-foreground mb-2">{video.description}</p>
+                          )}
+                          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                            <iframe
+                              src={video.url}
+                              className="w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              title={video.label}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </TabsContent>
                 )}
               </Tabs>
