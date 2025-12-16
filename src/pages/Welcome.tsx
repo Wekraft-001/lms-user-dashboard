@@ -264,7 +264,8 @@ const Welcome = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[#d00000] via-[#008000] to-[#ee7800]">
+      {/* <section className="py-20 bg-gradient-to-br from-[#d00000] via-[#008000] to-[#ee7800]"> */}
+        <section className="py-20 bg-black from-[#D00000] via-primary/80 to-[#EE7800]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Knowledge into Action?

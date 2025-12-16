@@ -26,6 +26,7 @@ import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import Logo from "@/assets/logo.svg";
 
 const Dashboard = () => {
   const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
@@ -365,7 +366,7 @@ const Dashboard = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h2 className="text-3xl font-bold mb-2 text-foreground">
-            Welcome back, {userData.name}! 👋
+            Welcome, {userData.name}! 👋
           </h2>
           <p className="text-muted-foreground">
             Continue your journey to strengthen pandemic preparedness across
@@ -521,7 +522,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div>
-                <h1 className="text-lg font-bold text-foreground">Kujua360</h1>
+                <img src={Logo} className="w-[100px]" />
                 <p className="text-xs text-muted-foreground">
                   Learning Dashboard
                 </p>
