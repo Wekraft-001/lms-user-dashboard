@@ -70,10 +70,21 @@ By the end of this module, you will be able to:
 <b>The International Health Regulations (IHR, 2005)</b> form the backbone. They are legally binding for 196 countries and set out what each country must do to detect, assess, report, and respond to public health threats.
 
 To assess compliance, countries undergo two main processes:
-
+<ol>
+<li>
 <b>State Party Self-Assessment Annual Reporting (SPAR):</b> An annual self-review where countries evaluate their public health capabilities across various domains such as surveillance, laboratory capacity, workforce, and emergency response.
+</li>
+<p><i>In the context of global health security, the readiness of individual nations to prevent, detect, and respond to health threats is paramount. This preparedness is closely monitored through tools like the SPAR (State Party Self-Assessment Annual Reporting), which assesses a country’s public health capabilities in relation to the International Health Regulations (IHR). As health risks become increasingly complex and interconnected, having a robust and accurate assessment framework is crucial for identifying vulnerabilities and building resilient health systems.
+The SPAR tool provides a comprehensive mechanism for countries to evaluate their public health capacities, address gaps, and develop action plans (including NAPHS) that strengthen their health security infrastructure. The SPAR aims to is approach helps countries nations understand their preparedness levels across various domains, such as surveillance, laboratory capacity, workforce, and emergency response. By using SPAR, countries can prioritise critical areas, ensure that health systems are equipped for future health threats, and make informed decisions to enhance national and global health security
+</i></p>
+<li>
+<b>Joint External Evaluation (JEE):</b> A voluntary, external review of national capacities across 19 technical areas spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry.
+</li>
+<p><i>The JEE Tool is a comprehensive assessment framework designed to evaluate a country’s technical capacities for health security across 19 technical areas. These 19 areas are spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry. By identifying strengths and weaknesses within these areas, the JEE helps countries understand where they need to improve their health security systems. This assessment is crucial for creating action plans (in particular, National Action Plans for Health Security or “NAPHS”) , prioritising resources, and mobilising international support to build robust health systems that can effectively manage health risks.
+</i></p>
+</ol>
 
-<b>Joint External Evaluation (JEE):</b> A voluntary, external review of national capacities across 19 technical areas spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry.`,
+`,
       videoUrl:
         "https://extranet.who.int/sph/sites/default/files/IHRMEF%20Tutorial.mp4",
       duration: "12 min",
@@ -100,7 +111,7 @@ To assess compliance, countries undergo two main processes:
         title: "Reflective Activity",
         context: "Think about the COVID-19 pandemic in your country. Reflect on how communities and institutions responded.",
         prompts: [
-          { id: 1, question: "Who noticed the problem first—communities or institutions? Share a specific example you witnessed or heard about." },
+          { id: 1, question: "Who noticed the problem first communities or institutions? Share a specific example you witnessed or heard about." },
           { id: 2, question: "How quickly did local concerns reach decision-makers? What barriers existed?" },
           { id: 3, question: "What gaps existed between community experiences and official responses?" }
         ],
@@ -237,15 +248,17 @@ Every emergency response carries a quiet hierarchy of concern. Some lives are co
 
 For decades, global health systems have prioritized efficiency over equity. During the HIV crisis, data from sex workers and queer communities was dismissed. During COVID-19, migrants, informal workers, and people with disabilities were often invisible to surveillance systems.
 
-**CLM challenges this order.** It insists that preparedness is not a technical checklist but a political contract.
+<b>CLM challenges this order.</b> It insists that preparedness is not a technical checklist but a political contract.
 
 CLM forces PPR frameworks to face uncomfortable questions:
-• Who decides what counts as an emergency?
-• Who sits at the table when budgets are written?
-• Whose voices are heard when global agencies declare success?
+<ul>
+<li>Who decides what counts as an emergency?</li>
+<li>Who sits at the table when budgets are written?</li>
+<li>Whose voices are heard when global agencies declare success?</li>
+</ul>
 
 When communities define risk, measure readiness, and monitor response, health security stops being charity and becomes justice.`,
-      duration: "10 min",
+      duration: "4 min",
     },
     {
       title: "Reflection: Invisible Until Counted",

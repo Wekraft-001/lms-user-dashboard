@@ -117,7 +117,7 @@ export const VoicesFirst = () => {
                       ? "bg-success/10 border-success opacity-50"
                       : selectedCommunity === match.id
                       ? "bg-primary/10 border-primary shadow-lg scale-105"
-                      : "hover:bg-accent"
+                      : "hover:bg-red-100"
                   )}
                   onClick={() => handleCommunityClick(match.id)}
                 >
@@ -147,7 +147,7 @@ export const VoicesFirst = () => {
                         ? "bg-success/10 border-success opacity-50"
                         : selectedSystem === match.id
                         ? "bg-primary/10 border-primary shadow-lg scale-105"
-                        : "hover:bg-accent"
+                        : "hover:bg-red-100"
                     )}
                     onClick={() => handleSystemClick(match.id)}
                   >
