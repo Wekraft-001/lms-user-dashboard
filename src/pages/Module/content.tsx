@@ -50,7 +50,7 @@ export interface ModuleContent {
   segments: ModuleSegment[];
 }
 
-export const moduleContent: ModuleContent = {
+const module1Content: ModuleContent = {
   title: "Understanding the Foundations of PPR and CLM",
   description:
     "This module lays the foundation for your learning journey, introducing global and African PPR systems and placing CLM as a mechanism for accountability, justice, and participation.",
@@ -390,3 +390,299 @@ Next, you'll take a comprehensive assessment to demonstrate your mastery of thes
     },
   ],
 };
+
+const module2Content: ModuleContent = {
+  title: "CLM Data Collection and Analysis",
+  description:
+    "Learn how to design and implement effective CLM data collection methods and analyze community-generated data for advocacy.",
+  totalSegments: 4,
+  segments: [
+    {
+      title: "Module 2 Overview",
+      type: "reading",
+      content: `This module explores the practical aspects of CLM data collection and analysis. You will learn how to design data collection tools, train community monitors, and analyze data to generate actionable insights.
+
+      <b>Learning Objectives:</b>
+
+      By the end of this module, you will be able to:
+
+      <ol>
+        <li>Design effective CLM data collection instruments</li>
+        <li>Train and support community monitors</li>
+        <li>Analyze community-generated data for patterns and insights</li>
+        <li>Present findings in compelling ways for advocacy</li>
+      </ol>`,
+      duration: "5 min",
+    },
+    {
+      title: "Part 1: Designing Data Collection Tools",
+      type: "reading",
+      content: `Effective CLM begins with well-designed data collection tools. These tools must be community-owned, culturally appropriate, and focused on the issues that matter most to affected populations.
+
+<b>Key Principles for Tool Design:</b>
+
+<ul>
+<li><b>Community-Centered:</b> Questions should reflect community priorities, not just donor or government interests</li>
+<li><b>Accessible:</b> Tools should be available in local languages and appropriate for varying literacy levels</li>
+<li><b>Actionable:</b> Data collected should directly inform advocacy and accountability efforts</li>
+<li><b>Ethical:</b> Ensure informed consent, data protection, and do-no-harm principles</li>
+</ul>
+
+<b>Types of Data Collection Methods:</b>
+
+<ol>
+<li><b>Facility exit interviews:</b> Short surveys with service users immediately after receiving services</li>
+<li><b>Mystery client visits:</b> Trained community members visit facilities as clients to assess service quality</li>
+<li><b>Community scorecards:</b> Participatory assessments where communities rate services against agreed standards</li>
+<li><b>Focus group discussions:</b> In-depth conversations with specific population groups</li>
+</ol>`,
+      duration: "10 min",
+    },
+    {
+      title: "Part 2: Training Community Monitors",
+      type: "reading",
+      content: `Community monitors are the backbone of CLM. They are trusted members of their communities who collect data, facilitate dialogues, and advocate for change.
+
+<b>Essential Training Topics:</b>
+
+<ul>
+<li>Understanding the purpose and principles of CLM</li>
+<li>Data collection techniques and tool usage</li>
+<li>Ethics, consent, and confidentiality</li>
+<li>Safety and self-care</li>
+<li>Documentation and reporting</li>
+</ul>
+
+<b>Qualities of Effective Community Monitors:</b>
+
+<ol>
+<li><b>Trusted:</b> Known and respected within their community</li>
+<li><b>Representative:</b> Reflect the diversity of the community (age, gender, key population status)</li>
+<li><b>Committed:</b> Motivated by community service, not just compensation</li>
+<li><b>Connected:</b> Have relationships with both community members and service providers</li>
+</ol>`,
+      duration: "8 min",
+    },
+    {
+      title: "Module 2 Summary",
+      type: "reading",
+      content: `<b>Key Takeaways:</b>
+
+<ul>
+<li>Effective CLM data collection requires community-centered, accessible, and ethical tools</li>
+<li>Community monitors must be carefully selected and thoroughly trained</li>
+<li>Data analysis should focus on patterns that inform advocacy</li>
+<li>Findings must be shared in ways that drive accountability</li>
+</ul>
+
+<strong>You've completed Module 2!</strong>
+
+Next, you'll take an assessment to demonstrate your understanding of CLM data collection and analysis.`,
+      duration: "5 min",
+    },
+  ],
+};
+
+const module3Content: ModuleContent = {
+  title: "Advocacy and Stakeholder Engagement",
+  description:
+    "Learn how to translate CLM findings into effective advocacy strategies and engage diverse stakeholders for systemic change.",
+  totalSegments: 4,
+  segments: [
+    {
+      title: "Module 3 Overview",
+      type: "reading",
+      content: `This module focuses on translating CLM evidence into advocacy action. You will learn how to engage stakeholders, build coalitions, and create sustainable change through strategic advocacy.
+
+      <b>Learning Objectives:</b>
+
+      By the end of this module, you will be able to:
+
+      <ol>
+        <li>Develop evidence-based advocacy strategies using CLM data</li>
+        <li>Identify and engage key stakeholders at different levels</li>
+        <li>Build and maintain advocacy coalitions</li>
+        <li>Navigate power dynamics in health governance spaces</li>
+      </ol>`,
+      duration: "5 min",
+    },
+    {
+      title: "Part 1: From Evidence to Advocacy",
+      type: "reading",
+      content: `CLM data is only valuable when it leads to action. Effective advocacy translates community evidence into policy and practice changes.
+
+<b>The Evidence-to-Advocacy Pathway:</b>
+
+<ol>
+<li><b>Analyze:</b> Identify patterns, trends, and priority issues from CLM data</li>
+<li><b>Validate:</b> Share findings with communities to ensure accuracy and ownership</li>
+<li><b>Strategize:</b> Determine advocacy targets, messages, and tactics</li>
+<li><b>Engage:</b> Meet with decision-makers, present evidence, propose solutions</li>
+<li><b>Monitor:</b> Track commitments and hold stakeholders accountable</li>
+</ol>
+
+<b>Effective Advocacy Messages:</b>
+
+<ul>
+<li>Lead with community stories that illustrate the data</li>
+<li>Be specific about the problem and the solution</li>
+<li>Use local evidence to make the issue concrete</li>
+<li>Propose realistic, actionable recommendations</li>
+</ul>`,
+      duration: "10 min",
+    },
+    {
+      title: "Part 2: Stakeholder Mapping and Engagement",
+      type: "reading",
+      content: `Successful advocacy requires understanding who has the power to create change and how to engage them effectively.
+
+<b>Key Stakeholder Categories:</b>
+
+<ul>
+<li><b>Decision-makers:</b> Government officials, health managers, budget controllers</li>
+<li><b>Influencers:</b> Media, civil society leaders, academic experts</li>
+<li><b>Implementers:</b> Health workers, facility managers, program staff</li>
+<li><b>Allies:</b> Other community organizations, development partners, professional associations</li>
+</ul>
+
+<b>Engagement Strategies:</b>
+
+<ol>
+<li><b>Formal channels:</b> Official meetings, written submissions, public consultations</li>
+<li><b>Informal channels:</b> Relationship building, networking, media engagement</li>
+<li><b>Coalition building:</b> Partnering with organizations that share your goals</li>
+<li><b>Accountability mechanisms:</b> Using formal grievance processes and oversight bodies</li>
+</ol>`,
+      duration: "8 min",
+    },
+    {
+      title: "Module 3 Summary",
+      type: "reading",
+      content: `<b>Key Takeaways:</b>
+
+<ul>
+<li>CLM evidence must be translated into strategic advocacy action</li>
+<li>Effective advocacy requires understanding stakeholder power and interests</li>
+<li>Coalitions amplify community voice and increase advocacy impact</li>
+<li>Sustained engagement is needed to achieve and maintain change</li>
+</ul>
+
+<strong>You've completed Module 3!</strong>
+
+Next, you'll take an assessment to demonstrate your understanding of advocacy and stakeholder engagement.`,
+      duration: "5 min",
+    },
+  ],
+};
+
+const module4Content: ModuleContent = {
+  title: "Institutionalizing CLM in PPR Systems",
+  description:
+    "Learn how to embed CLM into national and regional PPR frameworks for sustainable community participation in health security.",
+  totalSegments: 4,
+  segments: [
+    {
+      title: "Module 4 Overview",
+      type: "reading",
+      content: `This final module explores how to institutionalize CLM within formal PPR systems, ensuring community voice is permanently embedded in health security governance.
+
+      <b>Learning Objectives:</b>
+
+      By the end of this module, you will be able to:
+
+      <ol>
+        <li>Identify entry points for CLM in national PPR frameworks</li>
+        <li>Develop strategies for sustainable CLM financing</li>
+        <li>Build relationships with PPR governance structures</li>
+        <li>Create mechanisms for ongoing community participation in health security</li>
+      </ol>`,
+      duration: "5 min",
+    },
+    {
+      title: "Part 1: Entry Points for CLM in PPR",
+      type: "reading",
+      content: `National PPR systems offer multiple entry points for community-led monitoring. Understanding these opportunities is essential for sustainable integration.
+
+<b>Key Entry Points:</b>
+
+<ul>
+<li><b>National Action Plans for Health Security (NAPHS):</b> CLM can inform NAPHS development and monitor implementation</li>
+<li><b>JEE and SPAR processes:</b> Community evidence can validate and supplement official assessments</li>
+<li><b>Emergency operations:</b> CLM can provide real-time community feedback during health emergencies</li>
+<li><b>Health sector governance:</b> Community representatives can participate in technical working groups and oversight committees</li>
+</ul>
+
+<b>Building the Case for Integration:</b>
+
+<ol>
+<li>Demonstrate CLM's value through documented improvements</li>
+<li>Align CLM with existing policy frameworks and commitments</li>
+<li>Identify champions within government and partner organizations</li>
+<li>Propose specific, practical integration mechanisms</li>
+</ol>`,
+      duration: "10 min",
+    },
+    {
+      title: "Part 2: Sustainable CLM Financing",
+      type: "reading",
+      content: `Long-term CLM impact requires sustainable financing beyond short-term project funding.
+
+<b>Financing Strategies:</b>
+
+<ul>
+<li><b>Government funding:</b> Advocate for CLM line items in health budgets</li>
+<li><b>Global health security financing:</b> Integrate CLM into Pandemic Fund and other PPR investments</li>
+<li><b>Domestic resource mobilization:</b> Work with local governments and private sector</li>
+<li><b>Community contributions:</b> In-kind support and volunteer networks</li>
+</ul>
+
+<b>Making the Investment Case:</b>
+
+<ol>
+<li>Document cost-effectiveness of CLM compared to other monitoring approaches</li>
+<li>Show return on investment through improved service quality and outcomes</li>
+<li>Highlight risk reduction value for pandemic preparedness</li>
+<li>Demonstrate alignment with government priorities and international commitments</li>
+</ol>`,
+      duration: "8 min",
+    },
+    {
+      title: "Module 4 Summary",
+      type: "reading",
+      content: `<b>Key Takeaways:</b>
+
+<ul>
+<li>Multiple entry points exist for integrating CLM into PPR systems</li>
+<li>Sustainable financing requires diversified funding strategies</li>
+<li>Institutionalization requires both formal mechanisms and relationship building</li>
+<li>Community participation must be embedded as a permanent feature of health security governance</li>
+</ul>
+
+<strong>You've completed Module 4!</strong>
+
+Congratulations on completing all four modules of the Kujua360 course. You now have a comprehensive understanding of how CLM strengthens PPR systems and how to implement CLM in your context.
+
+Take the final assessment to earn your certificate of completion.`,
+      duration: "5 min",
+    },
+  ],
+};
+
+// Function to get module content by ID
+export const getModuleContent = (moduleId: number): ModuleContent => {
+  switch (moduleId) {
+    case 1:
+      return module1Content;
+    case 2:
+      return module2Content;
+    case 3:
+      return module3Content;
+    case 4:
+      return module4Content;
+    default:
+      return module1Content;
+  }
+};
+
+// Export for backward compatibility
+export const moduleContent = module1Content;
