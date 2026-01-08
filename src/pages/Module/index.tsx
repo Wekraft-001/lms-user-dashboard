@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,20 +20,145 @@ import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
 import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
 import CycleDiagram from "@/components/interactive/CycleDiagram";
 import { moduleContent } from "./content";
+import axios from "axios";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+
 
 const Module = () => {
+  const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
+  const token = localStorage.getItem("userToken");
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { id } = useParams();
   const [currentSegment, setCurrentSegment] = useState(0);
-
+  const [completedSegments, setCompletedSegments] = useState(new Set());
   const currentContent = moduleContent.segments[currentSegment];
   const progress = ((currentSegment + 1) / moduleContent.totalSegments) * 100;
 
-  const handleNext = () => {
+  // Fetch progress data to sync with backend
+  const { data: progressData } = useQuery({
+    queryKey: ["userProgress"],
+    queryFn: async () => {
+      const { data } = await axios.get(`${apiURL}/progress`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      });
+      return data;
+    },
+    enabled: !!token,
+  });
+
+  // Initialize completed segments from backend data
+  useEffect(() => {
+    if (progressData && progressData.modules) {
+      const currentModule = progressData.modules.find(
+        (mod) => mod.moduleId === parseInt(id)
+      );
+
+      if (currentModule) {
+        // Get completed parts from backend
+        const completed = new Set(
+          currentModule.parts
+            .filter((part) => part.completed)
+            .map((part) => part.partId - 1)
+        );
+        setCompletedSegments(completed);
+
+        // Set current segment to first incomplete part
+        const firstIncomplete = currentModule.parts.findIndex(
+          (part) => !part.completed
+        );
+        if (firstIncomplete !== -1) {
+          setCurrentSegment(firstIncomplete);
+        }
+      }
+    }
+  }, [progressData, id]);
+
+  // Mutation to update module progress percentage
+  const updateModuleProgressMutation = useMutation({
+    mutationFn: async (progressPercentage: number) => {
+      const { data } = await axios.put(
+        `${apiURL}/progress/module/${id}`,
+        { progress: progressPercentage },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["userProgress"] });
+    },
+    onError: (error) => {
+      console.error("Error updating module progress:", error);
+      toast.error("Failed to save progress");
+    },
+  });
+
+  // Mutation to mark a part (segment) as complete
+  const markPartCompleteMutation = useMutation({
+    mutationFn: async ({ partId, completed }) => {
+      const { data } = await axios.put(
+        `${apiURL}/progress/module/${id}/part/${partId}`,
+        { completed },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["userProgress"] });
+    },
+    onError: (error) => {
+      console.error("Error marking part as complete:", error);
+      toast.error("Failed to save progress");
+    },
+  });
+
+  // Mark current segment as complete when moving forward
+  const markCurrentSegmentComplete = async () => {
+    const partId = currentSegment + 1; //Parts are 1-indexed in backend
+
+    // Add to complete segments locally
+    setCompletedSegments((prev) => new Set([...prev, currentSegment]));
+
+    // Update backend - mark part as complete
+    await markPartCompleteMutation.mutateAsync({ partId, completed: true });
+
+    // Calculate and update overall module progress
+    const newCompletedCount = completedSegments.size + 1;
+    const newProgress = Math.round(
+      (newCompletedCount / moduleContent.totalSegments) * 100
+    );
+
+    // Update module progress percentage
+    await updateModuleProgressMutation.mutateAsync(newProgress);
+  };
+
+  const handleNext = async () => {
+    // Mark current segment as complete before moving
+    await markCurrentSegmentComplete();
+
     if (currentSegment < moduleContent.totalSegments - 1) {
       setCurrentSegment(currentSegment + 1);
     } else {
       toast.success("Module completed! Moving to assessment...");
+
+      // Update to 100% if not already
+      if (progress < 100) {
+        await updateModuleProgressMutation.mutateAsync(100);
+      }
+
       navigate("/quiz/" + id);
     }
   };
@@ -43,6 +168,27 @@ const Module = () => {
       setCurrentSegment(currentSegment - 1);
     }
   };
+
+  // Auto-save progress when user leaves the page
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (completedSegments.has(currentSegment)) return;
+
+      // Calculate current progress
+      const currentProgress = Math.round(
+        ((currentSegment + 1) / moduleContent.totalSegments) * 100
+      );
+
+      // Save progress before leaving
+      updateModuleProgressMutation.mutate(currentProgress);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [currentSegment, completedSegments]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -168,22 +314,26 @@ const Module = () => {
               />
             ) : currentContent.type === "interactive" ? (
               <div className="py-4">
-                {currentContent.interactiveType === "scenario" && currentContent.scenarioData && (
-                  <ScenarioActivity
-                    scenario={currentContent.scenarioData.scenario}
-                    question={currentContent.scenarioData.question}
-                    prompts={currentContent.scenarioData.prompts}
-                    sampleResponse={currentContent.scenarioData.sampleResponse}
-                  />
-                )}
-                {currentContent.interactiveType === "reflection" && currentContent.reflectionData && (
-                  <ReflectionActivity
-                    title={currentContent.reflectionData.title}
-                    context={currentContent.reflectionData.context}
-                    prompts={currentContent.reflectionData.prompts}
-                    closingQuote={currentContent.reflectionData.closingQuote}
-                  />
-                )}
+                {currentContent.interactiveType === "scenario" &&
+                  currentContent.scenarioData && (
+                    <ScenarioActivity
+                      scenario={currentContent.scenarioData.scenario}
+                      question={currentContent.scenarioData.question}
+                      prompts={currentContent.scenarioData.prompts}
+                      sampleResponse={
+                        currentContent.scenarioData.sampleResponse
+                      }
+                    />
+                  )}
+                {currentContent.interactiveType === "reflection" &&
+                  currentContent.reflectionData && (
+                    <ReflectionActivity
+                      title={currentContent.reflectionData.title}
+                      context={currentContent.reflectionData.context}
+                      prompts={currentContent.reflectionData.prompts}
+                      closingQuote={currentContent.reflectionData.closingQuote}
+                    />
+                  )}
               </div>
             ) : (
               <Tabs defaultValue="read" className="w-full">
@@ -250,10 +400,14 @@ const Module = () => {
 
                       // Insert cycle diagram after first paragraph if present
                       if (currentContent.cycleDiagram) {
-                        const firstParagraphIndex = contentElements.findIndex(el => el !== null);
+                        const firstParagraphIndex = contentElements.findIndex(
+                          (el) => el !== null
+                        );
                         if (firstParagraphIndex !== -1) {
-                          contentElements.splice(firstParagraphIndex + 1, 0, 
-                            <CycleDiagram 
+                          contentElements.splice(
+                            firstParagraphIndex + 1,
+                            0,
+                            <CycleDiagram
                               key="cycle-diagram"
                               title={currentContent.cycleDiagram.title}
                               steps={currentContent.cycleDiagram.steps}
@@ -272,8 +426,12 @@ const Module = () => {
                     <div className="space-y-6">
                       {currentContent.videoUrl && (
                         <div className="space-y-2">
-                          <h4 className="font-semibold text-foreground">Introduction</h4>
-                          <p className="text-sm text-muted-foreground mb-2">IHR Monitoring and Evaluation Framework Tutorial</p>
+                          <h4 className="font-semibold text-foreground">
+                            Introduction
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-2">
+                            IHR Monitoring and Evaluation Framework Tutorial
+                          </p>
                           <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                             <video
                               controls
@@ -287,9 +445,13 @@ const Module = () => {
                       )}
                       {currentContent.videos?.map((video, idx) => (
                         <div key={idx} className="space-y-2">
-                          <h4 className="font-semibold text-foreground">{video.label}</h4>
+                          <h4 className="font-semibold text-foreground">
+                            {video.label}
+                          </h4>
                           {video.description && (
-                            <p className="text-sm text-muted-foreground mb-2">{video.description}</p>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              {video.description}
+                            </p>
                           )}
                           <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                             <iframe
@@ -321,8 +483,18 @@ const Module = () => {
             <ArrowLeft className="mr-2 h-4 w-4" />
             Previous
           </Button>
-          <Button onClick={handleNext} className="flex-1">
-            {currentSegment === moduleContent.totalSegments - 1
+          <Button
+            onClick={handleNext}
+            className="flex-1"
+            disabled={
+              updateModuleProgressMutation.isPending ||
+              markPartCompleteMutation.isPending
+            }
+          >
+            {updateModuleProgressMutation.isPending ||
+            markPartCompleteMutation.isPending
+              ? "Saving..."
+              : currentSegment === moduleContent.totalSegments - 1
               ? "Complete Module"
               : "Next"}
             <ArrowRight className="ml-2 h-4 w-4" />

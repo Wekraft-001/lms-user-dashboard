@@ -59,20 +59,23 @@ export const moduleContent: ModuleContent = {
     {
       title: "Module Overview",
       type: "reading",
-      content: `Who decides what "preparedness" means, and who gets to define whether we are prepared?
+      content: `This module lays the foundation for your learning journey. It introduces the global and African systems that shape PPR, and places CLM within that landscape as a mechanism for accountability, justice, and pariticipation.
 
-This module explores how Community-Led Monitoring (CLM) and Pandemic Preparedness and Response (PPR) can reinforce one another, creating health systems that are not only resilient but democratic where data is not just collected about communities, but by and for them.
+      We begin by asking a simple but urgent question:
 
-<b>Learning Objectives:</b>
+      
+      Who decides what "preparedness" means, and who gets to define whether we are prepared?
 
-By the end of this module, you will be able to:
+      <b>Learning Objectives:</b>
 
-<ol>
-  <li>Explain the basic purpose and structure of PPR systems at global and national levels</li>
-  <li>Describe the origins, purpose, and principles of CLM in health and development contexts</li>
-  <li>Identify the linkages and gaps between institutional preparedness systems and community realities</li>
-  <li>Reflect on why integrating community voices into preparedness is not optional but essential</li>
-</ol>`,
+      By the end of this module, you will be able to:
+
+      <ol>
+        <li>Explain the basic purpose and structure of PPR systems at global and national levels</li>
+        <li>Describe the origins, purpose, and principles of CLM in health and development contexts</li>
+        <li>Identify the linkages and gaps between institutional preparedness systems and community realities</li>
+        <li>Reflect on why integrating community voices into preparedness is not optional but essential</li>
+      </ol>`,
       duration: "5 min",
     },
     {
@@ -80,24 +83,24 @@ By the end of this module, you will be able to:
       type: "reading",
       content: `The global PPR architecture is made up of a web of frameworks, agreements, and institutions that aim to get us ready for the next emergency.
 
-<b>The International Health Regulations (IHR, 2005)</b> form the backbone. They are legally binding for 196 countries and set out what each country must do to detect, assess, report, and respond to public health threats.
+      <b>The International Health Regulations (IHR, 2005)</b> form the backbone. They are legally binding for 196 countries and set out what each country must do to detect, assess, report, and respond to public health threats.
 
-To assess compliance, countries undergo two main processes:
-<ol>
-<li>
-<b>State Party Self-Assessment Annual Reporting (SPAR):</b> An annual self-review where countries evaluate their public health capabilities across various domains such as surveillance, laboratory capacity, workforce, and emergency response.
-</li>
-<p><i>In the context of global health security, the readiness of individual nations to prevent, detect, and respond to health threats is paramount. This preparedness is closely monitored through tools like the SPAR (State Party Self-Assessment Annual Reporting), which assesses a country's public health capabilities in relation to the International Health Regulations (IHR). As health risks become increasingly complex and interconnected, having a robust and accurate assessment framework is crucial for identifying vulnerabilities and building resilient health systems.
-The SPAR tool provides a comprehensive mechanism for countries to evaluate their public health capacities, address gaps, and develop action plans (including NAPHS) that strengthen their health security infrastructure. The SPAR aims to is approach helps countries nations understand their preparedness levels across various domains, such as surveillance, laboratory capacity, workforce, and emergency response. By using SPAR, countries can prioritise critical areas, ensure that health systems are equipped for future health threats, and make informed decisions to enhance national and global health security
-</i></p>
-<li>
-<b>Joint External Evaluation (JEE):</b> A voluntary, external review of national capacities across 19 technical areas spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry.
-</li>
-<p><i>The JEE Tool is a comprehensive assessment framework designed to evaluate a country's technical capacities for health security across 19 technical areas. These 19 areas are spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry. By identifying strengths and weaknesses within these areas, the JEE helps countries understand where they need to improve their health security systems. This assessment is crucial for creating action plans (in particular, National Action Plans for Health Security or "NAPHS") , prioritising resources, and mobilising international support to build robust health systems that can effectively manage health risks.
-</i></p>
-</ol>
+      To assess compliance, countries undergo two main processes:
+      <ol>
+      <li>
+      <b>State Party Self-Assessment Annual Reporting (SPAR):</b> An annual self-review where countries evaluate their public health capabilities across various domains such as surveillance, laboratory capacity, workforce, and emergency response.
+      </li>
+      <p><i>In the context of global health security, the readiness of individual nations to prevent, detect, and respond to health threats is paramount. This preparedness is closely monitored through tools like the SPAR (State Party Self-Assessment Annual Reporting), which assesses a country's public health capabilities in relation to the International Health Regulations (IHR). As health risks become increasingly complex and interconnected, having a robust and accurate assessment framework is crucial for identifying vulnerabilities and building resilient health systems.
+      The SPAR tool provides a comprehensive mechanism for countries to evaluate their public health capacities, address gaps, and develop action plans (including NAPHS) that strengthen their health security infrastructure. The SPAR aims to is approach helps countries nations understand their preparedness levels across various domains, such as surveillance, laboratory capacity, workforce, and emergency response. By using SPAR, countries can prioritise critical areas, ensure that health systems are equipped for future health threats, and make informed decisions to enhance national and global health security
+      </i></p>
+      <li>
+      <b>Joint External Evaluation (JEE):</b> A voluntary, external review of national capacities across 19 technical areas spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry.
+      </li>
+      <p><i>The JEE Tool is a comprehensive assessment framework designed to evaluate a country's technical capacities for health security across 19 technical areas. These 19 areas are spread across four main sections: Prevention, Detection, Response, and IHR-related Hazards and Points of Entry. By identifying strengths and weaknesses within these areas, the JEE helps countries understand where they need to improve their health security systems. This assessment is crucial for creating action plans (in particular, National Action Plans for Health Security or "NAPHS") , prioritising resources, and mobilising international support to build robust health systems that can effectively manage health risks.
+      </i></p>
+      </ol>
 
-`,
+      `,
       videoUrl: "https://extranet.who.int/sph/sites/default/files/IHRMEF%20Tutorial.mp4",
       videos: [
         {

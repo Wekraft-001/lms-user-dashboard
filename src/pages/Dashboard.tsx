@@ -155,7 +155,7 @@ const Dashboard = () => {
       status: "locked",
       progress: 0,
       duration: "90 min",
-      parts: 4,
+      parts: 16,
     },
     {
       id: 2,
