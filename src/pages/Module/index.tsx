@@ -19,7 +19,7 @@ import { KnowledgeCheck } from "@/components/KnowledgeCheck";
 import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
 import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
 import CycleDiagram from "@/components/interactive/CycleDiagram";
-import { moduleContent } from "./content";
+import { getModuleContent } from "./content";
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -30,6 +30,8 @@ const Module = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { id } = useParams();
+  const moduleId = parseInt(id || "1");
+  const moduleContent = getModuleContent(moduleId);
   const [currentSegment, setCurrentSegment] = useState(0);
   const [completedSegments, setCompletedSegments] = useState(new Set());
   const currentContent = moduleContent.segments[currentSegment];
@@ -103,7 +105,7 @@ const Module = () => {
 
   // Mutation to mark a part (segment) as complete
   const markPartCompleteMutation = useMutation({
-    mutationFn: async ({ partId, completed }) => {
+    mutationFn: async ({ partId, completed }: { partId: number; completed: boolean }) => {
       const { data } = await axios.put(
         `${apiURL}/progress/module/${id}/part/${partId}`,
         { completed },
