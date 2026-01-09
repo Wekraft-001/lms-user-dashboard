@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate, useParams } from "react-router-dom";
-import { Award, Download, Share2, ArrowLeft } from "lucide-react";
+import { Award, Download, Share2, ArrowLeft, Lock, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { useRef } from "react";
 import axios from "axios";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const Certificate = () => {
   const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
@@ -30,7 +30,6 @@ const Certificate = () => {
   const {
     data: userProfile,
     isLoading: userLoading,
-    isError: userError,
   } = useQuery({
     queryKey: ["userDetails-certificate"],
     queryFn: fetchUserDetails,
@@ -38,9 +37,28 @@ const Certificate = () => {
     staleTime: 5 * 60 * 1000,
   });
 
+  // Fetch progress data to verify all modules are completed
+  const { data: progressData, isLoading: progressLoading } = useQuery({
+    queryKey: ["userProgress"],
+    queryFn: async () => {
+      const { data } = await axios.get(`${apiURL}/progress`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      });
+      return data;
+    },
+    enabled: !!token,
+  });
+
+  // Check if all 4 modules are completed
+  const allModulesComplete = progressData?.modules?.length === 4 && 
+    progressData.modules.every((mod: { status: string }) => mod.status === "completed");
+
   // Sample user data - in production, this would come from authentication
   const userData = {
-    name: `${userProfile?.firstName} ${userProfile?.lastName}`,
+    name: `${userProfile?.firstName || ""} ${userProfile?.lastName || ""}`.trim() || "Learner",
     completionDate: new Date().toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
@@ -48,21 +66,8 @@ const Certificate = () => {
     }),
   };
 
-  // Module titles mapping
-  const moduleTitle =
-    moduleId === "final"
-      ? "Complete Kujua360 Learning Program"
-      : `Module ${moduleId} - ${getModuleTitle(moduleId)}`;
-
-  function getModuleTitle(id: string | undefined) {
-    const titles: Record<string, string> = {
-      "1": "Foundations of PPR and CLM",
-      "2": "Principles and Practice of CLM",
-      "3": "Integrating CLM into PPR Systems",
-      "4": "Advocacy for Sustainable Integration",
-    };
-    return titles[id || "1"] || "Learning Module";
-  }
+  // Certificate is only for final completion
+  const moduleTitle = "Complete Kujua360 Learning Program";
 
   const handleDownload = async () => {
     if (!certificateRef.current) return;
@@ -101,6 +106,51 @@ const Certificate = () => {
   const handleShare = () => {
     toast.info("Share feature coming soon!");
   };
+
+  // Loading state
+  if (userLoading || progressLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  // Block access if not all modules are completed
+  if (!allModulesComplete) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-muted/30 to-background">
+        <header className="bg-white border-b sticky top-0 z-50 shadow-sm">
+          <div className="container mx-auto px-4 py-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate("/dashboard")}
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Dashboard
+            </Button>
+          </div>
+        </header>
+        <div className="container mx-auto px-4 py-16">
+          <div className="max-w-md mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
+              <Lock className="h-10 w-10 text-muted-foreground" />
+            </div>
+            <h1 className="text-2xl font-bold mb-4 text-foreground">
+              Certificate Not Available Yet
+            </h1>
+            <p className="text-muted-foreground mb-6">
+              Complete all 4 modules and pass their assessments to unlock your certificate.
+            </p>
+            <Button onClick={() => navigate("/dashboard")}>
+              Continue Learning
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-muted/30 to-background">

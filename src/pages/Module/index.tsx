@@ -154,13 +154,13 @@ const Module = () => {
     if (currentSegment < moduleContent.totalSegments - 1) {
       setCurrentSegment(currentSegment + 1);
     } else {
-      toast.success("Module completed! Moving to assessment...");
-
-      // Update to 100% if not already
-      if (progress < 100) {
-        await updateModuleProgressMutation.mutateAsync(100);
-      }
-
+      toast.success("Content completed! Moving to assessment...");
+      // Don't set to 100% here - that only happens when quiz is passed
+      // Calculate content progress (max 80% without assessment)
+      const contentProgress = Math.min(80, Math.round(
+        (moduleContent.totalSegments / moduleContent.totalSegments) * 80
+      ));
+      await updateModuleProgressMutation.mutateAsync(contentProgress);
       navigate("/quiz/" + id);
     }
   };
@@ -445,27 +445,45 @@ const Module = () => {
                           </div>
                         </div>
                       )}
-                      {currentContent.videos?.map((video, idx) => (
-                        <div key={idx} className="space-y-2">
-                          <h4 className="font-semibold text-foreground">
-                            {video.label}
-                          </h4>
-                          {video.description && (
-                            <p className="text-sm text-muted-foreground mb-2">
-                              {video.description}
-                            </p>
-                          )}
-                          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                            <iframe
-                              src={video.url}
-                              className="w-full h-full"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              title={video.label}
-                            />
+                      {currentContent.videos?.map((video, idx) => {
+                        // Convert YouTube URLs to embed format
+                        const getEmbedUrl = (url: string) => {
+                          // Handle youtu.be format
+                          const youtubeShortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+                          if (youtubeShortMatch) {
+                            return `https://www.youtube.com/embed/${youtubeShortMatch[1]}`;
+                          }
+                          // Handle youtube.com/watch?v= format
+                          const youtubeMatch = url.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/);
+                          if (youtubeMatch) {
+                            return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+                          }
+                          // Already embed format or other URL
+                          return url;
+                        };
+                        
+                        return (
+                          <div key={idx} className="space-y-2">
+                            <h4 className="font-semibold text-foreground">
+                              {video.label}
+                            </h4>
+                            {video.description && (
+                              <p className="text-sm text-muted-foreground mb-2">
+                                {video.description}
+                              </p>
+                            )}
+                            <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                              <iframe
+                                src={getEmbedUrl(video.url)}
+                                className="w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title={video.label}
+                              />
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </TabsContent>
                 )}

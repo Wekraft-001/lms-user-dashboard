@@ -6,6 +6,8 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ArrowRight, CheckCircle2, XCircle, Trophy, Award } from "lucide-react";
 import { toast } from "sonner";
+import axios from "axios";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 
 interface QuizQuestion {
   id: number;
@@ -16,6 +18,9 @@ interface QuizQuestion {
 }
 
 const Quiz = () => {
+  const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
+  const token = localStorage.getItem("userToken");
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { id } = useParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -26,6 +31,44 @@ const Quiz = () => {
   const [quizComplete, setQuizComplete] = useState(false);
 
   const moduleId = parseInt(id || "1");
+
+  // Fetch progress data to check all modules status
+  const { data: progressData } = useQuery({
+    queryKey: ["userProgress"],
+    queryFn: async () => {
+      const { data } = await axios.get(`${apiURL}/progress`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      });
+      return data;
+    },
+    enabled: !!token,
+  });
+
+  // Mutation to mark module as complete and unlock next module
+  const completeModuleMutation = useMutation({
+    mutationFn: async () => {
+      const { data } = await axios.put(
+        `${apiURL}/progress/module/${id}`,
+        { progress: 100, assessmentPassed: true },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["userProgress"] });
+    },
+    onError: (error) => {
+      console.error("Error completing module:", error);
+    },
+  });
 
   // Quiz data for each module
   const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
@@ -304,7 +347,7 @@ const Quiz = () => {
     setAnsweredQuestions(newAnsweredQuestions);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!isAnswered) {
       toast.error("Please select an answer before proceeding.");
       return;
@@ -315,6 +358,16 @@ const Quiz = () => {
       setSelectedAnswer(null);
       setIsAnswered(false);
     } else {
+      // Calculate final score
+      const finalScore = score;
+      const finalPercentage = Math.round((finalScore / totalQuestions) * 100);
+      const passed = finalPercentage >= 70;
+      
+      if (passed) {
+        // Mark module as 100% complete and unlock next
+        await completeModuleMutation.mutateAsync();
+      }
+      
       setQuizComplete(true);
     }
   };
@@ -399,27 +452,70 @@ const Quiz = () => {
                     <Award className="h-5 w-5 text-alliance-green" />
                     <h3 className="font-semibold text-lg text-foreground">What's Next?</h3>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    You've demonstrated strong understanding of the foundations of PPR and CLM. 
-                    Download your certificate and continue your journey to unlock more modules.
-                  </p>
-                  <div className="flex gap-3">
-                    <Button 
-                      onClick={() => navigate(`/certificate/${id}`)}
-                      className="flex-1"
-                    >
-                      <Award className="mr-2 h-4 w-4" />
-                      View Certificate
-                    </Button>
-                    <Button 
-                      onClick={() => navigate("/dashboard")}
-                      variant="outline"
-                      className="flex-1"
-                    >
-                      Dashboard
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
+                  {(() => {
+                    // Check if all 4 modules are now complete
+                    const allModulesComplete = progressData?.modules?.length === 4 && 
+                      progressData.modules.every((mod: { status: string }) => mod.status === "completed");
+                    const currentModuleId = parseInt(id || "1");
+                    const isLastModule = currentModuleId === 4;
+                    
+                    if (isLastModule && allModulesComplete) {
+                      return (
+                        <>
+                          <p className="text-muted-foreground mb-4">
+                            🎉 Congratulations! You've completed all modules! 
+                            You can now download your final certificate of completion.
+                          </p>
+                          <div className="flex gap-3">
+                            <Button 
+                              onClick={() => navigate("/certificate/final")}
+                              className="flex-1"
+                            >
+                              <Award className="mr-2 h-4 w-4" />
+                              View Certificate
+                            </Button>
+                            <Button 
+                              onClick={() => navigate("/dashboard")}
+                              variant="outline"
+                              className="flex-1"
+                            >
+                              Dashboard
+                              <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                          </div>
+                        </>
+                      );
+                    } else {
+                      return (
+                        <>
+                          <p className="text-muted-foreground mb-4">
+                            You've passed Module {id} assessment! 
+                            {currentModuleId < 4 
+                              ? " Continue to the next module to keep learning."
+                              : " Complete all modules to earn your certificate."}
+                          </p>
+                          <div className="flex gap-3">
+                            {currentModuleId < 4 && (
+                              <Button 
+                                onClick={() => navigate(`/module/${currentModuleId + 1}`)}
+                                className="flex-1"
+                              >
+                                Next Module
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            )}
+                            <Button 
+                              onClick={() => navigate("/dashboard")}
+                              variant={currentModuleId < 4 ? "outline" : "default"}
+                              className="flex-1"
+                            >
+                              Dashboard
+                            </Button>
+                          </div>
+                        </>
+                      );
+                    }
+                  })()}
                 </div>
               ) : (
                 <div className="space-y-3">
