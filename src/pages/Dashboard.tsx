@@ -201,6 +201,8 @@ const Dashboard = () => {
         duration:
           modules.find((m) => m.id === mod.moduleId)?.duration || "90 min",
         parts: mod.parts.length,
+        assessmentScore: mod.assessmentScore,
+        assessmentPassed: mod.assessmentPassed,
       }))
     : modules;
 
@@ -431,7 +433,6 @@ const Dashboard = () => {
               My Certificates
             </Button> */}
           </div>
-
           <div className="grid md:grid-cols-2 gap-6">
             {mappedModules.map((module) => (
               <Card
@@ -476,9 +477,26 @@ const Dashboard = () => {
                           <span className="text-sm text-muted-foreground">
                             {module.duration}
                           </span>
-                          <span className="text-sm font-semibold text-primary">
+                          {/* <span className="text-sm font-semibold text-primary">
                             {module.progress}%
-                          </span>
+                          </span> */}
+                          <div className="flex items-center gap-2">
+                            {module.assessmentScore !== null &&
+                              module.assessmentScore !== undefined && (
+                                <span
+                                  className={`text-xs font-semibold px-2 py-1 rounded-full ${
+                                    module.assessmentPassed
+                                      ? "bg-success/10 text-success"
+                                      : "bg-destructive/10 text-destructive"
+                                  }`}
+                                >
+                                  Score: {module.assessmentScore}%
+                                </span>
+                              )}
+                            <span className="text-sm font-semibold text-primary">
+                              {module.progress}%
+                            </span>
+                          </div>
                         </div>
                       </>
                     )}
@@ -499,6 +517,17 @@ const Dashboard = () => {
               </Card>
             ))}
           </div>
+          {/* Add certificate button when all modules complete */}
+          {progressData?.certificateEarned && (
+            <Button
+              onClick={() => navigate("/certificate")}
+              className="w-full mb-4"
+              size="lg"
+            >
+              <Award className="mr-2 h-5 w-5" />
+              View Your Certificate
+            </Button>
+          )}
         </div>
 
         {/* Motivational Quote */}

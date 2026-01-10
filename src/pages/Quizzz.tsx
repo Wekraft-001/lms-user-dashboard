@@ -1,4 +1,3 @@
-// src/pages/Quiz/index.tsx
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft,
   ArrowRight,
@@ -36,7 +36,6 @@ const Quiz = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { id } = useParams();
-
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -47,7 +46,7 @@ const Quiz = () => {
 
   const moduleId = parseInt(id || "1");
 
-  // Fetch progress data
+  // Fetch progress data to check all modules status
   const { data: progressData } = useQuery({
     queryKey: ["userProgress"],
     queryFn: async () => {
@@ -61,6 +60,29 @@ const Quiz = () => {
     },
     enabled: !!token,
   });
+
+  // Mutation to mark module as complete and unlock next module
+  // const completeModuleMutation = useMutation({
+  //   mutationFn: async () => {
+  //     const { data } = await axios.put(
+  //       `${apiURL}/progress/module/${id}`,
+  //       { progress: 100, assessmentPassed: true },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //           "Content-type": "application/json; charset=UTF-8",
+  //         },
+  //       }
+  //     );
+  //     return data;
+  //   },
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({ queryKey: ["userProgress"] });
+  //   },
+  //   onError: (error) => {
+  //     console.error("Error completing module:", error);
+  //   },
+  // });
 
   // Submit assessment mutation
   const submitAssessmentMutation = useMutation({
@@ -97,7 +119,7 @@ const Quiz = () => {
     },
   });
 
-  // Quiz questions by module
+  // Quiz data for each module
   const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
     1: [
       {
@@ -375,6 +397,7 @@ const Quiz = () => {
 
   const quizQuestions =
     quizQuestionsByModule[moduleId] || quizQuestionsByModule[1];
+
   const totalQuestions = quizQuestions.length;
   const progress = ((currentQuestion + 1) / totalQuestions) * 100;
   const currentQ = quizQuestions[currentQuestion];
@@ -388,12 +411,40 @@ const Quiz = () => {
     const isCorrect = optionIndex === currentQ.correctAnswer;
     if (isCorrect) {
       setScore(score + 1);
+      toast.success("Correct! Well done!");
+    } else {
+      toast.error("Not quite right. Review the explanation below.");
     }
 
     const newAnsweredQuestions = [...answeredQuestions];
     newAnsweredQuestions[currentQuestion] = true;
     setAnsweredQuestions(newAnsweredQuestions);
   };
+
+  // const handleNext = async () => {
+  //   if (!isAnswered) {
+  //     toast.error("Please select an answer before proceeding.");
+  //     return;
+  //   }
+
+  //   if (currentQuestion < totalQuestions - 1) {
+  //     setCurrentQuestion(currentQuestion + 1);
+  //     setSelectedAnswer(null);
+  //     setIsAnswered(false);
+  //   } else {
+  //     // Calculate final score
+  //     const finalScore = score;
+  //     const finalPercentage = Math.round((finalScore / totalQuestions) * 100);
+  //     const passed = finalPercentage >= 70;
+
+  //     if (passed) {
+  //       // Mark module as 100% complete and unlock next
+  //       await completeModuleMutation.mutateAsync();
+  //     }
+
+  //     setQuizComplete(true);
+  //   }
+  // };
 
   const handleNext = async () => {
     if (!isAnswered) {
@@ -539,7 +590,6 @@ const Quiz = () => {
       (mod) => mod.status === "completed" && mod.assessmentPassed
     );
     const isLastModule = moduleId === 4;
-
     return (
       <div className="min-h-screen bg-background">
         <header className="bg-white border-b sticky top-0 z-50 shadow-sm">
@@ -551,21 +601,17 @@ const Quiz = () => {
           </div>
         </header>
 
-        <div className="container mx-auto px-4 py-12 max-w-3xl">
-          <Card
-            className={`border-2 ${
-              isPassing ? "border-success" : "border-destructive"
-            }`}
-          >
+        {/* <div className="container mx-auto px-4 py-12 max-w-3xl">
+          <Card className="border-2 border-primary/20">
             <CardHeader className="text-center pb-8">
               <div className="mx-auto mb-4">
                 {isPassing ? (
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-success to-success/70 flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-alliance-green to-alliance-lime flex items-center justify-center animate-scale-in">
                     <Trophy className="w-12 h-12 text-white" />
                   </div>
                 ) : (
                   <div className="w-24 h-24 rounded-full bg-muted flex items-center justify-center">
-                    <XCircle className="w-12 h-12 text-muted-foreground" />
+                    <Trophy className="w-12 h-12 text-muted-foreground" />
                   </div>
                 )}
               </div>
@@ -574,7 +620,7 @@ const Quiz = () => {
               </CardTitle>
               <CardDescription className="text-lg">
                 {isPassing
-                  ? "You've successfully passed the assessment"
+                  ? "You've successfully completed the assessment"
                   : "Review the module content and try again"}
               </CardDescription>
             </CardHeader>
@@ -582,7 +628,7 @@ const Quiz = () => {
             <CardContent className="space-y-6">
               <div className="text-center">
                 <div className="text-6xl font-bold text-primary mb-2">
-                  {currentModuleData?.assessmentScore || getScorePercentage()}%
+                  {getScorePercentage()}%
                 </div>
                 <p className="text-muted-foreground">
                   {score} out of {totalQuestions} questions correct
@@ -594,80 +640,94 @@ const Quiz = () => {
                   <span>Your Score</span>
                   <span>Passing: 70%</span>
                 </div>
-                <Progress
-                  value={
-                    currentModuleData?.assessmentScore || getScorePercentage()
-                  }
-                  className="h-3"
-                />
+                <Progress value={getScorePercentage()} className="h-3" />
               </div>
 
               {isPassing ? (
-                <div className="bg-success/10 p-6 rounded-lg border border-success/20">
+                <div className="bg-gradient-to-br from-alliance-green/10 to-alliance-lime/10 p-6 rounded-lg border border-alliance-green/20">
                   <div className="flex items-center gap-2 mb-3">
-                    <Award className="h-5 w-5 text-success" />
+                    <Award className="h-5 w-5 text-alliance-green" />
                     <h3 className="font-semibold text-lg text-foreground">
                       What's Next?
                     </h3>
                   </div>
+                  {(() => {
+                    // Check if all 4 modules are now complete
+                    const allModulesComplete =
+                      progressData?.modules?.length === 4 &&
+                      progressData.modules.every(
+                        (mod: { status: string }) => mod.status === "completed"
+                      );
+                    const currentModuleId = parseInt(id || "1");
+                    const isLastModule = currentModuleId === 4;
 
-                  {isLastModule && allModulesComplete ? (
-                    <>
-                      <p className="text-muted-foreground mb-4">
-                        🎉 Congratulations! You've completed all 4 modules! Your
-                        final certificate score is {progressData.averageScore}%.
-                        You can now download your certificate.
-                      </p>
-                      <div className="flex gap-3">
-                        <Button
-                          onClick={() => navigate("/certificate")}
-                          className="flex-1"
-                        >
-                          <Award className="mr-2 h-4 w-4" />
-                          View Certificate
-                        </Button>
-                        <Button
-                          onClick={() => navigate("/dashboard")}
-                          variant="outline"
-                          className="flex-1"
-                        >
-                          Dashboard
-                        </Button>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-muted-foreground mb-4">
-                        You've passed Module {id}!
-                        {moduleId < 4
-                          ? " Continue to the next module."
-                          : " Complete all modules to earn your certificate."}
-                      </p>
-                      <div className="flex gap-3">
-                        {moduleId < 4 && (
-                          <Button
-                            onClick={() => navigate(`/module/${moduleId + 1}`)}
-                            className="flex-1"
-                          >
-                            Next Module
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                        )}
-                        <Button
-                          onClick={() => navigate("/dashboard")}
-                          variant={moduleId < 4 ? "outline" : "default"}
-                          className="flex-1"
-                        >
-                          Dashboard
-                        </Button>
-                      </div>
-                    </>
-                  )}
+                    if (isLastModule && allModulesComplete) {
+                      return (
+                        <>
+                          <p className="text-muted-foreground mb-4">
+                            🎉 Congratulations! You've completed all modules!
+                            You can now download your final certificate of
+                            completion.
+                          </p>
+                          <div className="flex gap-3">
+                            <Button
+                              onClick={() => navigate("/certificate/final")}
+                              className="flex-1"
+                            >
+                              <Award className="mr-2 h-4 w-4" />
+                              View Certificate
+                            </Button>
+                            <Button
+                              onClick={() => navigate("/dashboard")}
+                              variant="outline"
+                              className="flex-1"
+                            >
+                              Dashboard
+                              <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
+                          </div>
+                        </>
+                      );
+                    } else {
+                      return (
+                        <>
+                          <p className="text-muted-foreground mb-4">
+                            You've passed Module {id} assessment!
+                            {currentModuleId < 4
+                              ? " Continue to the next module to keep learning."
+                              : " Complete all modules to earn your certificate."}
+                          </p>
+                          <div className="flex gap-3">
+                            {currentModuleId < 4 && (
+                              <Button
+                                onClick={() =>
+                                  navigate(`/module/${currentModuleId + 1}`)
+                                }
+                                className="flex-1"
+                              >
+                                Next Module
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            )}
+                            <Button
+                              onClick={() => navigate("/dashboard")}
+                              variant={
+                                currentModuleId < 4 ? "outline" : "default"
+                              }
+                              className="flex-1"
+                            >
+                              Dashboard
+                            </Button>
+                          </div>
+                        </>
+                      );
+                    }
+                  })()}
                 </div>
               ) : (
                 <div className="space-y-3">
                   <Button onClick={handleRetry} className="w-full">
-                    Retake Assessment
+                    Retry Assessment
                   </Button>
                   <Button
                     variant="outline"
@@ -680,22 +740,27 @@ const Quiz = () => {
               )}
             </CardContent>
           </Card>
-        </div>
+        </div> */}
+        
       </div>
     );
   }
-  // Quiz questions screen (your existing quiz UI)
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
       <header className="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Button variant="ghost" onClick={() => navigate("/module/${id}")}>
+            <Button variant="ghost" onClick={() => navigate(`/module/${id}`)}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Module
             </Button>
-            <div className="text-sm font-medium">
-              Score: {score}/{answeredQuestions.filter(Boolean).length}
+
+            <div className="flex items-center gap-4">
+              <Badge variant="outline" className="text-sm">
+                Score: {score}/{answeredQuestions.filter(Boolean).length}
+              </Badge>
             </div>
           </div>
         </div>
@@ -721,7 +786,14 @@ const Quiz = () => {
         {/* Question Card */}
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle className="text-xl">{currentQ.question}</CardTitle>
+            <div className="flex items-start justify-between mb-4">
+              <Badge className="bg-primary/10 text-primary border-primary/20">
+                Question {currentQuestion + 1}
+              </Badge>
+            </div>
+            <CardTitle className="text-xl leading-relaxed">
+              {currentQ.question}
+            </CardTitle>
           </CardHeader>
 
           <CardContent className="space-y-4">
@@ -738,25 +810,47 @@ const Quiz = () => {
                     key={index}
                     onClick={() => handleAnswerSelect(index)}
                     disabled={isAnswered}
-                    className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
-                      !isAnswered && "hover:border-primary cursor-pointer"
-                    } ${isAnswered && "cursor-not-allowed"} ${
-                      !isAnswered && isSelected && "border-primary bg-primary/5"
-                    } ${showCorrect && "border-success bg-success/10"} ${
-                      showIncorrect && "border-destructive bg-destructive/10"
-                    } ${!isSelected && !showCorrect && "border-border"}`}
+                    className={`
+                      w-full p-4 text-left rounded-lg border-2 transition-all
+                      ${
+                        !isAnswered &&
+                        "hover:border-primary hover:bg-primary/5 cursor-pointer"
+                      }
+                      ${isAnswered && "cursor-not-allowed"}
+                      ${
+                        !isAnswered &&
+                        isSelected &&
+                        "border-primary bg-primary/5"
+                      }
+                      ${
+                        showCorrect &&
+                        "border-alliance-green bg-alliance-green/10"
+                      }
+                      ${
+                        showIncorrect &&
+                        "border-alliance-red bg-alliance-red/10"
+                      }
+                      ${!isSelected && !showCorrect && "border-border"}
+                    `}
                   >
                     <div className="flex items-start gap-3">
                       <div
-                        className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                          showCorrect && "border-success bg-success"
-                        } ${
-                          showIncorrect && "border-destructive bg-destructive"
-                        } ${
+                        className={`
+                        flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center mt-0.5
+                        ${
+                          showCorrect &&
+                          "border-alliance-green bg-alliance-green"
+                        }
+                        ${
+                          showIncorrect && "border-alliance-red bg-alliance-red"
+                        }
+                        ${
                           !isAnswered &&
                           isSelected &&
                           "border-primary bg-primary"
-                        } ${!isAnswered && !isSelected && "border-border"}`}
+                        }
+                        ${!isAnswered && !isSelected && "border-border"}
+                      `}
                       >
                         {showCorrect && (
                           <CheckCircle2 className="w-4 h-4 text-white" />
@@ -768,7 +862,15 @@ const Quiz = () => {
                           <div className="w-2 h-2 rounded-full bg-white" />
                         )}
                       </div>
-                      <span>{option}</span>
+                      <span
+                        className={`
+                        ${showCorrect && "text-alliance-green font-medium"}
+                        ${showIncorrect && "text-alliance-red"}
+                        ${!showCorrect && !showIncorrect && "text-foreground"}
+                      `}
+                      >
+                        {option}
+                      </span>
                     </div>
                   </button>
                 );
@@ -777,11 +879,12 @@ const Quiz = () => {
 
             {/* Explanation */}
             {isAnswered && (
-              <div className="mt-6 p-4 rounded-lg bg-muted/50 border">
-                <h4 className="font-semibold text-foreground mb-2">
+              <div className="mt-6 p-4 rounded-lg bg-muted/50 border border-border animate-fade-in">
+                <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-alliance-green" />
                   Explanation
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {currentQ.explanation}
                 </p>
               </div>
@@ -802,13 +905,11 @@ const Quiz = () => {
           </Button>
           <Button
             onClick={handleNext}
-            disabled={!isAnswered || submitAssessmentMutation.isPending}
+            disabled={!isAnswered}
             className="flex-1"
           >
-            {submitAssessmentMutation.isPending
-              ? "Submitting..."
-              : currentQuestion === totalQuestions - 1
-              ? "Submit Assessment"
+            {currentQuestion === totalQuestions - 1
+              ? "View Results"
               : "Next Question"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -817,4 +918,5 @@ const Quiz = () => {
     </div>
   );
 };
+
 export default Quiz;
