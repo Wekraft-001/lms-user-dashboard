@@ -24,6 +24,23 @@ import { getModuleContent } from "./content";
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
+// Helper function to convert YouTube URLs to embed format
+const convertToEmbedUrl = (url: string): string => {
+  // Handle youtu.be format
+  if (url.includes("youtu.be/")) {
+    const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  // Handle youtube.com/watch format
+  if (url.includes("youtube.com/watch")) {
+    const urlParams = new URLSearchParams(url.split("?")[1]);
+    const videoId = urlParams.get("v");
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+  // Already an embed URL or other format
+  return url;
+};
+
 const Module = () => {
   const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
   const token = localStorage.getItem("userToken");
@@ -451,7 +468,7 @@ const Module = () => {
                           )}
                           <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                             <iframe
-                              src={video.url}
+                              src={convertToEmbedUrl(video.url)}
                               className="w-full h-full"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen
