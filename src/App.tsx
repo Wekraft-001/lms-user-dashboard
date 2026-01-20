@@ -13,6 +13,9 @@ import Library from "./pages/Library";
 import Certificate from "./pages/Certificate";
 import NotFound from "./pages/NotFound";
 import AuthCallback from "./pages/AuthCallback";
+import Policy from "./pages/Policy";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +35,9 @@ const App = () => (
           <Route path="/quiz/:id" element={<Quiz />} />
           <Route path="/library" element={<Library />} />
           <Route path="/certificate/:moduleId" element={<Certificate />} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
