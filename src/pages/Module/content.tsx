@@ -51,15 +51,15 @@ export interface ModuleContent {
 }
 
 const module1Content: ModuleContent = {
-  title: "Understanding the Foundations of PPR and CLM",
+  title: "Understanding the Foundations of PPPR and CLM",
   description:
-    "This module lays the foundation for your learning journey, introducing global and African PPR systems and placing CLM as a mechanism for accountability, justice, and participation.",
+    "This module lays the foundation for your learning journey, introducing global and African PPPR systems and placing CLM as a mechanism for accountability, justice, and participation.",
   totalSegments: 16,
   segments: [
     {
       title: "Module Overview",
       type: "reading",
-      content: `This module lays the foundation for your learning journey. It introduces systems that shape PPR, and places CLM within that landscape as a mechanism for accountability, justice, and pariticipation.
+      content: `This module lays the foundation for your learning journey. It introduces systems that shape PPPR, and places CLM within that landscape as a mechanism for accountability, justice, and pariticipation.
 
       We begin by asking a simple but urgent question:
 
@@ -79,9 +79,9 @@ const module1Content: ModuleContent = {
       duration: "5 min",
     },
     {
-      title: "Part 1: The Global Architecture of PPR",
+      title: "Part 1: The Global Architecture of PPPR",
       type: "reading",
-      content: `The global PPR architecture is made up of a web of frameworks, agreements, and institutions that aim to get us ready for the next emergency.
+      content: `The global PPPR architecture is made up of a web of frameworks, agreements, and institutions that aim to get us ready for the next emergency.
 
       <b>The International Health Regulations (IHR, 2005)</b> form the backbone. They are legally binding for 196 countries and set out what each country must do to detect, assess, report, and respond to public health threats.
 
@@ -117,11 +117,11 @@ const module1Content: ModuleContent = {
       duration: "12 min",
     },
     {
-      title: "Global PPR Instruments",
+      title: "Global PPPR Instruments",
       type: "reading",
       content: `Supporting the IHR and its assessment processes are newer global instruments and mechanisms:
 
-<b>WHO Pandemic Agreement:</b> Formally titled the "WHO Pandemic Agreement" was adopted by member states of the WHO at the World Health Assenbly on 20 May 2025. The agreement complements the IHR and outlines a framework for pandemic prevention, preparedness, and response (PPR), including equity in access to vaccines, diagnostics, and therapeutics.
+<b>WHO Pandemic Agreement:</b> Formally titled the "WHO Pandemic Agreement" was adopted by member states of the WHO at the World Health Assenbly on 20 May 2025. The agreement complements the IHR and outlines a framework for pandemic prevention, preparedness, and response (PPPR), including equity in access to vaccines, diagnostics, and therapeutics.
 
 <b>The World Bank's Pandemic Fund:</b> Formally titled the "Financial Intermediary Fund for Pandemic Prevention, Preparedness and Response," the "Pandemic Fund" is housed at the World Bank with WHO as the technical lead. It was established following a G20 request in April 2022 and approved by the Board of the World Bank on the 30th of June 2022. It became operational in September 2022. The Pandemic Fund finances capacity building for prevention and response,  focusing on low- and middle-income countries (LMICs) and investing in various systems: surveillance, labs, workforce, and One Health approaches.
 
@@ -251,9 +251,9 @@ The true power of CLM is that it shifts power to communities, centers lived expe
       duration: "5 min",
     },
     {
-      title: "Part 3: Where PPR and CLM Meet",
+      title: "Part 3: Where PPPR and CLM Meet",
       type: "reading",
-      content: `PPR frameworks focus on the capacities of health systems laboratories, surveillance, emergency operations. CLM focuses on people and how health systems function in reality. When the two intersect, the result is both technical and democratic strength.
+      content: `PPPR frameworks focus on the capacities of health systems laboratories, surveillance, emergency operations. CLM focuses on people and how health systems function in reality. When the two intersect, the result is both technical and democratic strength.
 
 <b>Real-World Examples:</b>
 
@@ -261,7 +261,7 @@ During COVID-19, community groups in Kenya and South Africa tracked PPE shortage
 
 During Mpox outbreaks, key population networks in Nigeria provided real-time data on stigma and service access, helping shape public communication.
 
-These examples show that CLM can act as an early warning system and feedback mechanism within national PPR frameworks, filling gaps that formal surveillance often misses. CLM can also be more effective than other monitoring mechanisms at collecting qualitative data about the quality of health service. Finally, CLM can act as a critical enabler of trust and dialogue between communities and the government. This trust is non-negotiable in the context of pandemic preparedness and response. In a crisis, effective public health strategies, from mass vaccination campaigns and contact tracing to adherence to social distancing measures, can hinge entirely on the public trust.
+These examples show that CLM can act as an early warning system and feedback mechanism within national PPPR frameworks, filling gaps that formal surveillance often misses. CLM can also be more effective than other monitoring mechanisms at collecting qualitative data about the quality of health service. Finally, CLM can act as a critical enabler of trust and dialogue between communities and the government. This trust is non-negotiable in the context of pandemic preparedness and response. In a crisis, effective public health strategies, from mass vaccination campaigns and contact tracing to adherence to social distancing measures, can hinge entirely on the public trust.
 `,
       duration: "5 min",
       videos: [

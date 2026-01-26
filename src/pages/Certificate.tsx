@@ -349,7 +349,7 @@ const Certificate = () => {
               </h3>
               <p className="text-muted-foreground mb-4">
                 Explore more modules and deepen your understanding of CLM and
-                PPR integration.
+                PPPR integration.
               </p>
               <Button variant="outline" className="w-full">
                 View Dashboard

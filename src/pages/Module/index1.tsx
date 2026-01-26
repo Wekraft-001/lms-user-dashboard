@@ -248,7 +248,7 @@ const Module = () => {
                 <li className="flex items-start gap-2">
                   <span className="text-primary">•</span>
                   <span>
-                    Explain the basic purpose and structure of PPR systems at
+                    Explain the basic purpose and structure of PPPR systems at
                     global and national levels
                   </span>
                 </li>
