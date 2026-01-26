@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, Users, Target, TrendingUp, CheckCircle, Globe, Shield, Award, ArrowRight, Play } from "lucide-react";
+import { BookOpen, CheckCircle, Globe, Shield, Award, ArrowRight, Play } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
 import communityLearning from "@/assets/community-learning.jpg";
 import Logo from "@/assets/logo.svg";
@@ -13,25 +13,21 @@ const Welcome = () => {
 
   const modules = [
     {
-      icon: BookOpen,
       number: 1,
       title: "Understanding the Foundations of PPPR and CLM",
       description: "Understanding pandemic preparedness and community-led monitoring basics",
     },
     {
-      icon: Users,
       number: 2,
       title: "The Principles and Practice of CLM",
       description: "Deep dive into community engagement and accountability mechanisms",
     },
     {
-      icon: Target,
       number: 3,
       title: "Integrating CLM into PPPR Frameworks",
       description: "Practical frameworks for bringing communities and systems together",
     },
     {
-      icon: TrendingUp,
       number: 4,
       title: "Action, Advocacy and Sustainability",
       description: "Building lasting change through strategic advocacy and policy influence",
@@ -289,30 +285,24 @@ const Welcome = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {modules.map((module, index) => {
-              const Icon = module.icon;
-              return (
-                <Card
-                  key={index}
-                  className="border-2 hover:border-primary/50 transition-all hover:shadow-xl group overflow-hidden"
-                >
-                  <CardContent className="p-0">
-                    <div className="flex">
-                      <div className="w-16 md:w-20 bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <span className="text-3xl md:text-4xl font-bold text-primary">{module.number}</span>
-                      </div>
-                      <div className="p-6 flex-1">
-                        <div className="flex items-start gap-3 mb-2">
-                          <Icon className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                          <h3 className="text-lg font-bold text-foreground">{module.title}</h3>
-                        </div>
-                        <p className="text-muted-foreground text-sm pl-8">{module.description}</p>
-                      </div>
+            {modules.map((module, index) => (
+              <Card
+                key={index}
+                className="border-2 hover:border-primary/50 transition-all hover:shadow-xl group"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl font-bold text-primary">{module.number}</span>
                     </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-foreground mb-2">{module.title}</h3>
+                      <p className="text-muted-foreground text-sm">{module.description}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
