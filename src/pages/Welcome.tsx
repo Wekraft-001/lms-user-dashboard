@@ -48,11 +48,11 @@ const Welcome = () => {
       title: "Interactive Learning",
       description: "Engaging videos, scenarios, and games that bring concepts to life",
     },
-    {
-      icon: Globe,
-      title: "African Context",
-      description: "Real-world case studies and examples from across the continent",
-    },
+    // {
+    //   icon: Globe,
+    //   title: "African Context",
+    //   description: "Real-world case studies and examples from across the continent",
+    // },
     {
       icon: Shield,
       title: "Evidence-Based",
@@ -82,9 +82,9 @@ const Welcome = () => {
           </div>
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-3">
-              <img src={AALogo} className="h-8" alt="African Alliance" />
+              <img src={AALogo} className="w-[200px]" alt="African Alliance" />
               <span className="text-muted-foreground">+</span>
-              <img src={CopperLogo} className="h-8" alt="COPPER" />
+              <img src={CopperLogo} className="w-[115px]" alt="COPPER" />
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -99,7 +99,7 @@ const Welcome = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[90vh] md:min-h-[85vh] flex items-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroBanner})` }}
@@ -113,13 +113,13 @@ const Welcome = () => {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse animation-delay-300" />
         </div>
 
-        <div className="relative container mx-auto px-4 py-20 md:py-28">
+        <div className="relative container mx-auto px-4 py-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full mb-6 animate-fade-in">
-              <Globe className="h-4 w-4" />
-              <span className="text-sm font-medium">Powered by African Alliance & COPPER</span>
+              {/* <Globe className="h-4 w-4" /> */}
+              <span className="text-sm font-medium">Powered by African Alliance & COPPER Consortium </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in">
               Kujua360
             </h1>
@@ -129,12 +129,12 @@ const Welcome = () => {
             <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto animate-fade-in animation-delay-200">
               An interactive e-learning experience on Community-Led Monitoring and Pandemic Preparedness & Response Integration
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-300">
               <Button
                 onClick={() => navigate("/register")}
                 size="lg"
-                className="bg-white text-[#d00000] hover:bg-white/90 text-lg px-8 py-6 h-auto font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+                className="bg-white text-[#d00000] hover:bg-white/90 text-lg  h-auto p-3 md:p-4 rounded-md font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
               >
                 Begin Your Journey
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -143,7 +143,7 @@ const Welcome = () => {
                 onClick={() => navigate("/login")}
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto font-semibold bg-white/5 backdrop-blur-sm"
+                className="border-2 border-white text-white hover:bg-white/10 text-lg h-auto p-3 md:p-4 font-semibold bg-white/5 backdrop-blur-sm"
               >
                 Already Have an Account?
               </Button>
@@ -160,7 +160,7 @@ const Welcome = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-white border-b">
+      <section className="py-10 bg-white border-b">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
@@ -185,7 +185,7 @@ const Welcome = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -312,7 +312,7 @@ const Welcome = () => {
                       </div>
                       <div className="p-6 flex-1">
                         <div className="flex items-start gap-3 mb-2">
-                          <Icon className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                          {/* <Icon className="h-5 w-5 text-primary mt-1 flex-shrink-0" /> */}
                           <h3 className="text-lg font-bold text-foreground">{module.title}</h3>
                         </div>
                         <p className="text-muted-foreground text-sm pl-8">{module.description}</p>
@@ -353,7 +353,7 @@ const Welcome = () => {
             <Button
               onClick={() => navigate("/register")}
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 h-auto font-semibold"
+              className="bg-primary hover:bg-primary/90 text-white text-lg p-3 h-auto font-semibold"
             >
               Get Started Now
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -362,7 +362,7 @@ const Welcome = () => {
               onClick={() => navigate("/login")}
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto font-semibold"
+              className="border-2 border-white text-[#D00000] hover:bg-red-600/10 text-lg p-3 h-auto font-semibold"
             >
               Sign In
             </Button>
@@ -375,33 +375,33 @@ const Welcome = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
-              <img src={Logo} className="w-[100px] mb-3 mx-auto md:mx-0 brightness-0 invert" alt="Kujua360" />
+              <img src={Logo} className="w-[150px] mb-3 mx-auto md:mx-0 brightness-0 invert" alt="Kujua360" />
               <p className="text-white/60 text-sm">
                 Empowering communities. Building resilience. Saving lives.
               </p>
             </div>
-            
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-              <a 
-                onClick={() => navigate("/policy")} 
+
+            {/* <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+              <a
+                onClick={() => navigate("/policy")}
                 className="text-white/80 hover:text-white transition-colors cursor-pointer text-sm"
               >
                 Terms & Conditions
               </a>
-              <a 
-                href="mailto:info@africanhealthalliance.org" 
+              <a
+                href="mailto:info@africanhealthalliance.org"
                 className="text-white/80 hover:text-white transition-colors text-sm"
               >
                 Contact Us
               </a>
-            </div>
-            
+            </div> */}
+
             <div className="flex items-center gap-4">
-              <img src={AALogo} className="h-8 brightness-0 invert opacity-70" alt="African Alliance" />
-              <img src={CopperLogo} className="h-8 brightness-0 invert opacity-70" alt="COPPER" />
+              <img src={AALogo} className="w-[200px] brightness-0 invert opacity-70" alt="African Alliance" />
+              <img src={CopperLogo} className="w-[120px] brightness-0 invert opacity-70" alt="COPPER" />
             </div>
           </div>
-          
+
           <div className="border-t border-white/10 mt-8 pt-8 text-center">
             <p className="text-white/60 text-sm">
               © {new Date().getFullYear()} African Alliance & COPPER Consortium. All rights reserved.

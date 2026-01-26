@@ -30,6 +30,8 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import Logo from "@/assets/logo.svg";
+import AALogo from "@/assets/AA-LOGO.svg";
+import CopperLogo from "@/assets/copper-logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -203,18 +205,18 @@ const Dashboard = () => {
   // Map backend module data if available
   const mappedModules = progressData?.modules
     ? progressData.modules.map((mod) => ({
-        id: mod.moduleId,
-        title: mod.title,
-        description:
-          modules.find((m) => m.id === mod.moduleId)?.description || "",
-        status: mod.status,
-        progress: mod.progress,
-        duration:
-          modules.find((m) => m.id === mod.moduleId)?.duration || "90 min",
-        parts: mod.parts.length,
-        assessmentScore: mod.assessmentScore,
-        assessmentPassed: mod.assessmentPassed,
-      }))
+      id: mod.moduleId,
+      title: mod.title,
+      description:
+        modules.find((m) => m.id === mod.moduleId)?.description || "",
+      status: mod.status,
+      progress: mod.progress,
+      duration:
+        modules.find((m) => m.id === mod.moduleId)?.duration || "90 min",
+      parts: mod.parts.length,
+      assessmentScore: mod.assessmentScore,
+      assessmentPassed: mod.assessmentPassed,
+    }))
     : modules;
 
   // Welcome/Onboarding View for New Users
@@ -448,13 +450,12 @@ const Dashboard = () => {
             {mappedModules.map((module) => (
               <Card
                 key={module.id}
-                className={`border-2 transition-all cursor-pointer ${
-                  module.status === "completed"
-                    ? "border-success/50 hover:border-success"
-                    : module.status === "in-progress"
+                className={`border-2 transition-all cursor-pointer ${module.status === "completed"
+                  ? "border-success/50 hover:border-success"
+                  : module.status === "in-progress"
                     ? "border-primary/50 hover:border-primary hover:shadow-lg"
                     : "border-muted hover:border-muted-foreground/30 opacity-75"
-                }`}
+                  }`}
                 onClick={() => handleModuleClick(module)}
               >
                 <CardHeader>
@@ -495,11 +496,10 @@ const Dashboard = () => {
                             {module.assessmentScore !== null &&
                               module.assessmentScore !== undefined && (
                                 <span
-                                  className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                                    module.assessmentPassed
-                                      ? "bg-success/10 text-success"
-                                      : "bg-destructive/10 text-destructive"
-                                  }`}
+                                  className={`text-xs font-semibold px-2 py-1 rounded-full ${module.assessmentPassed
+                                    ? "bg-success/10 text-success"
+                                    : "bg-destructive/10 text-destructive"
+                                    }`}
                                 >
                                   Score: {module.assessmentScore}%
                                 </span>
@@ -568,7 +568,13 @@ const Dashboard = () => {
                 </p>
               </div>
             </div>
-
+            <div className="hidden md:flex items-center gap-6">
+              <div className="flex items-center gap-3">
+                <img src={AALogo} className="w-[200px]" alt="African Alliance" />
+                <span className="text-muted-foreground">+</span>
+                <img src={CopperLogo} className="w-[115px]" alt="COPPER" />
+              </div>
+            </div>
             <div className="flex items-center gap-4">
               <Button
                 variant="ghost"
@@ -605,12 +611,12 @@ const Dashboard = () => {
                     Settings
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem 
+                  <DropdownMenuItem
                     onClick={() => {
                       localStorage.removeItem("userToken");
                       navigate("/login");
                       toast.success("Logged out successfully");
-                    }} 
+                    }}
                     className="cursor-pointer text-destructive focus:text-destructive"
                   >
                     <LogOut className="mr-2 h-4 w-4" />

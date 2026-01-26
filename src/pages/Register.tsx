@@ -205,7 +205,7 @@ const Register = () => {
                     <Input
                       id="password"
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Create a password"
                       name="password"
                       value={password}
                       onChange={handleChange}

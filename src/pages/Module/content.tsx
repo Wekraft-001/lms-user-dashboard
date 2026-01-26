@@ -59,7 +59,7 @@ const module1Content: ModuleContent = {
     {
       title: "Module Overview",
       type: "reading",
-      content: `This module lays the foundation for your learning journey. It introduces the global and African systems that shape PPR, and places CLM within that landscape as a mechanism for accountability, justice, and pariticipation.
+      content: `This module lays the foundation for your learning journey. It introduces systems that shape PPR, and places CLM within that landscape as a mechanism for accountability, justice, and pariticipation.
 
       We begin by asking a simple but urgent question:
 
