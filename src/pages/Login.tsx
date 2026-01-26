@@ -69,7 +69,7 @@ const Login = () => {
             <h2 className="text-4xl font-bold mb-4">Welcome Back!</h2>
             <p className="text-lg opacity-90 mb-6">
               Continue your learning journey and unlock new knowledge on CLM and
-              PPR integration.
+              PPPR integration.
             </p>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
               <p className="text-sm italic">

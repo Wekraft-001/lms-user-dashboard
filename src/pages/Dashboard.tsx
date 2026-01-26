@@ -162,9 +162,9 @@ const Dashboard = () => {
   const modules = progressData?.modules || [
     {
       id: 1,
-      title: "Understanding the Foundations of PPR and CLM",
+      title: "Understanding the Foundations of PPPR and CLM",
       description:
-        "Introducing global and African PPR systems and CLM as a mechanism for accountability, justice, and participation",
+        "Introducing global and African PPPR systems and CLM as a mechanism for accountability, justice, and participation",
       status: "locked",
       progress: 0,
       duration: "90 min",
@@ -182,7 +182,7 @@ const Dashboard = () => {
     },
     {
       id: 3,
-      title: "Integrating CLM into PPR Frameworks",
+      title: "Integrating CLM into PPPR Frameworks",
       description:
         "Practical frameworks and strategies for bringing communities and health systems together",
       status: "locked",
@@ -259,7 +259,7 @@ const Dashboard = () => {
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">What You'll Learn</CardTitle>
           <CardDescription>
-            Master the essentials of PPR and community-led monitoring through 4
+            Master the essentials of PPPR and community-led monitoring through 4
             comprehensive modules
           </CardDescription>
         </CardHeader>

@@ -43,7 +43,7 @@ const Policy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-bold mb-4 text-foreground">2. Description of Service</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Kujua360 is an interactive e-learning platform developed by African Alliance in partnership with the COPPER Consortium. The platform provides educational content on Community-Led Monitoring (CLM) and Pandemic Prevention, Preparedness and Response (PPR).
+                Kujua360 is an interactive e-learning platform developed by African Alliance in partnership with the COPPER Consortium. The platform provides educational content on Community-Led Monitoring (CLM) and Pandemic Prevention, Preparedness and Response (PPPR).
               </p>
             </section>
 

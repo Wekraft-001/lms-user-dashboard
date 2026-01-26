@@ -15,30 +15,26 @@ const Welcome = () => {
     {
       icon: BookOpen,
       number: 1,
-      title: "Understanding the Foundations of PPR and CLM",
+      title: "Understanding the Foundations of PPPR and CLM",
       description: "Understanding pandemic preparedness and community-led monitoring basics",
-      color: "from-[#D00000] to-[#FF4D4D]",
     },
     {
       icon: Users,
       number: 2,
       title: "The Principles and Practice of CLM",
       description: "Deep dive into community engagement and accountability mechanisms",
-      color: "from-[#002776] to-[#0047AB]",
     },
     {
       icon: Target,
       number: 3,
-      title: "Integrating CLM into PPR Frameworks",
+      title: "Integrating CLM into PPPR Frameworks",
       description: "Practical frameworks for bringing communities and systems together",
-      color: "from-[#007a87] to-[#00A3B4]",
     },
     {
       icon: TrendingUp,
       number: 4,
       title: "Action, Advocacy and Sustainability",
       description: "Building lasting change through strategic advocacy and policy influence",
-      color: "from-[#6a8438] to-[#a9d04f]",
     },
   ];
 
@@ -48,15 +44,10 @@ const Welcome = () => {
       title: "Interactive Learning",
       description: "Engaging videos, scenarios, and games that bring concepts to life",
     },
-    // {
-    //   icon: Globe,
-    //   title: "African Context",
-    //   description: "Real-world case studies and examples from across the continent",
-    // },
     {
-      icon: Shield,
+      icon: BookOpen,
       title: "Evidence-Based",
-      description: "Built on proven CLM frameworks and WHO-endorsed PPR standards",
+      description: "Built on proven CLM frameworks and WHO-endorsed PPPR standards",
     },
     {
       icon: Award,
@@ -127,7 +118,7 @@ const Welcome = () => {
               Knowing Together, Acting Faster
             </p>
             <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto animate-fade-in animation-delay-200">
-              An interactive e-learning experience on Community-Led Monitoring and Pandemic Preparedness & Response Integration
+              An interactive e-learning experience on Community-Led Monitoring and Pandemic Prevention, Preparedness & Response Integration
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-300">
@@ -307,12 +298,12 @@ const Welcome = () => {
                 >
                   <CardContent className="p-0">
                     <div className="flex">
-                      <div className={`w-24 md:w-28 bg-gradient-to-br ${module.color} flex items-center justify-center flex-shrink-0`}>
-                        <span className="text-4xl md:text-5xl font-bold text-white">{module.number}</span>
+                      <div className="w-16 md:w-20 bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <span className="text-3xl md:text-4xl font-bold text-primary">{module.number}</span>
                       </div>
                       <div className="p-6 flex-1">
                         <div className="flex items-start gap-3 mb-2">
-                          {/* <Icon className="h-5 w-5 text-primary mt-1 flex-shrink-0" /> */}
+                          <Icon className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                           <h3 className="text-lg font-bold text-foreground">{module.title}</h3>
                         </div>
                         <p className="text-muted-foreground text-sm pl-8">{module.description}</p>

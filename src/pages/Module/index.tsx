@@ -256,7 +256,7 @@ const Module = () => {
                 <li className="flex items-start gap-2">
                   <span className="text-primary">•</span>
                   <span>
-                    Explain the basic purpose and structure of PPR systems at
+                    Explain the basic purpose and structure of PPPR systems at
                     global and national levels
                   </span>
                 </li>
@@ -353,13 +353,11 @@ const Module = () => {
                     />
                   )}
               </div>
-            ) : (
+            ) : (currentContent.videoUrl || currentContent.videos) ? (
               <Tabs defaultValue="read" className="w-full">
                 <TabsList className="mb-4">
                   <TabsTrigger value="read">Read</TabsTrigger>
-                  {(currentContent.videoUrl || currentContent.videos) && (
-                    <TabsTrigger value="watch">Watch</TabsTrigger>
-                  )}
+                  <TabsTrigger value="watch">Watch</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="read" className="space-y-4">
@@ -434,53 +432,122 @@ const Module = () => {
                   </div>
                 </TabsContent>
 
-                {(currentContent.videoUrl || currentContent.videos) && (
-                  <TabsContent value="watch">
-                    <div className="space-y-6">
-                      {currentContent.videoUrl && (
-                        <div className="space-y-2">
-                          <h4 className="font-semibold text-foreground">
-                            Introduction
-                          </h4>
+                <TabsContent value="watch">
+                  <div className="space-y-6">
+                    {currentContent.videoUrl && (
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-foreground">
+                          Introduction
+                        </h4>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          IHR Monitoring and Evaluation Framework Tutorial
+                        </p>
+                        <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                          <video
+                            controls
+                            className="w-full h-full"
+                            src={currentContent.videoUrl}
+                          >
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </div>
+                    )}
+                    {currentContent.videos?.map((video, idx) => (
+                      <div key={idx} className="space-y-2">
+                        <h4 className="font-semibold text-foreground">
+                          {video.label}
+                        </h4>
+                        {video.description && (
                           <p className="text-sm text-muted-foreground mb-2">
-                            IHR Monitoring and Evaluation Framework Tutorial
+                            {video.description}
                           </p>
-                          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                            <video
-                              controls
-                              className="w-full h-full"
-                              src={currentContent.videoUrl}
-                            >
-                              Your browser does not support the video tag.
-                            </video>
-                          </div>
+                        )}
+                        <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                          <iframe
+                            src={convertToEmbedUrl(video.url)}
+                            className="w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            title={video.label}
+                          />
                         </div>
-                      )}
-                      {currentContent.videos?.map((video, idx) => (
-                        <div key={idx} className="space-y-2">
-                          <h4 className="font-semibold text-foreground">
-                            {video.label}
-                          </h4>
-                          {video.description && (
-                            <p className="text-sm text-muted-foreground mb-2">
-                              {video.description}
-                            </p>
-                          )}
-                          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                            <iframe
-                              src={convertToEmbedUrl(video.url)}
-                              className="w-full h-full"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              title={video.label}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </TabsContent>
-                )}
+                      </div>
+                    ))}
+                  </div>
+                </TabsContent>
               </Tabs>
+            ) : (
+              // Reading-only content (no video)
+              <div className="max-w-none space-y-4">
+                {(() => {
+                  const parts = currentContent.content.split(
+                    /(<ol>[\s\S]*?<\/ol>|<ul>[\s\S]*?<\/ul>)/
+                  );
+
+                  const contentElements = parts.map((part, idx) => {
+                    const trimmed = part.trim();
+                    if (!trimmed) return null;
+
+                    if (trimmed.startsWith("<ol>")) {
+                      return (
+                        <ol
+                          key={idx}
+                          className="list-decimal pl-6 space-y-2 text-muted-foreground"
+                          dangerouslySetInnerHTML={{
+                            __html: trimmed
+                              .replace("<ol>", "")
+                              .replace("</ol>", ""),
+                          }}
+                        />
+                      );
+                    }
+
+                    if (trimmed.startsWith("<ul>")) {
+                      return (
+                        <ul
+                          key={idx}
+                          className="list-disc pl-6 space-y-2 text-muted-foreground"
+                          dangerouslySetInnerHTML={{
+                            __html: trimmed
+                              .replace("<ul>", "")
+                              .replace("</ul>", ""),
+                          }}
+                        />
+                      );
+                    }
+
+                    return trimmed
+                      .split("\n\n")
+                      .map((p, pIdx) => (
+                        <p
+                          key={`${idx}-${pIdx}`}
+                          className="text-muted-foreground leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: p }}
+                        />
+                      ));
+                  });
+
+                  if (currentContent.cycleDiagram) {
+                    const firstParagraphIndex = contentElements.findIndex(
+                      (el) => el !== null
+                    );
+                    if (firstParagraphIndex !== -1) {
+                      contentElements.splice(
+                        firstParagraphIndex + 1,
+                        0,
+                        <CycleDiagram
+                          key="cycle-diagram"
+                          title={currentContent.cycleDiagram.title}
+                          steps={currentContent.cycleDiagram.steps}
+                        />
+                      );
+                    }
+                  }
+
+                  return contentElements;
+                })()}
+              </div>
             )}
           </CardContent>
         </Card>

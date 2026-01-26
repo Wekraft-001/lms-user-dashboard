@@ -25,7 +25,7 @@ export const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
     {
       id: 2,
       question:
-        "Which two tools assess a country's PPR capacity under the IHR?",
+        "Which two tools assess a country's PPPR capacity under the IHR?",
       options: [
         "Country Performance Review (CPR) and Self-Monitoring Tool (SMT)",
         "Joint External Evaluation (JEE) and State Party Annual Report (SPAR)",
@@ -62,7 +62,7 @@ export const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
     {
       id: 5,
       question:
-        "Why can CLM serve as an early-warning system within PPR frameworks?",
+        "Why can CLM serve as an early-warning system within PPPR frameworks?",
       options: [
         "It provides quick financial audits of donor spending",
         "It gathers real-time community evidence that detects service gaps before formal surveillance systems",
@@ -212,7 +212,7 @@ export const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
     {
       id: 1,
       question:
-        "Which of the following is an entry point for CLM in national PPR frameworks?",
+        "Which of the following is an entry point for CLM in national PPPR frameworks?",
       options: [
         "Private sector health insurance schemes",
         "National Action Plans for Health Security (NAPHS)",
@@ -271,12 +271,12 @@ export const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
       options: [
         "International certification",
         "Advanced technology systems",
-        "Relationship building with PPR governance structures",
+        "Relationship building with PPPR governance structures",
         "Legal enforcement powers",
       ],
       correctAnswer: 2,
       explanation:
-        "Institutionalization requires both formal mechanisms and ongoing relationship building with PPR governance structures to ensure community participation becomes permanent.",
+        "Institutionalization requires both formal mechanisms and ongoing relationship building with PPPR governance structures to ensure community participation becomes permanent.",
     },
   ],
 };
