@@ -249,7 +249,7 @@ const Welcome = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
               <div>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Kujua360 is an interactive e-learning platform developed by the African Alliance, as part of the Global Fund supported COPPER Consortium to bring Community-Led Monitoring (CLM) and Pandemic Prevention, Preparedness and Response (PPR) together in one dynamic learning space.
+                  Kujua360 is an interactive e-learning platform developed by the African Alliance, as part of the Global Fund supported COPPER Consortium to bring Community-Led Monitoring (CLM) and Pandemic Prevention, Preparedness and Response (PPPR) together in one dynamic learning space.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   CLM has proven to be a powerful mechanism for accountability and advocacy in the health sector. Through engaging modules, Kujua360 simplifies complex PPR concepts and demonstrates how communities can drive integration between the two.
