@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, XCircle, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import confetti from "canvas-confetti";
 
 interface Match {
   id: number;
@@ -33,12 +34,21 @@ const matches: Match[] = [
   },
 ];
 
-export const VoicesFirst = () => {
+interface VoicesFirstProps {
+  onComplete?: () => void;
+}
+
+export const VoicesFirst = ({ onComplete }: VoicesFirstProps) => {
   const [selectedCommunity, setSelectedCommunity] = useState<number | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<number | null>(null);
   const [matchedPairs, setMatchedPairs] = useState<number[]>([]);
   const [incorrectAttempts, setIncorrectAttempts] = useState<number>(0);
   const [isComplete, setIsComplete] = useState(false);
+
+  // Shuffle system responses only once when component mounts
+  const shuffledSystemResponses = useMemo(() => {
+    return [...matches].sort(() => Math.random() - 0.5);
+  }, []);
 
   const handleCommunityClick = (id: number) => {
     if (matchedPairs.includes(id)) return;
@@ -58,11 +68,19 @@ export const VoicesFirst = () => {
 
   const checkMatch = (communityId: number, systemId: number) => {
     if (communityId === systemId) {
-      setMatchedPairs([...matchedPairs, communityId]);
+      const newMatchedPairs = [...matchedPairs, communityId];
+      setMatchedPairs(newMatchedPairs);
       setSelectedCommunity(null);
       setSelectedSystem(null);
-      if (matchedPairs.length + 1 === matches.length) {
+      if (newMatchedPairs.length === matches.length) {
         setIsComplete(true);
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#e41f28', '#007a87', '#a9d04f']
+        });
+        onComplete?.();
       }
     } else {
       setIncorrectAttempts(incorrectAttempts + 1);
@@ -136,9 +154,7 @@ export const VoicesFirst = () => {
               System Responses
             </h4>
             <div className="space-y-3">
-              {matches
-                .sort(() => Math.random() - 0.5)
-                .map((match) => (
+              {shuffledSystemResponses.map((match) => (
                   <Card
                     key={`system-${match.id}`}
                     className={cn(
@@ -170,12 +186,6 @@ export const VoicesFirst = () => {
             You've successfully connected community voices to system action. This is the power of CLM – 
             ensuring that those who experience health services directly can drive meaningful change.
           </p>
-          <div className="flex justify-center gap-4 pt-4">
-            <Button onClick={handleReset} variant="outline" size="lg">
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Play Again
-            </Button>
-          </div>
         </div>
       )}
 

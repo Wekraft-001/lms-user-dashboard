@@ -54,7 +54,7 @@ const module1Content: ModuleContent = {
   title: "Understanding the Foundations of PPPR and CLM",
   description:
     "This module lays the foundation for your learning journey, introducing global and African PPPR systems and placing CLM as a mechanism for accountability, justice, and participation.",
-  totalSegments: 16,
+  totalSegments: 17,
   segments: [
     {
       title: "Module Overview",
@@ -191,11 +191,11 @@ The true power of CLM is that it shifts power to communities, centers lived expe
 
     <ol>
     <li><b>Ownership: Communities design and lead monitoring activities.</b><br/>
-        <p>In Zambia, between 2021 and 2025 Amref Zambia and Grassroots Soccer Zambia implemented a CLM project aimed at ensuring the voices and recommendations of people living with HIV were incorporated into the design and approach of HIV care and treatment. Initially, a standardised questionnaire was used to collect data but each year, the questionnaire was revised by community monitors to ensure local relevance. This is a clear demonstration of community ownership of the project.    
+        <p>In Zambia, between 2021 and 2025 Amref Zambia and Grassroots Soccer Zambia implemented a CLM project aimed at ensuring the voices and recommendations of people living with HIV were incorporated into the design and approach of HIV care and treatment. Initially, a standardised questionnaire was used to collect data but each year, the questionnaire was revised by community monitors to ensure local relevance. This is a clear demonstration of community ownership of the project. <a href="https://grassrootsoccer.org/zambia/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Learn more about Grassroots Soccer Zambia →</a>
         </p>
     </li>
     <li><b>Accountability: Findings are used to demand and negotiate change. South Africa - Ritshidze Community Monitoring</b><br/>
-        <p>Ritshidze, led by people living with HIV networks such as the Treatment Action Campaign, collects real-time feedback from thousands of public clinics. The community teams escalate issues such as ARV stockouts, long waits, and unfriendly services to district and provincial health authorities. Quarterly reports trigger joint action plans, resulting in documented improvements in staffing, medicine availability, and service quality. This is accountability in practice: community evidence driving system change.
+        <p>Ritshidze, led by people living with HIV networks such as the Treatment Action Campaign, collects real-time feedback from thousands of public clinics. The community teams escalate issues such as ARV stockouts, long waits, and unfriendly services to district and provincial health authorities. Quarterly reports trigger joint action plans, resulting in documented improvements in staffing, medicine availability, and service quality. This is accountability in practice: community evidence driving system change. <a href="https://ritshidze.org.za/the-model/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Learn more about the Ritshidze Model →</a>
         </p>
     </li>
     <li><b>Transparency: Data and decisions are shared openly. Malawi - CLM for Malaria Service Quality</b><br/>
@@ -359,10 +359,24 @@ Their data told another story:
 
 CLM partners compiled weekly briefs for provincial health departments and advocacy coalitions. Within weeks, provincial authorities adjusted logistics, retrained site staff, and added mobile units.
 
-<b>Key Takeaway:</b> When communities monitor systems from below, national data becomes more honest, equitable, and useful. Preparedness is not built in labs, it is built in trust.
-
-<b>Reflection:</b> What would preparedness look like if every community could produce evidence like this?`,
+<b>Key Takeaway:</b> When communities monitor systems from below, national data becomes more honest, equitable, and useful. Preparedness is not built in labs, it is built in trust.`,
       duration: "12 min",
+    },
+    {
+      title: "Reflection: Preparedness Through Community Evidence",
+      type: "interactive",
+      interactiveType: "reflection",
+      reflectionData: {
+        title: "Preparedness Through Community Evidence",
+        context: "Reflecting on the South Africa case study, consider how community-generated evidence can transform pandemic preparedness in your own context.",
+        prompts: [
+          { id: 1, question: "What would preparedness look like if every community could produce evidence like this?" },
+          { id: 2, question: "What barriers exist in your context that prevent communities from generating this kind of real-time data?" },
+          { id: 3, question: "How could you help establish a CLM system to monitor vaccine or health service delivery in your community?" }
+        ],
+        closingQuote: "Preparedness is not built in labs—it is built in trust."
+      },
+      duration: "8 min",
     },
     {
       title: "Module Summary",

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, XCircle, RotateCcw, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import confetti from "canvas-confetti";
 
 interface Region {
   id: string;
@@ -12,7 +13,7 @@ interface Region {
   allocated: number;
 }
 
-const regions: Region[] = [
+const initialRegions: Region[] = [
   { id: "north", name: "Northern Region", population: 15, vulnerability: "high", allocated: 0 },
   { id: "south", name: "Southern Region", population: 20, vulnerability: "medium", allocated: 0 },
   { id: "east", name: "Eastern Region", population: 12, vulnerability: "high", allocated: 0 },
@@ -22,8 +23,12 @@ const regions: Region[] = [
 
 const TOTAL_RESOURCES = 100;
 
-export const EquityBuilder = () => {
-  const [regionData, setRegionData] = useState<Region[]>(regions);
+interface EquityBuilderProps {
+  onComplete?: () => void;
+}
+
+export const EquityBuilder = ({ onComplete }: EquityBuilderProps) => {
+  const [regionData, setRegionData] = useState<Region[]>(initialRegions.map(r => ({ ...r })));
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [equityScore, setEquityScore] = useState(0);
 
@@ -32,30 +37,60 @@ export const EquityBuilder = () => {
 
   const handleAllocation = (regionId: string, change: number) => {
     if (isSubmitted) return;
-    setRegionData(
-      regionData.map((region) => {
-        if (region.id === regionId) {
-          const newValue = Math.max(0, Math.min(TOTAL_RESOURCES, region.allocated + change));
-          return { ...region, allocated: newValue };
+    
+    setRegionData(prev => prev.map((region) => {
+      if (region.id === regionId) {
+        // Calculate the new value, ensuring it doesn't go below 0
+        // and doesn't cause total to exceed TOTAL_RESOURCES
+        const currentTotal = prev.reduce((sum, r) => sum + r.allocated, 0);
+        const maxAddable = TOTAL_RESOURCES - currentTotal;
+        
+        let newValue = region.allocated + change;
+        
+        // Don't go below 0
+        if (newValue < 0) {
+          newValue = 0;
         }
-        return region;
-      })
-    );
+        
+        // Don't exceed what's available when adding
+        if (change > 0 && change > maxAddable) {
+          newValue = region.allocated + maxAddable;
+        }
+        
+        return { ...region, allocated: newValue };
+      }
+      return region;
+    }));
+  };
+
+  const getExpectedRange = (vulnerability: Region["vulnerability"]) => {
+    switch (vulnerability) {
+      case "high":
+        return { min: 25, max: 35 };
+      case "medium":
+        return { min: 20, max: 25 };
+      case "low":
+        return { min: 15, max: 20 };
+    }
   };
 
   const calculateEquityScore = () => {
     let score = 0;
     regionData.forEach((region) => {
-      const expectedMin = region.vulnerability === "high" ? 25 : region.vulnerability === "medium" ? 20 : 15;
-      const expectedMax = region.vulnerability === "high" ? 35 : region.vulnerability === "medium" ? 25 : 20;
+      const { min, max } = getExpectedRange(region.vulnerability);
       
-      if (region.allocated >= expectedMin && region.allocated <= expectedMax) {
-        score += 25;
-      } else if (region.allocated >= expectedMin - 5 && region.allocated <= expectedMax + 5) {
-        score += 15;
+      if (region.allocated >= min && region.allocated <= max) {
+        score += 20; // Perfect allocation
+      } else if (region.allocated >= min - 5 && region.allocated <= max + 5) {
+        score += 10; // Close allocation
       }
     });
-    return score;
+    return Math.min(score, 100);
+  };
+
+  const isCorrectAllocation = (region: Region) => {
+    const { min } = getExpectedRange(region.vulnerability);
+    return region.allocated >= min;
   };
 
   const handleSubmit = () => {
@@ -63,10 +98,20 @@ export const EquityBuilder = () => {
     const score = calculateEquityScore();
     setEquityScore(score);
     setIsSubmitted(true);
+    
+    if (score >= 75) {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#e41f28', '#007a87', '#a9d04f']
+      });
+      onComplete?.();
+    }
   };
 
   const handleReset = () => {
-    setRegionData(regions.map((r) => ({ ...r, allocated: 0 })));
+    setRegionData(initialRegions.map(r => ({ ...r })));
     setIsSubmitted(false);
     setEquityScore(0);
   };
@@ -116,7 +161,7 @@ export const EquityBuilder = () => {
             className={cn(
               "p-6 transition-all",
               isSubmitted &&
-                (region.allocated >= (region.vulnerability === "high" ? 25 : region.vulnerability === "medium" ? 20 : 15)
+                (isCorrectAllocation(region)
                   ? "border-success bg-success/5"
                   : "border-destructive bg-destructive/5")
             )}
@@ -147,7 +192,7 @@ export const EquityBuilder = () => {
                     variant="outline"
                     size="sm"
                     onClick={() => handleAllocation(region.id, -5)}
-                    disabled={region.allocated === 0}
+                    disabled={region.allocated < 5}
                   >
                     -5
                   </Button>
@@ -186,7 +231,7 @@ export const EquityBuilder = () => {
 
               {isSubmitted && (
                 <div className="flex items-center gap-2">
-                  {region.allocated >= (region.vulnerability === "high" ? 25 : region.vulnerability === "medium" ? 20 : 15) ? (
+                  {isCorrectAllocation(region) ? (
                     <>
                       <CheckCircle2 className="w-5 h-5 text-success" />
                       <p className="text-sm text-success font-medium">
@@ -258,12 +303,12 @@ export const EquityBuilder = () => {
                   Remember: equity means giving more support to those facing greater vulnerability. 
                   Try prioritizing high-vulnerability regions to improve pandemic readiness.
                 </p>
+                <Button onClick={handleReset} variant="outline" size="lg">
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Try Again
+                </Button>
               </div>
             )}
-            <Button onClick={handleReset} variant="outline" size="lg">
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Try Again
-            </Button>
           </div>
         )}
       </div>

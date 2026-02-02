@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, CheckCircle, Globe, Shield, Award, ArrowRight, Play } from "lucide-react";
+import { BookOpen, CheckCircle, Globe, Shield, Award, ArrowRight, Play, ExternalLink } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
 import communityLearning from "@/assets/community-learning.jpg";
 import Logo from "@/assets/logo.svg";
@@ -204,13 +204,16 @@ const Welcome = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <a href="https://africanalliance.org.za" target="_blank">
-              <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden">
+            <a href="https://africanalliance.org.za" target="_blank" rel="noopener noreferrer">
+              <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden hover:border-primary/50">
                 <CardContent className="p-8">
-                  <div className="mb-6">
+                  <div className="flex items-start justify-between mb-6">
                     <img src={AALogo} className="h-12" alt="African Alliance" />
+                    <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground">African Alliance</h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    <h3 className="text-2xl font-bold text-foreground">African Alliance</h3>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
                     A community-centered organization advancing health justice, accountability, and advocacy across Africa. They lead the development of Kujua360 to strengthen community participation in health systems.
                   </p>
@@ -218,13 +221,16 @@ const Welcome = () => {
               </Card>
             </a>
 
-            <a href="https://copper.apcaso.org" target="_blank">
-              <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden">
+            <a href="https://copper.apcaso.org" target="_blank" rel="noopener noreferrer">
+              <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden hover:border-primary/50">
                 <CardContent className="p-8">
-                  <div className="mb-6">
+                  <div className="flex items-start justify-between mb-6">
                     <img src={CopperLogo} className="h-12" alt="COPPER" />
+                    <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground">COPPER Consortium</h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    <h3 className="text-2xl font-bold text-foreground">COPPER Consortium</h3>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
                     Communities in Pandemic Preparedness & Response (COPPER) is a Global Fund-supported consortium strengthening community-led approaches that enhance Africa's readiness and response to pandemics.
                   </p>
