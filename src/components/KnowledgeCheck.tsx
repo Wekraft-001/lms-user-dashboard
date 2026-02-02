@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, RotateCcw } from "lucide-react";
 
 interface KnowledgeCheckProps {
   question: string;
@@ -11,9 +11,10 @@ interface KnowledgeCheckProps {
     text: string;
     isCorrect: boolean;
   }>;
+  onComplete?: () => void;
 }
 
-export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
+export const KnowledgeCheck = ({ question, options, onComplete }: KnowledgeCheckProps) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -21,8 +22,12 @@ export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
   const handleSubmit = () => {
     const selected = options.find((opt) => opt.id === selectedAnswer);
     if (selected) {
-      setIsCorrect(selected.isCorrect);
+      const correct = selected.isCorrect;
+      setIsCorrect(correct);
       setHasSubmitted(true);
+      if (correct) {
+        onComplete?.();
+      }
     }
   };
 
@@ -104,9 +109,12 @@ export const KnowledgeCheck = ({ question, options }: KnowledgeCheckProps) => {
                   : "Review the material and try again."}
               </p>
             </div>
-            <Button onClick={handleReset} variant="outline" className="w-full">
-              Try Again
-            </Button>
+            {!isCorrect && (
+              <Button onClick={handleReset} variant="outline" className="w-full gap-2">
+                <RotateCcw className="h-4 w-4" />
+                Try Again
+              </Button>
+            )}
           </div>
         )}
       </div>

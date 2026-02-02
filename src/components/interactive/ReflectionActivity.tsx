@@ -9,7 +9,8 @@ import {
   ChevronRight, 
   RotateCcw,
   Sparkles,
-  Quote
+  Quote,
+  AlertCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import confetti from "canvas-confetti";
@@ -24,24 +25,59 @@ interface ReflectionActivityProps {
   context: string;
   prompts: ReflectionPrompt[];
   closingQuote?: string;
+  onComplete?: () => void;
 }
+
+// Check if response is gibberish or low quality
+const isQualityResponse = (text: string): boolean => {
+  if (!text || text.trim().length < 10) return false;
+  
+  const words = text.trim().split(/\s+/);
+  
+  // Check for minimum word count (at least 5 words for reflection)
+  if (words.length < 5) return false;
+  
+  // Check for repeated characters (like "asdfasdf")
+  const hasRepeatedPatterns = /(.)\1{4,}/.test(text);
+  if (hasRepeatedPatterns) return false;
+  
+  // Check if most words are very short (potential gibberish)
+  const shortWords = words.filter(w => w.length <= 2);
+  if (shortWords.length / words.length > 0.7) return false;
+  
+  // Check for random character sequences
+  const randomPattern = /[^aeiou]{5,}/i;
+  const randomMatches = text.match(randomPattern);
+  if (randomMatches && randomMatches.length > 2) return false;
+  
+  // Check for minimal vowel content (indicates keyboard mashing)
+  const vowelCount = (text.match(/[aeiou]/gi) || []).length;
+  const letterCount = (text.match(/[a-z]/gi) || []).length;
+  if (letterCount > 0 && vowelCount / letterCount < 0.15) return false;
+  
+  return true;
+};
 
 export const ReflectionActivity = ({
   title,
   context,
   prompts,
   closingQuote,
+  onComplete,
 }: ReflectionActivityProps) => {
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
   const [responses, setResponses] = useState<Record<number, string>>({});
   const [isComplete, setIsComplete] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const currentPrompt = prompts[currentPromptIndex];
   const currentResponse = responses[currentPrompt?.id] || "";
   const isLastPrompt = currentPromptIndex === prompts.length - 1;
-  const isValidResponse = currentResponse.trim().length >= 10;
+  const isValidLength = currentResponse.trim().length >= 10;
+  const isQuality = isQualityResponse(currentResponse);
 
   const handleResponseChange = (value: string) => {
+    setShowError(false);
     setResponses(prev => ({
       ...prev,
       [currentPrompt.id]: value
@@ -49,6 +85,12 @@ export const ReflectionActivity = ({
   };
 
   const handleNext = () => {
+    // Validate response quality
+    if (!isQuality) {
+      setShowError(true);
+      return;
+    }
+    
     if (isLastPrompt) {
       setIsComplete(true);
       confetti({
@@ -57,8 +99,10 @@ export const ReflectionActivity = ({
         origin: { y: 0.7 },
         colors: ['#e41f28', '#007a87', '#a9d04f']
       });
+      onComplete?.();
     } else {
       setCurrentPromptIndex(prev => prev + 1);
+      setShowError(false);
     }
   };
 
@@ -66,6 +110,7 @@ export const ReflectionActivity = ({
     setCurrentPromptIndex(0);
     setResponses({});
     setIsComplete(false);
+    setShowError(false);
   };
 
   if (isComplete) {
@@ -106,11 +151,6 @@ export const ReflectionActivity = ({
             </div>
           </Card>
         )}
-
-        <Button variant="outline" onClick={handleReset} className="gap-2">
-          <RotateCcw className="h-4 w-4" />
-          Reflect Again
-        </Button>
       </div>
     );
   }
@@ -159,24 +199,36 @@ export const ReflectionActivity = ({
         </div>
 
         <Textarea
-          placeholder="Take your time to reflect... There's no right or wrong answer."
+          placeholder="Take your time to reflect... Share your genuine thoughts and experiences."
           value={currentResponse}
           onChange={(e) => handleResponseChange(e.target.value)}
-          className="min-h-[120px] resize-none"
+          className={cn(
+            "min-h-[120px] resize-none",
+            showError && "border-amber-500 focus-visible:ring-amber-500"
+          )}
         />
+
+        {showError && (
+          <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+            <AlertCircle className="h-4 w-4" />
+            <p className="text-sm">
+              Please provide a more thoughtful response. Share your genuine reflections on the question.
+            </p>
+          </div>
+        )}
 
         <div className="flex items-center justify-between">
           <p className={cn(
             "text-sm",
-            isValidResponse ? "text-green-600" : "text-muted-foreground"
+            isValidLength ? "text-green-600" : "text-muted-foreground"
           )}>
             {currentResponse.trim().length} characters
-            {isValidResponse && <CheckCircle2 className="inline-block ml-1 h-4 w-4" />}
+            {isValidLength && <CheckCircle2 className="inline-block ml-1 h-4 w-4" />}
           </p>
           
           <Button 
             onClick={handleNext}
-            disabled={!isValidResponse}
+            disabled={!isValidLength}
             className="gap-2"
           >
             {isLastPrompt ? "Complete Reflection" : "Next Question"}

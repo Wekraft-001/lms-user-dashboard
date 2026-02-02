@@ -48,7 +48,11 @@ const triggerConfetti = () => {
   frame();
 };
 
-export const EvidenceChain = () => {
+interface EvidenceChainProps {
+  onComplete?: () => void;
+}
+
+export const EvidenceChain = ({ onComplete }: EvidenceChainProps) => {
   const [shuffledStages, setShuffledStages] = useState<Stage[]>(() =>
     [...stages].sort(() => Math.random() - 0.5)
   );
@@ -80,6 +84,7 @@ export const EvidenceChain = () => {
     if (correct) {
       setTrustPoints(100);
       triggerConfetti();
+      onComplete?.();
     }
   };
 
@@ -196,17 +201,11 @@ export const EvidenceChain = () => {
                   Think about how evidence flows from community observation to
                   system change.
                 </p>
+                <Button onClick={handleReset} variant="outline" size="lg">
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Try Again
+                </Button>
               </div>
-            )}
-            {/* <Button onClick={handleReset} variant="outline" size="lg">
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Try Again
-            </Button> */}
-            {trustPoints !== 100 && (
-              <Button onClick={handleReset} variant="outline" size="lg">
-                <RotateCcw className="w-4 h-4 mr-2" />
-                Try Again
-              </Button>
             )}
           </div>
         )}
