@@ -86,7 +86,7 @@ export const VoicesFirst = () => {
       <div className="text-center space-y-2">
         <h3 className="text-2xl font-bold text-foreground">Voices First</h3>
         <p className="text-muted-foreground">
-          Match community voices with the system responses they can trigger through CLM
+          First click community voice then match with the most appropriate system response.
         </p>
         <div className="flex items-center justify-center gap-4">
           <div className="text-sm">

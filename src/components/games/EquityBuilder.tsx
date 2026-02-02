@@ -87,7 +87,7 @@ export const EquityBuilder = () => {
       <div className="text-center space-y-2">
         <h3 className="text-2xl font-bold text-foreground">Equity Builder</h3>
         <p className="text-muted-foreground">
-          Distribute {TOTAL_RESOURCES} preparedness resources across African regions based on population and vulnerability
+          In this activity, you would be asked to distribute {TOTAL_RESOURCES} preparedness resources across African regions based on population and vulnerability.
         </p>
         <div className="flex items-center justify-center gap-6">
           <div className="text-sm">

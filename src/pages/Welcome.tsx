@@ -204,29 +204,34 @@ const Welcome = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <img src={AALogo} className="h-12" alt="African Alliance" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">African Alliance</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  A community-centered organization advancing health justice, accountability, and advocacy across Africa. They lead the development of Kujua360 to strengthen community participation in health systems.
-                </p>
-              </CardContent>
-            </Card>
+            <a href="https://africanalliance.org.za" target="_blank">
+              <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <img src={AALogo} className="h-12" alt="African Alliance" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">African Alliance</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    A community-centered organization advancing health justice, accountability, and advocacy across Africa. They lead the development of Kujua360 to strengthen community participation in health systems.
+                  </p>
+                </CardContent>
+              </Card>
+            </a>
 
-            <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <img src={CopperLogo} className="h-12" alt="COPPER" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3 text-foreground">COPPER Consortium</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Communities in Pandemic Preparedness & Response (COPPER) is a Global Fund-supported consortium strengthening community-led approaches that enhance Africa's readiness and response to pandemics.
-                </p>
-              </CardContent>
-            </Card>
+            <a href="https://copper.apcaso.org" target="_blank">
+              <Card className="border-2 hover:shadow-xl transition-all group overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <img src={CopperLogo} className="h-12" alt="COPPER" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">COPPER Consortium</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Communities in Pandemic Preparedness & Response (COPPER) is a Global Fund-supported consortium strengthening community-led approaches that enhance Africa's readiness and response to pandemics.
+                  </p>
+                </CardContent>
+              </Card>
+            </a>
+
           </div>
         </div>
       </section>

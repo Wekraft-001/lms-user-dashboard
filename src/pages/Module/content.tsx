@@ -277,7 +277,7 @@ These examples show that CLM can act as an early warning system and feedback mec
       type: "interactive",
       interactiveType: "scenario",
       scenarioData: {
-        scenario: "Your country's PPR plan lists 'risk communication' as a key objective. The government wants to improve how health information reaches all communities during emergencies.",
+        scenario: "Your country's PPPR plan lists 'risk communication' as a key objective. The government wants to improve how health information reaches all communities during emergencies.",
         question: "How could CLM contribute to ensuring that communication is inclusive, trusted, and grounded in local realities?",
         prompts: [
           "What community data would be valuable for improving risk communication?",
