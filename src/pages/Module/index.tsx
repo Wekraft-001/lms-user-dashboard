@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, BookOpen, Play, FileText } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Play, FileText, Lock } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { EvidenceChain } from "@/components/games/EvidenceChain";
@@ -20,6 +20,7 @@ import { KnowledgeCheck } from "@/components/KnowledgeCheck";
 import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
 import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
 import CycleDiagram from "@/components/interactive/CycleDiagram";
+import { SummaryFlashCards } from "@/components/interactive/SummaryFlashCards";
 import { getModuleContent } from "./content";
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -51,9 +52,28 @@ const Module = () => {
   const [completedSegments, setCompletedSegments] = useState<Set<number>>(
     new Set()
   );
+  const [segmentCompleted, setSegmentCompleted] = useState(false);
+  
   const moduleContent = getModuleContent(parseInt(id || "1"));
   const currentContent = moduleContent.segments[currentSegment];
   const progress = ((currentSegment + 1) / moduleContent.totalSegments) * 100;
+
+  // Check if current segment requires interaction to complete
+  const requiresInteraction = () => {
+    const type = currentContent.type;
+    if (type === "game" || type === "quiz") return true;
+    if (type === "interactive") return true;
+    return false;
+  };
+
+  // Reset segment completion when changing segments
+  useEffect(() => {
+    if (requiresInteraction()) {
+      setSegmentCompleted(false);
+    } else {
+      setSegmentCompleted(true);
+    }
+  }, [currentSegment, currentContent]);
 
   // Fetch progress data to sync with backend
   const { data: progressData } = useQuery({
@@ -153,6 +173,12 @@ const Module = () => {
   };
 
   const handleNext = async () => {
+    // Check if segment requires completion
+    if (requiresInteraction() && !segmentCompleted) {
+      toast.error("Please complete the activity before proceeding.");
+      return;
+    }
+
     // Mark current segment as complete before moving
     await markCurrentSegmentComplete();
 
@@ -171,10 +197,20 @@ const Module = () => {
     }
   };
 
+  // Handler for when interactive segments are completed
+  const handleSegmentComplete = () => {
+    setSegmentCompleted(true);
+  };
+
   // Calculate actual progress from backend data
   const actualProgress =
     progressData?.modules?.find((mod) => mod.moduleId === parseInt(id))
       ?.progress || 0;
+
+  // Check if next button should be disabled
+  const isNextDisabled = 
+    markPartCompleteMutation.isPending || 
+    (requiresInteraction() && !segmentCompleted);
 
   return (
     <div className="min-h-screen bg-background">
@@ -318,17 +354,20 @@ const Module = () => {
             {currentContent.type === "game" ? (
               <div className="py-4">
                 {currentContent.gameType === "evidence-chain" && (
-                  <EvidenceChain />
+                  <EvidenceChain onComplete={handleSegmentComplete} />
                 )}
-                {currentContent.gameType === "voices-first" && <VoicesFirst />}
+                {currentContent.gameType === "voices-first" && (
+                  <VoicesFirst onComplete={handleSegmentComplete} />
+                )}
                 {currentContent.gameType === "equity-builder" && (
-                  <EquityBuilder />
+                  <EquityBuilder onComplete={handleSegmentComplete} />
                 )}
               </div>
             ) : currentContent.type === "quiz" ? (
               <KnowledgeCheck
                 question={currentContent.question!}
                 options={currentContent.options!}
+                onComplete={handleSegmentComplete}
               />
             ) : currentContent.type === "interactive" ? (
               <div className="py-4">
@@ -341,6 +380,7 @@ const Module = () => {
                       sampleResponse={
                         currentContent.scenarioData.sampleResponse
                       }
+                      onComplete={handleSegmentComplete}
                     />
                   )}
                 {currentContent.interactiveType === "reflection" &&
@@ -350,6 +390,7 @@ const Module = () => {
                       context={currentContent.reflectionData.context}
                       prompts={currentContent.reflectionData.prompts}
                       closingQuote={currentContent.reflectionData.closingQuote}
+                      onComplete={handleSegmentComplete}
                     />
                   )}
               </div>
@@ -430,6 +471,11 @@ const Module = () => {
                       return contentElements;
                     })()}
                   </div>
+
+                  {/* Summary Flashcards */}
+                  {currentContent.summaryCards && currentContent.summaryCards.length > 0 && (
+                    <SummaryFlashCards cards={currentContent.summaryCards} />
+                  )}
                 </TabsContent>
 
                 <TabsContent value="watch">
@@ -547,6 +593,11 @@ const Module = () => {
 
                   return contentElements;
                 })()}
+
+                {/* Summary Flashcards for reading-only content */}
+                {currentContent.summaryCards && currentContent.summaryCards.length > 0 && (
+                  <SummaryFlashCards cards={currentContent.summaryCards} />
+                )}
               </div>
             )}
           </CardContent>
@@ -566,14 +617,21 @@ const Module = () => {
           <Button
             onClick={handleNext}
             className="flex-1"
-            disabled={markPartCompleteMutation.isPending}
+            disabled={isNextDisabled}
           >
-            {markPartCompleteMutation.isPending
-              ? "Saving..."
-              : currentSegment === moduleContent.totalSegments - 1
-              ? "Take Assessment"
-              : "Next"}
-            <ArrowRight className="ml-2 h-4 w-4" />
+            {markPartCompleteMutation.isPending ? (
+              "Saving..."
+            ) : isNextDisabled && requiresInteraction() ? (
+              <>
+                <Lock className="mr-2 h-4 w-4" />
+                Complete Activity
+              </>
+            ) : currentSegment === moduleContent.totalSegments - 1 ? (
+              "Take Assessment"
+            ) : (
+              "Next"
+            )}
+            {!isNextDisabled && <ArrowRight className="ml-2 h-4 w-4" />}
           </Button>
         </div>
       </div>
