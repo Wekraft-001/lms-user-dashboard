@@ -3,17 +3,20 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Heart, 
-  CheckCircle2, 
-  ChevronRight, 
+import {
+  Heart,
+  CheckCircle2,
+  ChevronRight,
   RotateCcw,
   Sparkles,
   Quote,
-  AlertCircle
+  AlertCircle,
+  Loader2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import confetti from "canvas-confetti";
+import axios from "axios";
+import { toast } from "sonner"
 
 interface ReflectionPrompt {
   id: number;
@@ -26,35 +29,37 @@ interface ReflectionActivityProps {
   prompts: ReflectionPrompt[];
   closingQuote?: string;
   onComplete?: () => void;
+  moduleId: number;
+  segmentId: number;
 }
 
 // Check if response is gibberish or low quality
 const isQualityResponse = (text: string): boolean => {
   if (!text || text.trim().length < 10) return false;
-  
+
   const words = text.trim().split(/\s+/);
-  
+
   // Check for minimum word count (at least 5 words for reflection)
   if (words.length < 5) return false;
-  
+
   // Check for repeated characters (like "asdfasdf")
   const hasRepeatedPatterns = /(.)\1{4,}/.test(text);
   if (hasRepeatedPatterns) return false;
-  
+
   // Check if most words are very short (potential gibberish)
   const shortWords = words.filter(w => w.length <= 2);
   if (shortWords.length / words.length > 0.7) return false;
-  
+
   // Check for random character sequences
   const randomPattern = /[^aeiou]{5,}/i;
   const randomMatches = text.match(randomPattern);
   if (randomMatches && randomMatches.length > 2) return false;
-  
+
   // Check for minimal vowel content (indicates keyboard mashing)
   const vowelCount = (text.match(/[aeiou]/gi) || []).length;
   const letterCount = (text.match(/[a-z]/gi) || []).length;
   if (letterCount > 0 && vowelCount / letterCount < 0.15) return false;
-  
+
   return true;
 };
 
@@ -64,11 +69,18 @@ export const ReflectionActivity = ({
   prompts,
   closingQuote,
   onComplete,
+  moduleId,
+  segmentId
 }: ReflectionActivityProps) => {
+  const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
+  const token = localStorage.getItem("userToken");
+
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
   const [responses, setResponses] = useState<Record<number, string>>({});
   const [isComplete, setIsComplete] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
 
   const currentPrompt = prompts[currentPromptIndex];
   const currentResponse = responses[currentPrompt?.id] || "";
@@ -84,14 +96,48 @@ export const ReflectionActivity = ({
     }));
   };
 
-  const handleNext = () => {
+  const submitReflectionToBackend = async () => {
+    setIsSubmitting(true);
+    try {
+      const reflectionData = {
+        moduleId,
+        segmentId,
+        activityTitle: title,
+        responses: prompts.map(prompt => ({
+          promptId: prompt.id,
+          question: prompt.question,
+          response: responses[prompt.id] || "",
+        })),
+      };
+
+      await axios.post(`${apiURL}/reflections`, reflectionData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      toast.success("Your reflections have been saved!");
+    } catch (error) {
+      console.error("Error submitting reflection:", error);
+      toast.error("Failed to save your reflections. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+
+  const handleNext = async () => {
     // Validate response quality
     if (!isQuality) {
       setShowError(true);
       return;
     }
-    
+
     if (isLastPrompt) {
+      // Submit to backend before completing
+      await submitReflectionToBackend();
+
       setIsComplete(true);
       confetti({
         particleCount: 80,
@@ -105,6 +151,7 @@ export const ReflectionActivity = ({
       setShowError(false);
     }
   };
+
 
   const handleReset = () => {
     setCurrentPromptIndex(0);
@@ -180,8 +227,8 @@ export const ReflectionActivity = ({
               idx === currentPromptIndex
                 ? "bg-primary"
                 : idx < currentPromptIndex
-                ? "bg-green-500"
-                : "bg-muted"
+                  ? "bg-green-500"
+                  : "bg-muted"
             )}
           />
         ))}
@@ -225,14 +272,23 @@ export const ReflectionActivity = ({
             {currentResponse.trim().length} characters
             {isValidLength && <CheckCircle2 className="inline-block ml-1 h-4 w-4" />}
           </p>
-          
-          <Button 
+
+          <Button
             onClick={handleNext}
-            disabled={!isValidLength}
+            disabled={!isValidLength || isSubmitting}
             className="gap-2"
           >
-            {isLastPrompt ? "Complete Reflection" : "Next Question"}
-            <ChevronRight className="h-4 w-4" />
+            {isSubmitting ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Saving...
+              </>
+            ) : (
+              <>
+                {isLastPrompt ? "Complete Reflection" : "Next Question"}
+                <ChevronRight className="h-4 w-4" />
+              </>
+            )}
           </Button>
         </div>
       </div>

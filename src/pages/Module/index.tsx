@@ -53,7 +53,7 @@ const Module = () => {
     new Set()
   );
   const [segmentCompleted, setSegmentCompleted] = useState(false);
-  
+
   const moduleContent = getModuleContent(parseInt(id || "1"));
   const currentContent = moduleContent.segments[currentSegment];
   const progress = ((currentSegment + 1) / moduleContent.totalSegments) * 100;
@@ -208,8 +208,8 @@ const Module = () => {
       ?.progress || 0;
 
   // Check if next button should be disabled
-  const isNextDisabled = 
-    markPartCompleteMutation.isPending || 
+  const isNextDisabled =
+    markPartCompleteMutation.isPending ||
     (requiresInteraction() && !segmentCompleted);
 
   return (
@@ -264,15 +264,14 @@ const Module = () => {
                   setCurrentSegment(idx);
                 }
               }}
-              className={`flex-shrink-0 h-2 rounded-full transition-all ${
-                completedSegments.has(idx)
-                  ? "bg-success w-8"
-                  : idx === currentSegment
+              className={`flex-shrink-0 h-2 rounded-full transition-all ${completedSegments.has(idx)
+                ? "bg-success w-8"
+                : idx === currentSegment
                   ? "bg-primary w-12"
                   : idx < currentSegment
-                  ? "bg-primary/50 w-8"
-                  : "bg-muted w-8"
-              }`}
+                    ? "bg-primary/50 w-8"
+                    : "bg-muted w-8"
+                }`}
               disabled={idx > currentSegment && !completedSegments.has(idx)}
             />
           ))}
@@ -391,6 +390,8 @@ const Module = () => {
                       prompts={currentContent.reflectionData.prompts}
                       closingQuote={currentContent.reflectionData.closingQuote}
                       onComplete={handleSegmentComplete}
+                      moduleId={parseInt(id)}
+                      segmentId={currentSegment}
                     />
                   )}
               </div>
