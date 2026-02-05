@@ -334,6 +334,8 @@ const Module = () => {
                       context={currentContent.reflectionData.context}
                       prompts={currentContent.reflectionData.prompts}
                       closingQuote={currentContent.reflectionData.closingQuote}
+                       moduleId={parseInt(id || "1")}
+                       segmentId={currentSegment}
                     />
                   )}
               </div>

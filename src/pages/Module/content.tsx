@@ -27,7 +27,7 @@ export interface CycleDiagramData {
 
 export interface ModuleSegment {
   title: string;
-  type: "reading" | "interactive" | "game" | "quiz";
+   type: "reading" | "interactive" | "game" | "quiz" | "resources";
   interactiveType?: "scenario" | "reflection";
   content?: string;
   duration: string;
@@ -57,7 +57,7 @@ const module1Content: ModuleContent = {
   title: "Understanding the Foundations of PPPR and CLM",
   description:
     "This module lays the foundation for your learning journey, introducing global and African PPPR systems and placing CLM as a mechanism for accountability, justice, and participation.",
-  totalSegments: 17,
+   totalSegments: 21,
   segments: [
     {
       title: "Module Overview",
@@ -149,36 +149,6 @@ const module1Content: ModuleContent = {
             description: "Financial Intermediary Fund for PPR"
           }
       ],
-      summaryCards: [
-        {
-          title: "The New Public Health Order for Africa",
-          source: "Africa CDC (2021)",
-          type: "Policy Brief",
-          readingTime: "8 min",
-          description: "Africa CDC outlines a bold continental vision for health sovereignty built on five pillars: workforce, manufacturing, institutions, financing, and leadership. The framework shows how Africa is shifting from dependency to ownership in pandemic preparedness."
-        },
-        {
-          title: "International Health Regulations (2005) Overview",
-          source: "World Health Organization (2022)",
-          type: "Framework",
-          readingTime: "10 min",
-          description: "This overview explains the global legal foundation of PPR: how countries detect, report, and respond to outbreaks. It introduces the IHR's core capacities and reporting mechanisms such as JEE and SPAR."
-        },
-        {
-          title: "Joint External Evaluation Tool: 3rd Edition",
-          source: "WHO (2022)",
-          type: "Framework",
-          readingTime: "7 min",
-          description: "The JEE is the main global process for assessing national preparedness. This summary describes the JEE's indicators and scoring system."
-        },
-        {
-          title: "Pandemic Fund Overview",
-          source: "World Bank (2023)",
-          type: "Fact Sheet",
-          readingTime: "5 min",
-          description: "A concise explainer of how the Pandemic Fund mobilises financing for prevention, preparedness, and response. It highlights funding priorities and governance arrangements."
-        }
-      ],
     },
     {
       title: "Reflection: COVID-19 in Your Country",
@@ -196,6 +166,41 @@ const module1Content: ModuleContent = {
       },
       duration: "5 min",
     },
+     {
+       title: "Part 1: Read / Listen / Watch",
+       type: "resources",
+       duration: "30 min",
+       summaryCards: [
+         {
+           title: "The New Public Health Order for Africa",
+           source: "Africa CDC (2021)",
+           type: "Policy Brief",
+           readingTime: "8 min",
+           description: "Africa CDC outlines a bold continental vision for health sovereignty built on five pillars: workforce, manufacturing, institutions, financing, and leadership. The framework shows how Africa is shifting from dependency to ownership in pandemic preparedness."
+         },
+         {
+           title: "International Health Regulations (2005) Overview",
+           source: "World Health Organization (2022)",
+           type: "Framework",
+           readingTime: "10 min",
+           description: "This overview explains the global legal foundation of PPR: how countries detect, report, and respond to outbreaks. It introduces the IHR's core capacities and reporting mechanisms such as JEE and SPAR."
+         },
+         {
+           title: "Joint External Evaluation Tool: 3rd Edition",
+           source: "WHO (2022)",
+           type: "Framework",
+           readingTime: "7 min",
+           description: "The JEE is the main global process for assessing national preparedness. This summary describes the JEE's indicators and scoring system."
+         },
+         {
+           title: "Pandemic Fund Overview",
+           source: "World Bank (2023)",
+           type: "Fact Sheet",
+           readingTime: "5 min",
+           description: "A concise explainer of how the Pandemic Fund mobilises financing for prevention, preparedness, and response. It highlights funding priorities and governance arrangements."
+         }
+       ],
+     },
     {
       title: "Part 2: What is Community-Led Monitoring (CLM)?",
       type: "reading",
@@ -282,30 +287,35 @@ The true power of CLM is that it shifts power to communities, centers lived expe
         },
       ],
       duration: "5 min",
-      summaryCards: [
-        {
-          title: "Community-Led Monitoring Operational Guide",
-          source: "UNAIDS & Global Fund (2021)",
-          type: "Guide",
-          readingTime: "15 min",
-          description: "The foundational global manual on CLM. It details how communities collect, analyse, and use data to drive accountability. Learners will see CLM not as data extraction but as a process of empowerment."
-        },
-        {
-          title: "Community-Led Monitoring in Practice: Case Studies from East and Southern Africa",
-          source: "EANNASO (2023)",
-          type: "Case Study",
-          readingTime: "12 min",
-          description: "Real stories from Malawi, Kenya, and Tanzania illustrate CLM in action. Each example shows how local groups gathered evidence and used it to negotiate change with authorities."
-        },
-        {
-          title: "Communities at the Centre: CLM Success Stories",
-          source: "Global Fund (2022)",
-          type: "Case Study",
-          readingTime: "10 min",
-          description: "Short success stories show how communities have influenced national HIV, TB, and COVID-19 programmes. They demonstrate how data and advocacy merge to hold systems accountable."
-        }
-      ],
     },
+     {
+       title: "Part 2: Read / Listen / Watch",
+       type: "resources",
+       duration: "37 min",
+       summaryCards: [
+         {
+           title: "Community-Led Monitoring Operational Guide",
+           source: "UNAIDS & Global Fund (2021)",
+           type: "Guide",
+           readingTime: "15 min",
+           description: "The foundational global manual on CLM. It details how communities collect, analyse, and use data to drive accountability. Learners will see CLM not as data extraction but as a process of empowerment."
+         },
+         {
+           title: "Community-Led Monitoring in Practice: Case Studies from East and Southern Africa",
+           source: "EANNASO (2023)",
+           type: "Case Study",
+           readingTime: "12 min",
+           description: "Real stories from Malawi, Kenya, and Tanzania illustrate CLM in action. Each example shows how local groups gathered evidence and used it to negotiate change with authorities."
+         },
+         {
+           title: "Communities at the Centre: CLM Success Stories",
+           source: "Global Fund (2022)",
+           type: "Case Study",
+           readingTime: "10 min",
+           description: "Short success stories show how communities have influenced national HIV, TB, and COVID-19 programmes. They demonstrate how data and advocacy merge to hold systems accountable."
+         }
+       ],
+     },
     {
       title: "Part 3: Where PPPR and CLM Meet",
       type: "reading",
@@ -351,30 +361,35 @@ These examples show that CLM can act as an early warning system and feedback mec
       content:
         "Match community voices reporting early crisis signs with appropriate system responses. Build the trust bar by correctly connecting community alerts to institutional actions!",
       duration: "15 min",
-      summaryCards: [
-        {
-          title: "Why Community Data Matters More Than Ever",
-          source: "Bhekisisa Centre for Health Journalism (2022)",
-          type: "News Feature",
-          readingTime: "6 min",
-          description: "A vivid journalistic look at why official statistics often miss the real story. Using examples from South Africa's COVID-19 response, it argues that data from below can expose hidden inequalities."
-        },
-        {
-          title: "Reclaiming Preparedness: Community Knowledge in the Time of Crisis",
-          source: "Tian Johnson, Devex / Health Policy Watch (2023)",
-          type: "Article",
-          readingTime: "7 min",
-          description: "This piece challenges top-down preparedness models and calls for decolonial, community-led approaches. It captures the moral and political argument for integrating CLM into PPR systems."
-        },
-        {
-          title: "Dr John Nkengasong on Africa's New Public Health Order",
-          source: "Africa CDC YouTube (2022)",
-          type: "Video",
-          readingTime: "6 min",
-          description: "Dr Nkengasong explains why Africa must build its own institutions and manufacturing capacity for health security. His optimism and clarity anchor the idea that preparedness and self-determination go hand in hand."
-        }
-      ],
     },
+     {
+       title: "Part 3: Read / Listen / Watch",
+       type: "resources",
+       duration: "19 min",
+       summaryCards: [
+         {
+           title: "Why Community Data Matters More Than Ever",
+           source: "Bhekisisa Centre for Health Journalism (2022)",
+           type: "News Feature",
+           readingTime: "6 min",
+           description: "A vivid journalistic look at why official statistics often miss the real story. Using examples from South Africa's COVID-19 response, it argues that data from below can expose hidden inequalities."
+         },
+         {
+           title: "Reclaiming Preparedness: Community Knowledge in the Time of Crisis",
+           source: "Tian Johnson, Devex / Health Policy Watch (2023)",
+           type: "Article",
+           readingTime: "7 min",
+           description: "This piece challenges top-down preparedness models and calls for decolonial, community-led approaches. It captures the moral and political argument for integrating CLM into PPR systems."
+         },
+         {
+           title: "Dr John Nkengasong on Africa's New Public Health Order",
+           source: "Africa CDC YouTube (2022)",
+           type: "Video",
+           readingTime: "6 min",
+           description: "Dr Nkengasong explains why Africa must build its own institutions and manufacturing capacity for health security. His optimism and clarity anchor the idea that preparedness and self-determination go hand in hand."
+         }
+       ],
+     },
     {
       title: "Part 4: The Politics of Preparedness",
       type: "reading",
@@ -480,23 +495,28 @@ You now understand:
 
 Next, you'll take a comprehensive assessment to demonstrate your mastery of these foundations.`,
       duration: "5 min",
-      summaryCards: [
-        {
-          title: "Accountability, Health Systems and the Politics of Participation",
-          source: "Parker & Kelly (2021) Global Public Health 16(8)",
-          type: "Academic Article",
-          readingTime: "20 min",
-          description: "An academic but accessible paper linking accountability and participation within health systems. It helps learners situate CLM in a broader theoretical context."
-        },
-        {
-          title: "Decolonising Global Health Systems: Knowledge from the Margins",
-          source: "Abimbola S. (2023) BMJ Global Health 8(3)",
-          type: "Commentary",
-          readingTime: "10 min",
-          description: "A concise reflection on whose knowledge counts in global health governance. Abimbola argues for shifting epistemic power toward communities and local experts."
-        }
-      ],
     },
+     {
+       title: "Part 4: Read / Listen / Watch",
+       type: "resources",
+       duration: "30 min",
+       summaryCards: [
+         {
+           title: "Accountability, Health Systems and the Politics of Participation",
+           source: "Parker & Kelly (2021) Global Public Health 16(8)",
+           type: "Academic Article",
+           readingTime: "20 min",
+           description: "An academic but accessible paper linking accountability and participation within health systems. It helps learners situate CLM in a broader theoretical context."
+         },
+         {
+           title: "Decolonising Global Health Systems: Knowledge from the Margins",
+           source: "Abimbola S. (2023) BMJ Global Health 8(3)",
+           type: "Commentary",
+           readingTime: "10 min",
+           description: "A concise reflection on whose knowledge counts in global health governance. Abimbola argues for shifting epistemic power toward communities and local experts."
+         }
+       ],
+     },
   ],
 };
 
