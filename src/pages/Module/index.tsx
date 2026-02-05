@@ -65,6 +65,11 @@ const Module = () => {
     if (type === "interactive") return true;
     return false;
   };
+ 
+   // Check if segment is a resources segment (Read/Listen/Watch)
+   const isResourcesSegment = () => {
+     return currentContent.type === "resources";
+   };
 
   // Reset segment completion when changing segments
   useEffect(() => {
@@ -336,6 +341,9 @@ const Module = () => {
                   {currentContent.type === "interactive" && (
                     <Play className="h-4 w-4" />
                   )}
+                 {currentContent.type === "resources" && (
+                   <BookOpen className="h-4 w-4" />
+                 )}
                   {currentContent.duration}
                 </CardDescription>
               </div>
@@ -350,7 +358,13 @@ const Module = () => {
           </CardHeader>
           <CardContent>
             {/* Your existing content rendering logic */}
-            {currentContent.type === "game" ? (
+             {currentContent.type === "resources" ? (
+               <div className="py-4">
+                 {currentContent.summaryCards && currentContent.summaryCards.length > 0 && (
+                   <SummaryFlashCards cards={currentContent.summaryCards} />
+                 )}
+               </div>
+             ) : currentContent.type === "game" ? (
               <div className="py-4">
                 {currentContent.gameType === "evidence-chain" && (
                   <EvidenceChain onComplete={handleSegmentComplete} />
