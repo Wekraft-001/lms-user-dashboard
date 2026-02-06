@@ -78,70 +78,72 @@ export const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
     {
       id: 1,
       question:
-        "What is the most important principle when designing CLM data collection tools?",
+        "Which option best describes the purpose of the CLM cycle?",
       options: [
-        "Using standardized international templates",
-        "Ensuring tools are community-centered and reflect community priorities",
-        "Maximizing the number of questions asked",
-        "Focusing primarily on quantitative data",
+        "To collect as much data as possible for research institutions",
+        "To move communities through repeated steps of identifying gaps, collecting and analysing data, engaging duty bearers and tracking change",
+        "To replace all government monitoring systems",
+        "To focus only on stockouts of medicines",
       ],
       correctAnswer: 1,
       explanation:
-        "Community-centered design ensures that CLM tools address the issues that matter most to affected populations, not just donor or government interests.",
+        "The CLM cycle is a repeating process where communities identify problems, gather evidence, engage decision-makers and then monitor whether change actually happens.",
     },
     {
       id: 2,
       question:
-        "Which data collection method involves trained community members visiting facilities as clients?",
+        "Which of the following activities belongs most clearly to the 'Identify' stage of the CLM cycle?",
       options: [
-        "Facility exit interviews",
-        "Community scorecards",
-        "Mystery client visits",
-        "Focus group discussions",
+        "Writing a policy brief for parliament",
+        "Mapping which communities were excluded from services during the last outbreak",
+        "Comparing last year's and this year's data to see if conditions improved",
+        "Checking whether a ministry has implemented its commitments",
       ],
-      correctAnswer: 2,
+      correctAnswer: 1,
       explanation:
-        "Mystery client visits involve trained community members who visit facilities as clients to assess service quality from a user perspective.",
+        "Identification is about understanding where and for whom systems are failing, before tools and surveys are designed.",
     },
     {
       id: 3,
       question:
-        "What is the most important quality for effective community monitors?",
+        "What best captures the idea of 'Data for Justice' in CLM?",
       options: [
-        "Having formal education in public health",
-        "Being trusted and respected within their community",
-        "Having experience working for government",
-        "Being fluent in English",
+        "Collecting data only when donors request it",
+        "Using community-generated evidence to shift power, resources and narratives in favour of marginalised groups",
+        "Sharing all data publicly, regardless of risk",
+        "Prioritising national averages over disaggregated data",
       ],
       correctAnswer: 1,
       explanation:
-        "Trust is foundational for CLM. Community monitors must be known and respected within their communities to collect authentic data and facilitate meaningful dialogue.",
+        "Data for Justice is about using evidence to advance equity and rights, not only to describe problems.",
     },
     {
       id: 4,
-      question: "Why is informed consent essential in CLM data collection?",
+      question:
+        "Which ethical concern is especially important when CLM monitors highly stigmatised or criminalised communities?",
       options: [
-        "It is required by donors",
-        "It protects participants and upholds ethical principles",
-        "It makes data more accurate",
-        "It speeds up data collection",
+        "Making questionnaires as long as possible",
+        "Ensuring informed consent, confidentiality and safety in how data is collected and shared",
+        "Handing all raw data to security agencies",
+        "Avoiding any engagement with those communities",
       ],
       correctAnswer: 1,
       explanation:
-        "Informed consent is an ethical requirement that protects participants' rights, ensures they understand how their information will be used, and maintains trust in the CLM process.",
+        "Rights-based CLM requires strong safeguards around consent and confidentiality, particularly where people face legal or social risks.",
     },
     {
       id: 5,
-      question: "What should be the primary focus when analyzing CLM data?",
+      question:
+        "Why is it important to track what happens after CLM findings are shared with duty bearers?",
       options: [
-        "Creating impressive visualizations for donors",
-        "Identifying patterns that inform advocacy and drive accountability",
-        "Comparing results with other countries",
-        "Validating government statistics",
+        "Because it helps CLM teams apply for more funding",
+        "Because without tracking, communities cannot know whether commitments were implemented or if new strategies are needed",
+        "Because laws require a fixed number of follow-up visits",
+        "Because tracking is easier than collecting new data",
       ],
       correctAnswer: 1,
       explanation:
-        "CLM data analysis should focus on identifying patterns and insights that can be used for advocacy and to hold duty-bearers accountable for service quality.",
+        "Tracking closes the loop. It shows whether evidence leads to real change and informs the next round of monitoring and advocacy.",
     },
   ],
   3: [

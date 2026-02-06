@@ -17,6 +17,7 @@ import AuthCallback from "./pages/AuthCallback";
 import Policy from "./pages/Policy";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import MyReflections from "./pages/MyReflections";
 
 const queryClient = new QueryClient();
 
@@ -81,6 +82,7 @@ const App = () => {
             <Route path="/policy" element={<Policy />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/reflections/my-reflections" element={<MyReflections />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

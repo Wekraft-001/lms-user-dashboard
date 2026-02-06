@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
@@ -79,14 +79,55 @@ export const ReflectionActivity = ({
   const [responses, setResponses] = useState<Record<number, string>>({});
   const [isComplete, setIsComplete] = useState(false);
   const [showError, setShowError] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [previouslyCompleted, setPreviouslyCompleted] = useState(false);
 
   const currentPrompt = prompts[currentPromptIndex];
   const currentResponse = responses[currentPrompt?.id] || "";
   const isLastPrompt = currentPromptIndex === prompts.length - 1;
   const isValidLength = currentResponse.trim().length >= 10;
   const isQuality = isQualityResponse(currentResponse);
+
+  // Fetch existing reflection on mount
+  useEffect(() => {
+    const fetchExistingReflection = async () => {
+      if (!token || !moduleId || !segmentId) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const response = await axios.get(
+          `${apiURL}/reflections/by-segment?moduleId=${moduleId}&segmentId=${segmentId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (response.data && response.data.responses) {
+          // Populate responses from saved data
+          const savedResponses: Record<number, string> = {};
+          response.data.responses.forEach((r: { promptId: number; response: string }) => {
+            savedResponses[r.promptId] = r.response;
+          });
+          setResponses(savedResponses);
+          setIsComplete(true);
+          setPreviouslyCompleted(true);
+          onComplete?.();
+        }
+      } catch (error) {
+        // No saved reflection, that's okay
+        console.log("No existing reflection found");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchExistingReflection();
+  }, [moduleId, segmentId, token, apiURL]);
 
   const handleResponseChange = (value: string) => {
     setShowError(false);
@@ -160,19 +201,36 @@ export const ReflectionActivity = ({
     setShowError(false);
   };
 
+  if (isLoading) {
+    return (
+      <Card className="p-6">
+        <div className="flex items-center justify-center gap-2">
+          <Loader2 className="h-5 w-5 animate-spin text-primary" />
+          <span className="text-muted-foreground">Loading reflection...</span>
+        </div>
+      </Card>
+    );
+  }
+
   if (isComplete) {
     return (
       <div className="space-y-6">
         <Card className="p-6 bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-950/20 dark:to-teal-950/20 border-green-200 dark:border-green-800">
           <div className="text-center space-y-4">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900">
-              <Sparkles className="h-8 w-8 text-green-600" />
+              {previouslyCompleted ? (
+                <CheckCircle2 className="h-8 w-8 text-green-600" />
+              ) : (
+                <Sparkles className="h-8 w-8 text-green-600" />
+              )}
             </div>
             <h3 className="text-xl font-semibold text-foreground">
-              Reflection Complete!
+              {previouslyCompleted ? "Reflection Already Shared!" : "Reflection Complete!"}
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto">
-              Thank you for taking the time to reflect deeply. Your thoughts contribute to building a more community-centered understanding of health systems.
+              {previouslyCompleted 
+                ? "You've already shared your thoughts on this topic. Here are your responses:"
+                : "Thank you for taking the time to reflect deeply. Your thoughts contribute to building a more community-centered understanding of health systems."}
             </p>
           </div>
         </Card>
