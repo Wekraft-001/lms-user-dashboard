@@ -7,7 +7,7 @@
 export interface SummaryCard {
   title: string;
   source: string;
-  type: "Policy Brief" | "Framework" | "Case Study" | "Article" | "Video" | "Guide" | "Fact Sheet" | "Commentary" | "News Feature" | "Academic Article";
+  type: "Policy Brief" | "Framework" | "Case Study" | "Article" | "Video" | "Guide" | "Fact Sheet" | "Commentary" | "News Feature" | "Academic Article" | "Brief Article" | "Case Study Collection" | "Audio/Video Panel" | "Tool" | "Webinar Recording" | "Podcast" | "Infographic";
   readingTime: string;
   description: string;
   link?: string;
@@ -20,11 +20,15 @@ interface SummaryFlashCardsProps {
 const getTypeIcon = (type: SummaryCard["type"]) => {
   switch (type) {
     case "Video":
+    case "Audio/Video Panel":
+    case "Webinar Recording":
       return <Video className="h-4 w-4" />;
     case "Policy Brief":
     case "Framework":
     case "Guide":
     case "Fact Sheet":
+    case "Tool":
+    case "Infographic":
       return <BookOpen className="h-4 w-4" />;
     default:
       return <BookOpen className="h-4 w-4" />;
@@ -34,16 +38,25 @@ const getTypeIcon = (type: SummaryCard["type"]) => {
 const getTypeColor = (type: SummaryCard["type"]) => {
   switch (type) {
     case "Video":
+    case "Audio/Video Panel":
+    case "Webinar Recording":
       return "bg-primary/10 text-primary border-primary/20";
     case "Policy Brief":
     case "Framework":
+    case "Tool":
       return "bg-secondary/10 text-secondary border-secondary/20";
     case "Case Study":
+    case "Case Study Collection":
     case "News Feature":
       return "bg-accent/10 text-accent-foreground border-accent/20";
     case "Academic Article":
     case "Commentary":
+    case "Brief Article":
       return "bg-muted text-muted-foreground border-muted";
+    case "Podcast":
+      return "bg-purple-500/10 text-purple-600 border-purple-500/20";
+    case "Infographic":
+      return "bg-emerald-500/10 text-emerald-600 border-emerald-500/20";
     default:
       return "bg-success/10 text-success border-success/20";
   }

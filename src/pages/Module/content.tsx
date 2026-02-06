@@ -521,93 +521,439 @@ Next, you'll take a comprehensive assessment to demonstrate your mastery of thes
 };
 
 const module2Content: ModuleContent = {
-  title: "CLM Data Collection and Analysis",
+  title: "The Principles and Practice of CLM",
   description:
-    "Learn how to design and implement effective CLM data collection methods and analyze community-generated data for advocacy.",
-  totalSegments: 4,
+    "This module goes deeper into the practice of CLM. It answers two big questions: How does CLM actually work in real life, from the first complaint to the final policy change? And how can we treat data not just as information, but as a tool for justice?",
+  totalSegments: 18,
   segments: [
     {
       title: "Module 2 Overview",
       type: "reading",
-      content: `This module explores the practical aspects of CLM data collection and analysis. You will learn how to design data collection tools, train community monitors, and analyze data to generate actionable insights.
+      content: `In Module 1, you explored how global and African PPR systems are built, and where communities often find themselves on the outside looking in. You were introduced to Community-Led Monitoring (CLM) as one way to change that.
 
-      <b>Learning Objectives:</b>
+Module 2 goes deeper into the practice of CLM. It answers two big questions:
 
-      By the end of this module, you will be able to:
+<ol>
+<li>How does CLM actually work in real life, from the first complaint to the final policy change?</li>
+<li>How can we treat data not just as information, but as a tool for justice?</li>
+</ol>
 
-      <ol>
-        <li>Design effective CLM data collection instruments</li>
-        <li>Train and support community monitors</li>
-        <li>Analyze community-generated data for patterns and insights</li>
-        <li>Present findings in compelling ways for advocacy</li>
-      </ol>`,
+We do this through two sub-modules:
+<ul>
+<li><b>The CLM Cycle:</b> identifying gaps, collecting and analysing evidence, engaging duty bearers, and tracking whether anything really changes.</li>
+<li><b>Data for Justice:</b> how communities use evidence to shift power, while protecting people from harm.</li>
+</ul>
+
+<b>Learning Objectives:</b>
+
+By the end of this module, you will be able to:
+
+<ol>
+<li>Explain each step of the CLM cycle and give at least one practical example from your context.</li>
+<li>Describe how CLM can be expanded to include PPR issues such as laboratories, IPC, surveillance, immunisation and emergency response.</li>
+<li>Recognise key ethical considerations in community data collection, storage and use.</li>
+<li>Identify concrete ways CLM amplifies community voices in health system and PPR decision-making spaces.</li>
+</ol>`,
       duration: "5 min",
     },
     {
-      title: "Part 1: Designing Data Collection Tools",
+      title: "Part 1: The CLM Cycle in Practice",
       type: "reading",
-      content: `Effective CLM begins with well-designed data collection tools. These tools must be community-owned, culturally appropriate, and focused on the issues that matter most to affected populations.
+      content: `<b>1.1 CLM as a Cycle, Not a Project</b>
 
-<b>Key Principles for Tool Design:</b>
+CLM is not a workshop, a survey or a report. It is a cycle of actions that communities repeat and refine over time. We describe the CLM Cycle as:
 
+<b>Identify → Collect → Analyse → Share → Act → Track → Re-design</b>
+
+In reality, this looks like people:
 <ul>
-<li><b>Community-Centered:</b> Questions should reflect community priorities, not just donor or government interests</li>
-<li><b>Accessible:</b> Tools should be available in local languages and appropriate for varying literacy levels</li>
-<li><b>Actionable:</b> Data collected should directly inform advocacy and accountability efforts</li>
-<li><b>Ethical:</b> Ensure informed consent, data protection, and do-no-harm principles</li>
+<li>A peer educator in Kano keeping notes on who is turned away from vaccination sites.</li>
+<li>A sex worker organiser in Nairobi recording how emergency wards treat clients with fever and rash.</li>
+<li>A community health worker in Lusaka checking whether the oxygen cylinders promised in a meeting actually arrived.</li>
 </ul>
 
-<b>Types of Data Collection Methods:</b>
+When the cycle is working, communities do not only document problems. They shape solutions and watch to see if those solutions hold.`,
+      cycleDiagram: {
+        title: "The CLM Cycle",
+        steps: ["Identify", "Collect", "Analyse", "Share", "Act", "Track", "Re-design"]
+      },
+      duration: "5 min",
+    },
+    {
+      title: "Step 1: Identify Gaps and Priorities",
+      type: "reading",
+      content: `<b>1.2 Step 1: Identify Gaps and Priorities</b>
+
+CLM begins with a simple question:
+
+<i>"Where are people being failed, and who is being failed first?"</i>
+
+Communities map:
+<ul>
+<li>Services that collapse early during crises.</li>
+<li>Groups who are consistently invisible in official statistics.</li>
+<li>Places where fear, stigma or corruption keep people away from care.</li>
+</ul>
+
+<b>For PPR, this could include:</b>
+<ul>
+<li>Clinics where infection prevention and control is weak, despite national claims of progress.</li>
+<li>Rural areas where immunisation outreach disappears long before roads are officially declared unsafe.</li>
+<li>Border communities where migrant workers are excluded from emergency plans.</li>
+</ul>
+
+<b>This step is political.</b> It tells us whose reality will define the monitoring agenda.`,
+      duration: "4 min",
+    },
+    {
+      title: "Step 2: Collect Data",
+      type: "reading",
+      content: `<b>1.3 Step 2: Collect Data</b>
+
+Once priorities are clear, communities design or adapt tools: surveys, observation checklists, focus-group guides, key-informant interviews, simple digital forms.
+
+<b>Good CLM data collection answers at least four questions:</b>
 
 <ol>
-<li><b>Facility exit interviews:</b> Short surveys with service users immediately after receiving services</li>
-<li><b>Mystery client visits:</b> Trained community members visit facilities as clients to assess service quality</li>
-<li><b>Community scorecards:</b> Participatory assessments where communities rate services against agreed standards</li>
-<li><b>Focus group discussions:</b> In-depth conversations with specific population groups</li>
-</ol>`,
+<li><b>Availability:</b> Is the service or commodity there at all?</li>
+<li><b>Accessibility:</b> Can people reach it physically, financially and legally?</li>
+<li><b>Acceptability:</b> Is it delivered in a way that respects dignity and rights?</li>
+<li><b>Quality:</b> Is it safe, reliable and effective?</li>
+</ol>
+
+<b>In a PPR context, CLM data might track:</b>
+<ul>
+<li>Turnaround time for diagnostic tests for respiratory illnesses.</li>
+<li>Presence of handwashing facilities, soap and safe waste disposal in clinics.</li>
+<li>Whether antibiotics are overused in private pharmacies while public clinics face stockouts.</li>
+<li>Whether people in informal settlements receive timely and accurate risk-communication messages.</li>
+</ul>
+
+The crucial point is that <b>communities decide what to count</b>, based on what threatens their health and rights.`,
+      duration: "5 min",
+    },
+    {
+      title: "Step 3-5: Analyse, Share, and Act",
+      type: "reading",
+      content: `<b>1.4 Step 3: Analyse and Interpret</b>
+
+Data alone does not change anything. It needs interpretation.
+
+Community analysis sessions ask questions such as:
+<ul>
+<li>What patterns are we seeing across facilities, districts or groups?</li>
+<li>Which communities are affected most severely?</li>
+<li>How do these patterns connect to policies, budgets or PPR plans?</li>
+<li>From a community perspective, what would "success" look like in six months?</li>
+</ul>
+
+When communities lead analysis, they decide which findings are politically important, not only which are statistically significant.
+
+<b>1.5 Step 4: Share and Negotiate</b>
+
+CLM is about evidence with a destination. Communities use multiple formats to share their findings:
+<ul>
+<li>Short reports and slide decks for health managers and planners.</li>
+<li>Community meetings and local radio discussions so that people hear the results.</li>
+<li>One-page briefs or infographics tailored for PPR technical working groups.</li>
+</ul>
+
+Sharing is followed by <b>negotiation</b>. CLM is not just "naming and shaming." It is structured dialogue where communities come with evidence and clear asks:
+<ul>
+<li>"Increase clinic opening hours during outbreaks."</li>
+<li>"Prioritise oxygen and PPE for primary care, not only central hospitals."</li>
+<li>"Include key populations in your risk communication strategy."</li>
+</ul>
+
+<b>1.6 Step 5: Act, Track and Re-design</b>
+
+Implementation is where many monitoring efforts die. CLM insists on a different ending.
+
+Communities track:
+<ul>
+<li>Did staff get hired where shortages were documented?</li>
+<li>Did oxygen supplies or IPC conditions improve?</li>
+<li>Were migrants or key populations included in revised emergency plans?</li>
+</ul>
+
+If nothing changes, communities:
+<ul>
+<li>Escalate through coalition action, media and advocacy.</li>
+<li>Adjust their tools to better capture the problem.</li>
+<li>Revisit strategies and alliances.</li>
+</ul>
+
+The cycle does not stop. It becomes sharper. Over time, this is how CLM grows from a data exercise into a <b>governance practice</b>.`,
+      duration: "8 min",
+    },
+    {
+      title: "Reflection: The CLM Cycle in Your Context",
+      type: "interactive",
+      interactiveType: "reflection",
+      reflectionData: {
+        title: "Reflecting on the CLM Cycle",
+        context: "Think of one monitoring activity you know about, or imagine one in your context.",
+        prompts: [
+          { id: 1, question: "Which step of the CLM cycle has been strongest in monitoring efforts you've seen or participated in? Why do you think that is?" },
+          { id: 2, question: "Which step has been weakest? What barriers prevent this step from being done well?" },
+          { id: 3, question: "If you could change one thing about how monitoring is done in your context, what would it be?" }
+        ],
+        closingQuote: "Many CLM initiatives are strong on data collection but weak on tracking change and budgets. Recognising this pattern is the first step to breaking it."
+      },
+      duration: "5 min",
+    },
+    {
+      title: "Close the Loop Game",
+      type: "game",
+      gameType: "evidence-chain",
+      content: "Complete the CLM cycle by matching real-life activities to the correct stage: Identify, Collect, Analyse, Share, Act, Track. By repeating rounds, you'll internalise the cycle and see that leaving out a stage weakens the entire process.",
       duration: "10 min",
     },
     {
-      title: "Part 2: Training Community Monitors",
+      title: "Part 1: Read / Listen / Watch",
+      type: "resources",
+      duration: "30 min",
+      summaryCards: [
+        {
+          title: "Community Monitoring as a Cycle, Not a One-Off",
+          source: "CLM Technical Brief (2023)",
+          type: "Brief Article",
+          readingTime: "15 min",
+          description: "This article explains CLM as a living process that moves through several connected stages: identifying priority gaps, collecting evidence, analysing and interpreting findings, sharing results with both communities and duty bearers."
+        },
+        {
+          title: "From Complaint to Commitment: Case Stories",
+          source: "Community-Led Accountability Network",
+          type: "Case Study Collection",
+          readingTime: "60 min",
+          description: "Real stories that show how community complaints were turned into service improvements through systematic monitoring and negotiation."
+        },
+        {
+          title: "Switching Up the Dial on Community Voices",
+          source: "UHC2030 Partner Sessions",
+          type: "Audio/Video Panel",
+          readingTime: "25 min",
+          description: "Civil society leaders reflect on their experience of engaging health systems with community-generated evidence. They examine where accountability processes stall and strategies to keep evidence alive across planning cycles.",
+          link: "https://www.uhc2030.org/news-and-events/news/partner-insights/partner-insights/switching-up-the-dial-on-community-voices-for-uhc-545649/"
+        }
+      ],
+    },
+    {
+      title: "Part 2: Data for Justice",
       type: "reading",
-      content: `Community monitors are the backbone of CLM. They are trusted members of their communities who collect data, facilitate dialogues, and advocate for change.
+      content: `<b>2.1 Data is Never Neutral</b>
 
-<b>Essential Training Topics:</b>
-
+In many health systems, data is treated as if it floats above politics. But every dataset reflects choices:
 <ul>
-<li>Understanding the purpose and principles of CLM</li>
-<li>Data collection techniques and tool usage</li>
-<li>Ethics, consent, and confidentiality</li>
-<li>Safety and self-care</li>
-<li>Documentation and reporting</li>
+<li>Who is counted and who is not.</li>
+<li>Which questions are asked and which are ignored.</li>
+<li>Which findings are amplified and which are quietly buried.</li>
 </ul>
 
-<b>Qualities of Effective Community Monitors:</b>
+CLM confronts this directly. It asks:
+<ul>
+<li>Why are deaths in informal settlements undercounted?</li>
+<li>Why are key populations absent from official PPR reports?</li>
+<li>Why do surveillance systems record cases but not the violence and stigma that shape who seeks care?</li>
+</ul>
 
-<ol>
-<li><b>Trusted:</b> Known and respected within their community</li>
-<li><b>Representative:</b> Reflect the diversity of the community (age, gender, key population status)</li>
-<li><b>Committed:</b> Motivated by community service, not just compensation</li>
-<li><b>Connected:</b> Have relationships with both community members and service providers</li>
-</ol>`,
+<b>Data for Justice</b> means using information to expose and correct these patterns, not to hide them.
+
+<b>2.2 Ethical Principles in CLM Data</b>
+
+Because CLM works with real people in real communities, ethics cannot be outsourced to a separate committee. They must be part of the daily practice of monitoring.
+
+<b>Key ethical questions:</b>
+<ul>
+<li><b>Consent:</b> Do people understand what monitoring is about, what will be recorded, and how it will be used? Can they say no without losing access to services?</li>
+<li><b>Confidentiality:</b> How are notes, recordings and digital forms stored? Who can see them?</li>
+<li><b>Safety and non-harm:</b> Could a specific quote or photo expose someone to violence, arrest or stigma?</li>
+<li><b>Collective benefit:</b> Will this evidence ultimately help the communities who provided it?</li>
+</ul>
+
+These questions become even sharper when CLM monitors PPR issues that intersect with law enforcement or politics.`,
+      duration: "6 min",
+    },
+    {
+      title: "Justice-Oriented Indicators",
+      type: "reading",
+      content: `<b>2.3 Justice-Oriented Indicators</b>
+
+Data for justice is not only about how you collect and share information. It is also about <b>what you decide to measure</b>.
+
+<b>Examples of justice-oriented CLM indicators in a PPR context:</b>
+<ul>
+<li>Availability and affordability of diagnostic tests for respiratory infections in rural clinics.</li>
+<li>Presence and actual use of IPC measures in facilities that serve poor or marginalised communities.</li>
+<li>Reports of people being turned away from emergency services because of migration status, gender identity or occupation.</li>
+<li>Drop-off in health service utilisation during crises, disaggregated by location, gender, age and key population status.</li>
+<li>Whether communities are actively involved in designing and delivering risk-communication campaigns.</li>
+</ul>
+
+<b>2.4 Turning Data into Power</b>
+
+Evidence becomes justice when it changes decisions, resources or narratives. That requires strategy.
+
+<b>Some common pathways:</b>
+<ul>
+<li><b>Evidence to negotiation:</b> Presenting CLM findings at facility, district or national level and negotiating concrete action plans with timelines.</li>
+<li><b>Evidence to budget:</b> Comparing CLM findings with available budget information to show where spending does not match community priorities.</li>
+<li><b>Evidence to representation:</b> Using CLM data to make the case for community seats in PPR decision-making spaces.</li>
+<li><b>Evidence to narrative:</b> Turning numbers into stories that journalists, community leaders and politicians cannot ignore.</li>
+</ul>
+
+At every step, communities decide which risks they are willing to take, and which alliances will make action more likely.`,
+      duration: "6 min",
+    },
+    {
+      title: "Reflection: When Evidence Hurts",
+      type: "interactive",
+      interactiveType: "reflection",
+      reflectionData: {
+        title: "Reflective Activity: When Evidence Hurts",
+        context: "Think of a situation, real or hypothetical, where sharing CLM data publicly could put someone at risk. Examples: key populations in a criminalised setting, undocumented migrants, or whistle-blower health workers.",
+        prompts: [
+          { id: 1, question: "Describe the risk: who could be harmed, and how?" },
+          { id: 2, question: "Suggest at least two ways CLM teams could still use the evidence while protecting those involved." },
+          { id: 3, question: "Reflect on who should have the final say on how that data is used." }
+        ],
+        closingQuote: "Strong evidence protects systems only when it first protects people. Protection is not the opposite of accountability—it is what makes accountability sustainable."
+      },
       duration: "8 min",
+    },
+    {
+      title: "Knowledge Check: Data for Justice",
+      type: "quiz",
+      question: "What best captures the idea of 'Data for Justice' in CLM?",
+      options: [
+        { id: "a", text: "Collecting data only when donors request it", isCorrect: false },
+        { id: "b", text: "Using community-generated evidence to shift power, resources and narratives in favour of marginalised groups", isCorrect: true },
+        { id: "c", text: "Sharing all data publicly, regardless of risk", isCorrect: false },
+        { id: "d", text: "Prioritising national averages over disaggregated data", isCorrect: false }
+      ],
+      duration: "3 min",
+    },
+    {
+      title: "Risk or Rights Game",
+      type: "game",
+      gameType: "voices-first",
+      content: "A decision-making game where you explore ethical choices in CLM data use. Each round presents a scenario with possible actions. Choose wisely to balance Safety, Impact, and Trust. You'll see that there is rarely a perfect choice, but some choices balance these factors better than others.",
+      duration: "12 min",
+    },
+    {
+      title: "Part 2: Read / Listen / Watch",
+      type: "resources",
+      duration: "40 min",
+      summaryCards: [
+        {
+          title: "Ethics in Community-Led Monitoring: A Practical Checklist",
+          source: "HIS Engage Scotland (Adapted)",
+          type: "Tool",
+          readingTime: "10 min",
+          description: "A step-by-step guide to putting ethics into everyday CLM practice. It walks teams through informed consent, confidentiality, data security and community control, with focus on sensitive PPR contexts.",
+          link: "https://www.hisengage.scot/engaging-communities/participation-toolkit/ethical-checklist/"
+        },
+        {
+          title: "Counting What Counts: Equity Indicators in CLM",
+          source: "Global CLM Network Webinar",
+          type: "Webinar Recording",
+          readingTime: "20 min",
+          description: "Activists from three regions explain how they adapted their CLM indicators to better capture inequities in access to diagnostics, IPC, vaccines and emergency care."
+        },
+        {
+          title: "Data Is People (Podcast)",
+          source: "Community Voices Series",
+          type: "Podcast",
+          readingTime: "12 min",
+          description: "Short testimonies from individuals whose experiences only began to matter to the system once they were recorded and presented through CLM."
+        }
+      ],
+    },
+    {
+      title: "Case Study: Tracking Oxygen and IPC",
+      type: "reading",
+      content: `<b>Case Study: Tracking Oxygen and IPC in a Provincial Hospital Network</b>
+
+A coalition of community organisations in a Southern African country had been using CLM to monitor HIV and TB services. After severe COVID-19 waves, they decided to include PPR issues in their work.
+
+Together with local health workers and community volunteers, they:
+<ul>
+<li>Reviewed national emergency and health security plans to understand existing commitments on oxygen and IPC.</li>
+<li>Added new questions to their CLM tools on oxygen cylinder availability, refill frequency, bed spacing, handwashing facilities and PPE use.</li>
+<li>Collected data from clinics and district hospitals across two provinces.</li>
+<li>Analysed the results and found that oxygen cylinders were often present but empty, and that IPC standards were weakest in facilities serving poorer communities.</li>
+<li>Produced a short report and visual summary and presented it to provincial health managers, national planners and civil society allies.</li>
+</ul>
+
+<b>Results:</b> Within months, provincial authorities shifted part of their health budget toward oxygen refills and IPC supplies for peripheral facilities. Follow-up CLM rounds showed improvements, although not yet evenly across all sites.
+
+<b>Why this matters:</b>
+<ul>
+<li>It illustrates the CLM cycle from identification to tracking change.</li>
+<li>It shows Data for Justice in practice: evidence used to shift resources and correct inequities.</li>
+<li>It demonstrates how CLM can plug directly into national PPR planning and monitoring processes.</li>
+</ul>`,
+      duration: "6 min",
+    },
+    {
+      title: "Reflection: Equity Indicator",
+      type: "interactive",
+      interactiveType: "reflection",
+      reflectionData: {
+        title: "Case Study Reflection",
+        context: "Based on the oxygen and IPC case study you just read, consider how you might strengthen CLM's focus on equity.",
+        prompts: [
+          { id: 1, question: "If you were part of this monitoring team, what one extra indicator would you add to capture equity concerns, and why?" },
+          { id: 2, question: "How would you ensure that the communities most affected by IPC gaps are involved in the monitoring process itself?" }
+        ],
+        closingQuote: "Equity is not just about what we measure—it's about who does the measuring and who benefits from the findings."
+      },
+      duration: "5 min",
     },
     {
       title: "Module 2 Summary",
       type: "reading",
-      content: `<b>Key Takeaways:</b>
+      content: `<b>Key Takeaways from Module 2:</b>
 
 <ul>
-<li>Effective CLM data collection requires community-centered, accessible, and ethical tools</li>
-<li>Community monitors must be carefully selected and thoroughly trained</li>
-<li>Data analysis should focus on patterns that inform advocacy</li>
-<li>Findings must be shared in ways that drive accountability</li>
+<li><b>CLM is a cycle of action, not a one-time project.</b> Identify, collect, analyse, share, act, track and re-design.</li>
+<li><b>When communities lead every stage of this cycle</b>, CLM becomes a governance practice, not only a data exercise.</li>
+<li><b>Data is never neutral.</b> Data for Justice means choosing what to measure, how to measure it, and how to use it in ways that advance equity and protect people from harm.</li>
+<li><b>Integrated into PPR</b>, CLM provides both an early warning system and a moral compass—ensuring that preparedness is judged not only by technical capacity but by whose lives are made safer.</li>
 </ul>
 
 <strong>You've completed Module 2!</strong>
 
-Next, you'll take an assessment to demonstrate your understanding of CLM data collection and analysis.`,
-      duration: "5 min",
+Next, you'll take an assessment to demonstrate your understanding of the principles and practice of CLM.`,
+      duration: "4 min",
+    },
+    {
+      title: "Part 4: Read / Listen / Watch",
+      type: "resources",
+      duration: "30 min",
+      summaryCards: [
+        {
+          title: "The Evidence Safety Filter",
+          source: "CLM Ethics Working Group",
+          type: "Infographic",
+          readingTime: "5 min",
+          description: "A visual guide showing how raw community evidence passes through safety filters (anonymisation, closed-door advocacy, secure storage, community control) before becoming responsible evidence products that drive action without harm."
+        },
+        {
+          title: "Community Data Governance Principles",
+          source: "Open Data Institute (2023)",
+          type: "Framework",
+          readingTime: "15 min",
+          description: "Principles for ensuring communities maintain control over data about them, including consent frameworks, data minimisation, and collective decision-making about data use."
+        },
+        {
+          title: "From Monitoring to Movement: CLM and Social Accountability",
+          source: "EANNASO & Partners (2024)",
+          type: "Policy Brief",
+          readingTime: "10 min",
+          description: "Analysis of how CLM has evolved from a technical monitoring approach into a social movement strategy that challenges power and transforms governance."
+        }
+      ],
     },
   ],
 };
