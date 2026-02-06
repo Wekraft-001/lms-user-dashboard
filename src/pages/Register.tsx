@@ -476,7 +476,7 @@ const Register = () => {
                   </>
                 )}
 
-                {step === 1 && (
+                {/* {step === 1 && (
                   <>
                     <div className="relative my-6">
                       <div className="absolute inset-0 flex items-center">
@@ -516,7 +516,7 @@ const Register = () => {
                       Continue with Google
                     </Button>
                   </>
-                )}
+                )} */}
 
                 <div className="text-center text-sm text-muted-foreground pt-4">
                   Already have an account?{" "}

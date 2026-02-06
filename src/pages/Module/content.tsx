@@ -559,7 +559,7 @@ By the end of this module, you will be able to:
     {
       title: "Part 1: The CLM Cycle in Practice",
       type: "reading",
-      content: `<b>1.1 CLM as a Cycle, Not a Project</b>
+      content: `<b>CLM as a Cycle, Not a Project</b>
 
 CLM is not a workshop, a survey or a report. It is a cycle of actions that communities repeat and refine over time. We describe the CLM Cycle as:
 
@@ -582,7 +582,7 @@ When the cycle is working, communities do not only document problems. They shape
     {
       title: "Step 1: Identify Gaps and Priorities",
       type: "reading",
-      content: `<b>1.2 Step 1: Identify Gaps and Priorities</b>
+      content: `<b>Step 1: Identify Gaps and Priorities</b>
 
 CLM begins with a simple question:
 
@@ -608,7 +608,7 @@ Communities map:
     {
       title: "Step 2: Collect Data",
       type: "reading",
-      content: `<b>1.3 Step 2: Collect Data</b>
+      content: `<b>Step 2: Collect Data</b>
 
 Once priorities are clear, communities design or adapt tools: surveys, observation checklists, focus-group guides, key-informant interviews, simple digital forms.
 
@@ -635,7 +635,7 @@ The crucial point is that <b>communities decide what to count</b>, based on what
     {
       title: "Step 3-5: Analyse, Share, and Act",
       type: "reading",
-      content: `<b>1.4 Step 3: Analyse and Interpret</b>
+      content: `<b>Step 3: Analyse and Interpret</b>
 
 Data alone does not change anything. It needs interpretation.
 
@@ -649,7 +649,7 @@ Community analysis sessions ask questions such as:
 
 When communities lead analysis, they decide which findings are politically important, not only which are statistically significant.
 
-<b>1.5 Step 4: Share and Negotiate</b>
+<b>Step 4: Share and Negotiate</b>
 
 CLM is about evidence with a destination. Communities use multiple formats to share their findings:
 <ul>
@@ -665,7 +665,7 @@ Sharing is followed by <b>negotiation</b>. CLM is not just "naming and shaming."
 <li>"Include key populations in your risk communication strategy."</li>
 </ul>
 
-<b>1.6 Step 5: Act, Track and Re-design</b>
+<b>Step 5: Act, Track and Re-design</b>
 
 Implementation is where many monitoring efforts die. CLM insists on a different ending.
 
@@ -719,21 +719,23 @@ The cycle does not stop. It becomes sharper. Over time, this is how CLM grows fr
           source: "CLM Technical Brief (2023)",
           type: "Brief Article",
           readingTime: "15 min",
-          description: "This article explains CLM as a living process that moves through several connected stages: identifying priority gaps, collecting evidence, analysing and interpreting findings, sharing results with both communities and duty bearers."
+          description: "This article explains CLM as a living process that moves through several connected stages: identifying priority gaps, collecting evidence, analysing and interpreting findings, sharing results with both communities and duty bearers, acting on commitments, tracking whether change occurs, and redesigning the approach when it does not. Each stage depends on the others. When one stage is weak or missing, the entire cycle loses power.",
+          link: "https://www.unaids.org/sites/default/files/media_asset/JC3085E_community-led-monitoring-in-action_en.pdf"
         },
         {
           title: "From Complaint to Commitment: Case Stories",
           source: "Community-Led Accountability Network",
           type: "Case Study Collection",
           readingTime: "60 min",
-          description: "Real stories that show how community complaints were turned into service improvements through systematic monitoring and negotiation."
+          description: "Real stories that show how community complaints were turned into service improvements through systematic monitoring and negotiation.",
+           link: "https://www.unaids.org/sites/default/files/media_asset/JC3085E_community-led-monitoring-in-action_en.pdf"
         },
         {
           title: "Switching Up the Dial on Community Voices",
           source: "UHC2030 Partner Sessions",
           type: "Audio/Video Panel",
           readingTime: "25 min",
-          description: "Civil society leaders reflect on their experience of engaging health systems with community-generated evidence. They examine where accountability processes stall and strategies to keep evidence alive across planning cycles.",
+          description: "This collection of recorded sessions from UHC2030 brings together civil society leaders reflecting on their experience of engaging health systems with community-generated evidence. Rather than focusing on technical tools, the discussions centre on what happens after data is produced. Speakers describe how community evidence is often acknowledged rhetorically but diluted or sidelined once it enters formal decision-making spaces. They examine where accountability processes stall, particularly at the stages of implementation, follow-up, and budget allocation. Several contributors reflect on the difficulty of sustainingpressure once political attention fades, and on the strategies they used to keep evidence alive across planning and review cycles.",
           link: "https://www.uhc2030.org/news-and-events/news/partner-insights/partner-insights/switching-up-the-dial-on-community-voices-for-uhc-545649/"
         }
       ],
@@ -741,7 +743,7 @@ The cycle does not stop. It becomes sharper. Over time, this is how CLM grows fr
     {
       title: "Part 2: Data for Justice",
       type: "reading",
-      content: `<b>2.1 Data is Never Neutral</b>
+      content: `<b>Data is Never Neutral</b>
 
 In many health systems, data is treated as if it floats above politics. But every dataset reflects choices:
 <ul>
@@ -759,7 +761,7 @@ CLM confronts this directly. It asks:
 
 <b>Data for Justice</b> means using information to expose and correct these patterns, not to hide them.
 
-<b>2.2 Ethical Principles in CLM Data</b>
+<b>Ethical Principles in CLM Data</b>
 
 Because CLM works with real people in real communities, ethics cannot be outsourced to a separate committee. They must be part of the daily practice of monitoring.
 
@@ -777,7 +779,7 @@ These questions become even sharper when CLM monitors PPR issues that intersect 
     {
       title: "Justice-Oriented Indicators",
       type: "reading",
-      content: `<b>2.3 Justice-Oriented Indicators</b>
+      content: `<b>Justice-Oriented Indicators</b>
 
 Data for justice is not only about how you collect and share information. It is also about <b>what you decide to measure</b>.
 
@@ -790,7 +792,7 @@ Data for justice is not only about how you collect and share information. It is 
 <li>Whether communities are actively involved in designing and delivering risk-communication campaigns.</li>
 </ul>
 
-<b>2.4 Turning Data into Power</b>
+<b>Turning Data into Power</b>
 
 Evidence becomes justice when it changes decisions, resources or narratives. That requires strategy.
 
@@ -850,7 +852,7 @@ At every step, communities decide which risks they are willing to take, and whic
           source: "HIS Engage Scotland (Adapted)",
           type: "Tool",
           readingTime: "10 min",
-          description: "A step-by-step guide to putting ethics into everyday CLM practice. It walks teams through informed consent, confidentiality, data security and community control, with focus on sensitive PPR contexts.",
+          description: "This resource offers a clear, step-by-step guide to putting ethics into everyday CLM practice. It walks CLM teams through key considerations around informed consent, confidentiality, data security and community control, with a focus on sensitive PPR contexts where sharing information can carry real risks. Rather than treating ethics as a one-off approval process, the checklist helps learners think through ethical decisions at each stage of the CLM cycle, ensuring that evidence is used to drive accountability and justice without exposing communities or individuals to harm.",
           link: "https://www.hisengage.scot/engaging-communities/participation-toolkit/ethical-checklist/"
         },
         {
@@ -858,14 +860,16 @@ At every step, communities decide which risks they are willing to take, and whic
           source: "Global CLM Network Webinar",
           type: "Webinar Recording",
           readingTime: "20 min",
-          description: "Activists from three regions explain how they adapted their CLM indicators to better capture inequities in access to diagnostics, IPC, vaccines and emergency care."
+          description: "Activists from three regions explain how they adapted their CLM indicators to better capture inequities in access to diagnostics, IPC, vaccines and emergency care.",
+          link:"https://youtu.be/SeWl4W46hpk?si=ReVLPrzVHTAHhIDa"
         },
         {
           title: "Data Is People (Podcast)",
           source: "Community Voices Series",
           type: "Podcast",
           readingTime: "12 min",
-          description: "Short testimonies from individuals whose experiences only began to matter to the system once they were recorded and presented through CLM."
+          description: "Short testimonies from individuals whose experiences only began to matter to the system once they were recorded and presented through CLM.",
+          link:"https://youtu.be/oj9guQevQeE?si=n1nehFxrTzMaa80e"
         }
       ],
     },

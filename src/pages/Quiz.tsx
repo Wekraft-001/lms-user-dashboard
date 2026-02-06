@@ -123,17 +123,18 @@ const Quiz = () => {
       setIsAnswered(false);
     } else {
       // Calculate final score
-      const correctAnswers =
-        score + (selectedAnswer === currentQ.correctAnswer ? 1 : 0);
-      const finalPercentage = Math.round(
-        (correctAnswers / totalQuestions) * 100
-      );
+      // const correctAnswers =
+      //   score + (selectedAnswer === currentQ.correctAnswer ? 1 : 0);
+      // const finalPercentage = Math.round(
+      //   (correctAnswers / totalQuestions) * 100
+      // );
+      const finalPercentage = Math.round((score / totalQuestions) * 100)
 
       // Submit assessment to backend
       await submitAssessmentMutation.mutateAsync({
         score: finalPercentage,
         totalQuestions,
-        correctAnswers,
+        correctAnswers: score,
       });
 
       setQuizComplete(true);
@@ -269,9 +270,8 @@ const Quiz = () => {
 
         <div className="container mx-auto px-4 py-12 max-w-3xl">
           <Card
-            className={`border-2 ${
-              isPassing ? "border-success" : "border-destructive"
-            }`}
+            className={`border-2 ${isPassing ? "border-success" : "border-destructive"
+              }`}
           >
             <CardHeader className="text-center pb-8">
               <div className="mx-auto mb-4">
@@ -454,25 +454,19 @@ const Quiz = () => {
                     key={index}
                     onClick={() => handleAnswerSelect(index)}
                     disabled={isAnswered}
-                    className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
-                      !isAnswered && "hover:border-primary cursor-pointer"
-                    } ${isAnswered && "cursor-not-allowed"} ${
-                      !isAnswered && isSelected && "border-primary bg-primary/5"
-                    } ${showCorrect && "border-success bg-success/10"} ${
-                      showIncorrect && "border-destructive bg-destructive/10"
-                    } ${!isSelected && !showCorrect && "border-border"}`}
+                    className={`w-full p-4 text-left rounded-lg border-2 transition-all ${!isAnswered && "hover:border-primary cursor-pointer"
+                      } ${isAnswered && "cursor-not-allowed"} ${!isAnswered && isSelected && "border-primary bg-primary/5"
+                      } ${showCorrect && "border-success bg-success/10"} ${showIncorrect && "border-destructive bg-destructive/10"
+                      } ${!isSelected && !showCorrect && "border-border"}`}
                   >
                     <div className="flex items-start gap-3">
                       <div
-                        className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                          showCorrect && "border-success bg-success"
-                        } ${
-                          showIncorrect && "border-destructive bg-destructive"
-                        } ${
-                          !isAnswered &&
+                        className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center ${showCorrect && "border-success bg-success"
+                          } ${showIncorrect && "border-destructive bg-destructive"
+                          } ${!isAnswered &&
                           isSelected &&
                           "border-primary bg-primary"
-                        } ${!isAnswered && !isSelected && "border-border"}`}
+                          } ${!isAnswered && !isSelected && "border-border"}`}
                       >
                         {showCorrect && (
                           <CheckCircle2 className="w-4 h-4 text-white" />
@@ -524,8 +518,8 @@ const Quiz = () => {
             {submitAssessmentMutation.isPending
               ? "Submitting..."
               : currentQuestion === totalQuestions - 1
-              ? "Submit Assessment"
-              : "Next Question"}
+                ? "Submit Assessment"
+                : "Next Question"}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>

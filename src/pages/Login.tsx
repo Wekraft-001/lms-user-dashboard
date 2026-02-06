@@ -166,7 +166,7 @@ const Login = () => {
                   )}
                 </Button>
 
-                <div className="relative my-6">
+                {/* <div className="relative my-6">
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />
                   </div>
@@ -175,9 +175,9 @@ const Login = () => {
                       Or continue with
                     </span>
                   </div>
-                </div>
+                </div> */}
 
-                <Button
+                {/* <Button
                   type="submit"
                   variant="outline"
                   className="w-full"
@@ -202,7 +202,7 @@ const Login = () => {
                     />
                   </svg>
                   Continue with Google
-                </Button>
+                </Button> */}
 
                 <div className="text-center text-sm text-muted-foreground pt-4">
                   Don't have an account?{" "}
