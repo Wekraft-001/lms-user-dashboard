@@ -16,6 +16,9 @@ import { toast } from "sonner";
 import { EvidenceChain } from "@/components/games/EvidenceChain";
 import { VoicesFirst } from "@/components/games/VoicesFirst";
 import { EquityBuilder } from "@/components/games/EquityBuilder";
+import { CloseTheLoop } from "@/components/games/CloseTheLoop";
+import { EvidenceToAction } from "@/components/games/EvidenceToAction";
+import { RisksOrRights } from "@/components/games/RisksOrRights";
 import { KnowledgeCheck } from "@/components/KnowledgeCheck";
 import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
 import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
@@ -374,6 +377,15 @@ const Module = () => {
                 )}
                 {currentContent.gameType === "equity-builder" && (
                   <EquityBuilder onComplete={handleSegmentComplete} />
+                )}
+                {currentContent.gameType === "close-the-loop" && (
+                  <CloseTheLoop onComplete={handleSegmentComplete} />
+                )}
+                {currentContent.gameType === "evidence-to-action" && (
+                  <EvidenceToAction onComplete={handleSegmentComplete} />
+                )}
+                {currentContent.gameType === "risks-or-rights" && (
+                  <RisksOrRights onComplete={handleSegmentComplete} />
                 )}
               </div>
             ) : currentContent.type === "quiz" ? (
