@@ -19,6 +19,7 @@ import { EquityBuilder } from "@/components/games/EquityBuilder";
 import { CloseTheLoop } from "@/components/games/CloseTheLoop";
 import { EvidenceToAction } from "@/components/games/EvidenceToAction";
 import { RisksOrRights } from "@/components/games/RisksOrRights";
+import { FindTheEntryPoint } from "@/components/games/FindTheEntryPoint";
 import { KnowledgeCheck } from "@/components/KnowledgeCheck";
 import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
 import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
@@ -286,7 +287,7 @@ const Module = () => {
         </div>
 
         {/* Learning Objectives Card */}
-        {currentSegment === 0 && (
+        {currentSegment === 0 && moduleContent.learningObjectives && (
           <Card className="mb-6 border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -296,34 +297,12 @@ const Module = () => {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>
-                    Explain the basic purpose and structure of PPPR systems at
-                    global and national levels
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>
-                    Describe the origins, purpose, and principles of CLM in
-                    health and development contexts
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>
-                    Identify the linkages and gaps between institutional
-                    preparedness systems and community realities
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>
-                    Reflect on why integrating community voices into
-                    preparedness is not optional but essential
-                  </span>
-                </li>
+                {moduleContent.learningObjectives.map((objective, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span>{objective}</span>
+                  </li>
+                ))}
               </ul>
             </CardContent>
           </Card>
@@ -386,6 +365,9 @@ const Module = () => {
                 )}
                 {currentContent.gameType === "risks-or-rights" && (
                   <RisksOrRights onComplete={handleSegmentComplete} />
+                )}
+                {currentContent.gameType === "find-the-entry-point" && (
+                  <FindTheEntryPoint onComplete={handleSegmentComplete} />
                 )}
               </div>
             ) : currentContent.type === "quiz" ? (

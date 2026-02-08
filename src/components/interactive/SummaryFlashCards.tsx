@@ -7,7 +7,7 @@
 export interface SummaryCard {
   title: string;
   source: string;
-  type: "Policy Brief" | "Framework" | "Case Study" | "Article" | "Video" | "Guide" | "Fact Sheet" | "Commentary" | "News Feature" | "Academic Article" | "Brief Article" | "Case Study Collection" | "Audio/Video Panel" | "Tool" | "Webinar Recording" | "Podcast" | "Infographic";
+  type: "Policy Brief" | "Framework" | "Case Study" | "Article" | "Video" | "Guide" | "Fact Sheet" | "Commentary" | "News Feature" | "Academic Article" | "Brief Article" | "Case Study Collection" | "Audio/Video Panel" | "Tool" | "Webinar Recording" | "Podcast" | "Infographic" | "Report" | "Webinar";
   readingTime: string;
   description: string;
   link?: string;
@@ -22,6 +22,7 @@ const getTypeIcon = (type: SummaryCard["type"]) => {
     case "Video":
     case "Audio/Video Panel":
     case "Webinar Recording":
+    case "Webinar":
       return <Video className="h-4 w-4" />;
     case "Policy Brief":
     case "Framework":
@@ -29,6 +30,7 @@ const getTypeIcon = (type: SummaryCard["type"]) => {
     case "Fact Sheet":
     case "Tool":
     case "Infographic":
+    case "Report":
       return <BookOpen className="h-4 w-4" />;
     default:
       return <BookOpen className="h-4 w-4" />;
@@ -40,10 +42,12 @@ const getTypeColor = (type: SummaryCard["type"]) => {
     case "Video":
     case "Audio/Video Panel":
     case "Webinar Recording":
+    case "Webinar":
       return "bg-primary/10 text-primary border-primary/20";
     case "Policy Brief":
     case "Framework":
     case "Tool":
+    case "Report":
       return "bg-secondary/10 text-secondary border-secondary/20";
     case "Case Study":
     case "Case Study Collection":

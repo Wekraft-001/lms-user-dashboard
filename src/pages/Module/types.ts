@@ -33,7 +33,7 @@ export interface ModuleSegment {
   duration: string;
   videoUrl?: string;
   videos?: VideoItem[];
-  gameType?: "evidence-chain" | "voices-first" | "equity-builder" | "close-the-loop" | "evidence-to-action" | "risks-or-rights";
+  gameType?: "evidence-chain" | "voices-first" | "equity-builder" | "close-the-loop" | "evidence-to-action" | "risks-or-rights" | "find-the-entry-point";
   question?: string;
   options?: Array<{
     id: string;
@@ -50,5 +50,6 @@ export interface ModuleContent {
   title: string;
   description: string;
   totalSegments: number;
+  learningObjectives: string[];
   segments: ModuleSegment[];
 }

@@ -5,6 +5,12 @@ export const module1Content: ModuleContent = {
   description:
     "This module lays the foundation for your learning journey, introducing global and African PPPR systems and placing CLM as a mechanism for accountability, justice, and participation.",
   totalSegments: 21,
+  learningObjectives: [
+    "Explain the basic purpose and structure of PPPR systems at global and national levels",
+    "Describe the origins, purpose, and principles of CLM in health and development contexts",
+    "Identify the linkages and gaps between institutional preparedness systems and community realities",
+    "Reflect on why integrating community voices into preparedness is not optional but essential",
+  ],
   segments: [
     {
       title: "Module Overview",
