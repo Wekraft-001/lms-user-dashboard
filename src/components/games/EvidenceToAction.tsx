@@ -15,35 +15,47 @@ interface EvidenceItem {
 const evidenceItems: EvidenceItem[] = [
   {
     id: 1,
-    evidence: "CLM data shows 60% of rural clinics have no rapid diagnostic tests for respiratory infections",
+    evidence: "CLM data shows 60% of rural clinics have no rapid diagnostic tests for respiratory infections, despite budget allocations for procurement",
     correctAction: "Evidence to budget",
-    explanation: "This finding shows a clear resource allocation gap that should trigger advocacy for budget reallocation to procurement."
+    explanation: "This finding shows a clear gap between budget allocations and actual procurement. Advocacy should compare CLM findings with available budget information to show where spending does not match community priorities and advocate for re-allocation."
   },
   {
     id: 2,
-    evidence: "Community monitors document that migrants are consistently turned away from emergency services",
+    evidence: "Community monitors document that migrants are consistently turned away from emergency services due to documentation requirements",
     correctAction: "Evidence to representation",
-    explanation: "This pattern shows a population being systematically excluded—advocacy should focus on getting migrant representation in planning committees."
+    explanation: "This pattern shows a population being systematically excluded. Advocacy should focus on using CLM data to make the case for community seats in PPPR decision-making spaces such as emergency task teams and planning committees."
   },
   {
     id: 3,
-    evidence: "Three facilities in the district have chronic oxygen supply shortages affecting patient care",
+    evidence: "Three facilities in the district have chronic oxygen supply shortages, with staff identifying specific supply chain issues that can be addressed",
     correctAction: "Evidence to negotiation",
-    explanation: "This is a concrete service delivery issue that can be addressed through direct negotiation with facility and district managers."
+    explanation: "This is a concrete service delivery issue with identifiable solutions. CLM findings should be presented at facility or district level to negotiate concrete action plans with timelines."
   },
   {
     id: 4,
-    evidence: "Data reveals that deaths in informal settlements during outbreaks are significantly undercounted",
+    evidence: "Data reveals that deaths in informal settlements during outbreaks are significantly undercounted, making these communities invisible in official statistics",
     correctAction: "Evidence to narrative",
-    explanation: "This is a story about invisible communities—it needs to become a public narrative that politicians and journalists cannot ignore."
+    explanation: "This is a story about invisible communities. Turning these numbers into stories that journalists, community leaders and politicians cannot ignore will show how preparedness fails when certain groups are ignored."
+  },
+  {
+    id: 5,
+    evidence: "CLM reveals that IPC supplies are consistently weakest in facilities serving poorer communities, compared to facilities in wealthier areas",
+    correctAction: "Evidence to budget",
+    explanation: "This finding demonstrates an equity gap in resource distribution. Evidence should be used to compare spending patterns and advocate for budget reallocation to address the inequity."
+  },
+  {
+    id: 6,
+    evidence: "Sex workers and transgender people report discrimination and denial of care during epidemic responses, but are absent from official response plans",
+    correctAction: "Evidence to representation",
+    explanation: "This shows key populations being excluded from both services and planning. Advocacy should focus on getting these groups included in emergency task teams and national advisory committees."
   },
 ];
 
 const actionTypes = [
-  { id: "negotiation", label: "Evidence to negotiation", description: "Present findings and negotiate action plans with timelines" },
-  { id: "budget", label: "Evidence to budget", description: "Compare findings with budgets to advocate for reallocation" },
-  { id: "representation", label: "Evidence to representation", description: "Use data to make the case for community seats in decision-making" },
-  { id: "narrative", label: "Evidence to narrative", description: "Turn numbers into stories that cannot be ignored" },
+  { id: "negotiation", label: "Evidence to negotiation", description: "Present CLM findings at facility, district or national level and negotiate concrete action plans with timelines" },
+  { id: "budget", label: "Evidence to budget", description: "Compare CLM findings with budget information to show where spending does not match community priorities" },
+  { id: "representation", label: "Evidence to representation", description: "Use CLM data to make the case for community seats in PPPR decision-making spaces" },
+  { id: "narrative", label: "Evidence to narrative", description: "Turn numbers into stories that journalists, politicians and leaders cannot ignore" },
 ];
 
 const triggerConfetti = () => {

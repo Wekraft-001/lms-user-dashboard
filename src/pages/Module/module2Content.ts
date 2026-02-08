@@ -5,12 +5,18 @@ export const module2Content: ModuleContent = {
   description:
     "This module goes deeper into the practice of CLM. It answers two big questions: How does CLM actually work in real life, from the first complaint to the final policy change? And how can we treat data not just as information, but as a tool for justice?",
   totalSegments: 21,
+  learningObjectives: [
+    "Explain each step of the CLM cycle and give at least one practical example from your context",
+    "Describe how CLM can be expanded to include PPPR issues such as laboratories, IPC, surveillance, immunisation and emergency response",
+    "Recognise key ethical considerations in community data collection, storage and use",
+    "Identify concrete ways CLM amplifies community voices in health system and PPPR decision-making spaces",
+  ],
   segments: [
     // OVERVIEW
     {
       title: "Module 2 Overview",
       type: "reading",
-      content: `In Module 1, you explored how global and African PPR systems are built, and where communities often find themselves on the outside looking in. You were introduced to Community-Led Monitoring (CLM) as one way to change that.
+      content: `In Module 1, you explored how global and African PPPR systems are built, and where communities often find themselves on the outside looking in. You were introduced to Community-Led Monitoring (CLM) as one way to change that.
 
 Module 2 goes deeper into the practice of CLM. It answers two big questions:
 
@@ -31,9 +37,9 @@ By the end of this module, you will be able to:
 
 <ol>
 <li>Explain each step of the CLM cycle and give at least one practical example from your context.</li>
-<li>Describe how CLM can be expanded to include PPR issues such as laboratories, IPC, surveillance, immunisation and emergency response.</li>
+<li>Describe how CLM can be expanded to include PPPR issues such as laboratories, IPC, surveillance, immunisation and emergency response.</li>
 <li>Recognise key ethical considerations in community data collection, storage and use.</li>
-<li>Identify concrete ways CLM amplifies community voices in health system and PPR decision-making spaces.</li>
+<li>Identify concrete ways CLM amplifies community voices in health system and PPPR decision-making spaces.</li>
 </ol>`,
       duration: "5 min",
     },
@@ -86,7 +92,7 @@ Communities map:
 <li>Places where fear, stigma or corruption keep people away from care.</li>
 </ul>
 
-<b>For PPR, this could include:</b>
+<b>For PPPR, this could include:</b>
 <ul>
 <li>Clinics where infection prevention and control is weak, despite national claims of progress.</li>
 <li>Rural areas where immunisation outreach disappears long before roads are officially declared unsafe.</li>
@@ -112,7 +118,7 @@ Once priorities are clear, communities design or adapt tools: surveys, observati
 <li><b>Quality:</b> Is it safe, reliable and effective?</li>
 </ol>
 
-<b>In a PPR context, CLM data might track:</b>
+<b>In a PPPR context, CLM data might track:</b>
 <ul>
 <li>Turnaround time for diagnostic tests for respiratory illnesses.</li>
 <li>Presence of handwashing facilities, soap and safe waste disposal in clinics.</li>
@@ -134,7 +140,7 @@ Community analysis sessions ask questions such as:
 <ul>
 <li>What patterns are we seeing across facilities, districts or groups?</li>
 <li>Which communities are affected most severely?</li>
-<li>How do these patterns connect to policies, budgets or PPR plans?</li>
+<li>How do these patterns connect to policies, budgets or PPPR plans?</li>
 <li>From a community perspective, what would "success" look like in six months?</li>
 </ul>
 
@@ -147,7 +153,7 @@ CLM is about evidence with a destination. Communities use multiple formats to sh
 <ul>
 <li>Short reports and slide decks for health managers and planners.</li>
 <li>Community meetings and local radio discussions so that people hear the results.</li>
-<li>One-page briefs or infographics tailored for PPR technical working groups.</li>
+<li>One-page briefs or infographics tailored for PPPR technical working groups.</li>
 </ul>
 
 Sharing is followed by <b>negotiation</b>. CLM is not just "naming and shaming." It is structured dialogue where communities come with evidence and clear asks:
@@ -265,7 +271,7 @@ In many health systems, data is treated as if it floats above politics. But ever
 CLM confronts this directly. It asks:
 <ul>
 <li>Why are deaths in informal settlements undercounted?</li>
-<li>Why are key populations absent from official PPR reports?</li>
+<li>Why are key populations absent from official PPPR reports?</li>
 <li>Why do surveillance systems record cases but not the violence and stigma that shape who seeks care?</li>
 </ul>
 
@@ -305,7 +311,7 @@ Because CLM works with real people in real communities, ethics cannot be outsour
 <li>Are communities part of decisions about what to publish, what to keep private and where to focus advocacy?</li>
 </ul>
 
-These questions become even sharper when CLM monitors PPR issues that intersect with law enforcement or politics, such as cross-border movement, vaccine refusal, or antimicrobial resistance.`,
+These questions become even sharper when CLM monitors PPPR issues that intersect with law enforcement or politics, such as cross-border movement, vaccine refusal, or antimicrobial resistance.`,
       duration: "5 min",
     },
     {
@@ -315,7 +321,7 @@ These questions become even sharper when CLM monitors PPR issues that intersect 
 
 Data for justice is not only about how you collect and share information. It is also about <b>what you decide to measure</b>.
 
-<b>Examples of justice-oriented CLM indicators in a PPR context:</b>
+<b>Examples of justice-oriented CLM indicators in a PPPR context:</b>
 <ul>
 <li>Availability and affordability of diagnostic tests for respiratory infections in rural clinics.</li>
 <li>Presence and actual use of IPC measures in facilities that serve poor or marginalised communities.</li>
@@ -343,7 +349,7 @@ Evidence becomes justice when it changes decisions, resources or narratives. Tha
 
 <b>Evidence to representation:</b> 
 <ul>
-<li>Using CLM data to make the case for community seats in PPR decision-making spaces such as technical working groups, emergency task teams or national advisory committees.</li>
+<li>Using CLM data to make the case for community seats in PPPR decision-making spaces such as technical working groups, emergency task teams or national advisory committees.</li>
 </ul>
 
 <b>Evidence to narrative:</b>
@@ -461,7 +467,7 @@ At every step, communities decide which risks they are willing to take, and whic
       type: "reading",
       content: `<b>Case Study: Tracking Oxygen and IPC in a Provincial Hospital Network</b>
 
-A coalition of community organisations in a Southern African country had been using CLM to monitor HIV and TB services. After severe COVID-19 waves, they decided to include PPR issues in their work.
+A coalition of community organisations in a Southern African country had been using CLM to monitor HIV and TB services. After severe COVID-19 waves, they decided to include PPPR issues in their work.
 
 Together with local health workers and community volunteers, they:
 <ul>
@@ -478,7 +484,7 @@ Together with local health workers and community volunteers, they:
 <ul>
 <li>It illustrates the CLM cycle from identification to tracking change.</li>
 <li>It shows Data for Justice in practice: evidence used to shift resources and correct inequities.</li>
-<li>It demonstrates how CLM can plug directly into national PPR planning and monitoring processes.</li>
+<li>It demonstrates how CLM can plug directly into national PPPR planning and monitoring processes.</li>
 </ul>`,
       duration: "6 min",
     },
@@ -530,7 +536,7 @@ Together with local health workers and community volunteers, they:
 <li><b>CLM is a cycle of action, not a one-time project.</b> Identify, collect, analyse, share, act, track and re-design.</li>
 <li><b>When communities lead every stage of this cycle</b>, CLM becomes a governance practice, not only a data exercise.</li>
 <li><b>Data is never neutral.</b> Data for Justice means choosing what to measure, how to measure it, and how to use it in ways that advance equity and protect people from harm.</li>
-<li><b>Integrated into PPR</b>, CLM provides both an early warning system and a moral compass—ensuring that preparedness is judged not only by technical capacity but by whose lives are made safer.</li>
+<li><b>Integrated into PPPR</b>, CLM provides both an early warning system and a moral compass—ensuring that preparedness is judged not only by technical capacity but by whose lives are made safer.</li>
 </ul>
 
 <strong>You've completed Module 2!</strong>
@@ -541,12 +547,12 @@ Next, you'll complete an applied scenario and self-assessment to demonstrate you
 
     // APPLIED SCENARIO
     {
-      title: "Applied Scenario: PPR in Practice",
+      title: "Applied Scenario: PPPR in Practice",
       type: "interactive",
       interactiveType: "scenario",
       scenarioData: {
         scenario:
-          "You are part of a national network that uses CLM to monitor primary health care services. After adding some basic PPR questions to your tools, you find that: (1) Clinics in informal settlements often lack IPC supplies such as soap and gloves; (2) Rural clinics experience frequent stockouts of rapid diagnostic tests; (3) Community members say they rarely receive clear information about outbreaks.",
+          "You are part of a national network that uses CLM to monitor primary health care services. After adding some basic PPPR questions to your tools, you find that: (1) Clinics in informal settlements often lack IPC supplies such as soap and gloves; (2) Rural clinics experience frequent stockouts of rapid diagnostic tests; (3) Community members say they rarely receive clear information about outbreaks.",
         question:
           "In 120 to 150 words, describe how you would use the CLM cycle to turn these findings into action.",
         prompts: [

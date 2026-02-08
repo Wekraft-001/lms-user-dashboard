@@ -1,24 +1,30 @@
 import { ModuleContent } from "./types";
 
 export const module4Content: ModuleContent = {
-  title: "Institutionalizing CLM in PPR Systems",
+  title: "Institutionalizing CLM in PPPR Systems",
   description:
-    "Learn how to embed CLM into national and regional PPR frameworks for sustainable community participation in health security.",
+    "Learn how to embed CLM into national and regional PPPR frameworks for sustainable community participation in health security.",
   totalSegments: 4,
+  learningObjectives: [
+    "Identify entry points for CLM in national PPPR frameworks",
+    "Develop strategies for sustainable CLM financing",
+    "Build relationships with PPPR governance structures",
+    "Create mechanisms for ongoing community participation in health security",
+  ],
   segments: [
     {
       title: "Module 4 Overview",
       type: "reading",
-      content: `This final module explores how to institutionalize CLM within formal PPR systems, ensuring community voice is permanently embedded in health security governance.
+      content: `This final module explores how to institutionalize CLM within formal PPPR systems, ensuring community voice is permanently embedded in health security governance.
 
       <b>Learning Objectives:</b>
 
       By the end of this module, you will be able to:
 
       <ol>
-        <li>Identify entry points for CLM in national PPR frameworks</li>
+        <li>Identify entry points for CLM in national PPPR frameworks</li>
         <li>Develop strategies for sustainable CLM financing</li>
-        <li>Build relationships with PPR governance structures</li>
+        <li>Build relationships with PPPR governance structures</li>
         <li>Create mechanisms for ongoing community participation in health security</li>
       </ol>`,
       duration: "5 min",
@@ -26,7 +32,7 @@ export const module4Content: ModuleContent = {
     {
       title: "Part 1: Entry Points for CLM in PPR",
       type: "reading",
-      content: `National PPR systems offer multiple entry points for community-led monitoring. Understanding these opportunities is essential for sustainable integration.
+      content: `National PPPR systems offer multiple entry points for community-led monitoring. Understanding these opportunities is essential for sustainable integration.
 
 <b>Key Entry Points:</b>
 
@@ -85,7 +91,7 @@ export const module4Content: ModuleContent = {
 
 <strong>You've completed Module 4!</strong>
 
-Congratulations on completing all four modules of the Kujua360 course. You now have a comprehensive understanding of how CLM strengthens PPR systems and how to implement CLM in your context.
+Congratulations on completing all four modules of the Kujua360 course. You now have a comprehensive understanding of how CLM strengthens PPPR systems and how to implement CLM in your context.
 
 Take the final assessment to earn your certificate of completion.`,
       duration: "5 min",

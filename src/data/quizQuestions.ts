@@ -149,65 +149,68 @@ export const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
   3: [
     {
       id: 1,
-      question: "What is the first step in the evidence-to-advocacy pathway?",
+      question: "What does meaningful integration of CLM into PPPR systems involve?",
       options: [
-        "Meeting with decision-makers",
-        "Analyzing CLM data for patterns and priority issues",
-        "Building advocacy coalitions",
-        "Launching media campaigns",
+        "Collecting more data than governments",
+        "Using community evidence to inform assessments, plans, and response decisions",
+        "Replacing national surveillance systems",
+        "Limiting CLM to public complaints",
       ],
       correctAnswer: 1,
       explanation:
-        "The first step is to analyze CLM data to identify patterns, trends, and priority issues that will form the basis of advocacy efforts.",
+        "Meaningful integration means that CLM data is recognised as a legitimate input into PPPR processes, informing assessments, plans, and accountability mechanisms.",
     },
     {
       id: 2,
-      question: "Why should advocacy messages lead with community stories?",
+      question: "What most often determines whether CLM evidence is integrated into PPPR systems?",
       options: [
-        "Stories are easier to remember than statistics",
-        "Stories illustrate data and make issues concrete and human",
-        "Decision-makers prefer stories over evidence",
-        "Stories require less preparation than data analysis",
+        "Sample size",
+        "Donor preference",
+        "Governance rules and power dynamics",
+        "Use of digital tools",
       ],
-      correctAnswer: 1,
+      correctAnswer: 2,
       explanation:
-        "Community stories humanize data and make abstract issues concrete. They help decision-makers understand the real-world impact of policy choices.",
+        "Integration is shaped by power, mandates, and incentives—not just evidence strength. Governance rules and power dynamics determine whether community evidence gets heard.",
     },
     {
       id: 3,
-      question:
-        "Which stakeholder category includes government officials and budget controllers?",
-      options: ["Influencers", "Implementers", "Decision-makers", "Allies"],
-      correctAnswer: 2,
+      question: "Which PPPR process is often a strong entry point for CLM?",
+      options: [
+        "Media interviews",
+        "Preparedness reviews and action plans",
+        "Academic publications",
+        "Internal community meetings",
+      ],
+      correctAnswer: 1,
       explanation:
-        "Decision-makers are those with direct authority to make policy or resource allocation decisions, including government officials, health managers, and budget controllers.",
+        "Preparedness reviews and national action plans are key entry points where CLM data can surface blind spots in official self-reporting and inform priorities.",
     },
     {
       id: 4,
-      question: "What is the purpose of coalition building in CLM advocacy?",
+      question: "What signals symbolic rather than real integration of CLM?",
       options: [
-        "To share costs of data collection",
-        "To amplify community voice and increase advocacy impact",
-        "To satisfy donor requirements",
-        "To reduce workload for community monitors",
+        "CLM is referenced but not acted on",
+        "Communities are consulted early",
+        "Commitments are documented with timelines",
+        "Follow-up monitoring occurs",
       ],
-      correctAnswer: 1,
+      correctAnswer: 0,
       explanation:
-        "Coalitions bring together organizations with shared goals, amplifying community voice, pooling resources, and increasing the credibility and impact of advocacy efforts.",
+        "Symbolic integration is when CLM is cited rhetorically but does not influence decisions, budgets, or response design. Real integration leads to documented commitments and action.",
     },
     {
       id: 5,
-      question:
-        "What should happen after decision-makers make commitments based on CLM evidence?",
+      question: "Why are case studies important for understanding CLM integration?",
       options: [
-        "End the CLM program",
-        "Track commitments and hold stakeholders accountable",
-        "Move on to new advocacy targets",
-        "Publish a final report",
+        "They provide perfect models",
+        "They reveal how power, resistance, and timing shape outcomes",
+        "They replace theory",
+        "They remove political risk",
       ],
       correctAnswer: 1,
       explanation:
-        "Advocacy doesn't end with commitments. CLM should continue monitoring implementation and holding stakeholders accountable for their promises.",
+        "Case studies reveal how power dynamics, political will, and pre-existing relationships shape whether community evidence gets heard and acted upon.",
     },
   ],
   4: [
