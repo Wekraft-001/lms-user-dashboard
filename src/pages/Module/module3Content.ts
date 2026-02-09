@@ -4,7 +4,7 @@ export const module3Content: ModuleContent = {
   title: "Integrating CLM into PPPR",
   description:
     "This module explores how CLM can be embedded into national and regional PPPR frameworks so that community evidence informs preparedness assessments, planning, response monitoring, and accountability processes.",
-  totalSegments: 18,
+  totalSegments: 16,
   learningObjectives: [
     "Identify concrete entry points where CLM data can be integrated into existing PPPR processes",
     "Explain how community-generated evidence can strengthen preparedness assessments, plans, and response monitoring",
@@ -133,12 +133,13 @@ This is when CLM is cited rhetorically but does not influence decisions, budgets
       duration: "45 min",
       summaryCards: [
         {
-          title: "From Evidence to Influence: Integrating Community Data into Preparedness Systems",
+          title:
+            "From Evidence to Influence: Integrating Community Data into Preparedness Systems",
           source: "UNAIDS (2023)",
           type: "Guide",
           readingTime: "15 min",
           description:
-            "This report profiles CLM as a systematic, evidence-driven advocacy tool. It shows how community data has been used in national decision spaces, contributed to dialogue with health officials, and reinforced accountability across disease programmes.",
+            "This report profiles CLM as a systematic, evidence-driven advocacy tool. It shows how community data has been used in national decision spaces, contributed to dialogue with health officials, and reinforced accountability across disease programmes, including during COVID-19. It shows CLM being embedded into broader health systems debates and planning, and describes how community evidence has shaped implementation, strategies and relationships with government actors.",
           link: "https://www.unaids.org/sites/default/files/media_asset/JC3085E_community-led-monitoring-in-action_en.pdf",
         },
         {
@@ -147,8 +148,8 @@ This is when CLM is cited rhetorically but does not influence decisions, budgets
           type: "Webinar Recording",
           readingTime: "20 min",
           description:
-            "Explores why preparedness assessments often miss lived system performance and how CLM corrects this. Covers governance, political leadership, and why scores alone do not capture real-world readiness.",
-          link: "https://youtu.be/feJK-QR3_zU",
+            "Explores why preparedness assessments often miss lived system performance and how CLM corrects this. This webinar features experts discussing pandemic preparedness frameworks, including limitations of conventional preparedness assessments and the broader context within which health security must operate. It covers governance, political leadership, system performance, and the dynamics that mean scores alone do not capture real-world readiness. ",
+          link: "https://youtu.be/feJK-QR3_zU, https://gh.bmj.com/content/5/10/e003276",
         },
         {
           title: "Whose Data Counts in a Crisis?",
@@ -156,18 +157,28 @@ This is when CLM is cited rhetorically but does not influence decisions, budgets
           type: "Podcast",
           readingTime: "10 min",
           description:
-            "Expert conversations on pandemic preparedness and data-driven decision making in African contexts. Discusses political resistance, data credibility, and how data influences response strategies.",
+            "This series features expert conversations on pandemic preparedness, response and data-driven decision making in African contexts. While not specifically focused on CLM, episodes discuss political resistance, data credibility, governance choices and how data influences response strategies.",
           link: "https://africacdc.org/africa-public-health-podcast/",
         },
+        {
+          title: "Whose Data Counts in a Crisis?",
+          source: "CHW Data Dialogues",
+          type: "Podcast",
+          readingTime: "10 min",
+          description:
+            "A podcast series on community health worker data use. This series discusses how community health workers collect data and how that data is (or isn’t) used in decision-making at health system levels - including discussions about data access, usefulness, and barriers to integration. While not packaged as strictly CLM, this audio focuses on community data’s struggles and system engagement.",
+          link: "https://share.transistor.fm/s/f5fff5f3",
+        },
+        {
+          title: "Whose Data Counts in a Crisis?",
+          source: "Public Health On Call Podcast",
+          type: "Podcast",
+          readingTime: "10 min",
+          description:
+            "From Johns Hopkins Bloomberg School of Public Health. This podcast includes episodes on emergency preparedness, data use during crises, and how evidence shapes policy and response decisions. It often tackles credibility, evidence translation, and politics of data use in health emergencies.",
+          link: "https://publichealth.jhu.edu/headlines/public-health-on-call-podcast",
+        },
       ],
-    },
-    {
-      title: "Let's Play! Find the Entry Point",
-      type: "game",
-      gameType: "find-the-entry-point",
-      content:
-        "A strategy game where you match CLM evidence to the most effective PPPR integration point. Drag CLM findings to the right process: Preparedness Assessment, National Action Plan, Emergency Task Team, Response Dashboard, or After-Action Review.",
-      duration: "12 min",
     },
 
     // PART 2: CASE STUDIES OF INTEGRATION
@@ -275,6 +286,14 @@ This case demonstrates how CLM helped protect chronic care during acute crises a
       duration: "8 min",
     },
     {
+      title: "Let's Play! Find the Entry Point",
+      type: "game",
+      gameType: "find-the-entry-point",
+      content:
+        "A strategy game where you match CLM evidence to the most effective PPPR integration point. Drag CLM findings to the right process: Preparedness Assessment, National Action Plan, Emergency Task Team, Response Dashboard, or After-Action Review.",
+      duration: "12 min",
+    },
+    {
       title: "Part 2: Read / Listen / Watch",
       type: "resources",
       duration: "40 min",
@@ -285,7 +304,7 @@ This case demonstrates how CLM helped protect chronic care during acute crises a
           type: "Case Study",
           readingTime: "10 min",
           description:
-            "Illustrates how community-generated evidence was used to adapt vaccine delivery strategies, making rollouts more equitable and responsive to lived realities.",
+            "This brief illustrates a practical mechanism by which community-generated evidence was not merely collected, but used to adapt delivery strategies during a public health response. It shows how community insights can be woven into programme planning and implementation decisions, helping to make vaccine rollouts more equitable and responsive to lived realities, rather than relying only on top-down numbers and conventional indicators.",
           link: "https://www.mdpi.com/2076-393X/11/7/1180",
         },
         {
@@ -294,8 +313,17 @@ This case demonstrates how CLM helped protect chronic care during acute crises a
           type: "Webinar Recording",
           readingTime: "15 min",
           description:
-            "Showcases how African countries responded to mpox, with discussion on community engagement, risk communication, and addressing stigma barriers.",
+            "This WHO Regional Office for Africa webinar showcases how countries in the African region responded to the mpox outbreak, with discussion on community engagement, risk communication, vaccination equity, and lessons learned. It highlights the role of community actors in the outbreak response, including addressing barriers that often include stigma or delayed care accessibility.",
           link: "https://www.youtube.com/watch?v=sqGW83MmFhs",
+        },
+        {
+          title: "Global Insights on Prevention & Treatment",
+          source: "Plus IA Society",
+          type: "Webinar Recording",
+          readingTime: "15 min",
+          description:
+            "This recorded webinar brings together global experts to discuss clinical and public health dimensions of mpox, including prevention and the role of communities in response. It engages with the practical implications of mpox surveillance and community outreach, which directly intersect with how stigma and reporting barriers impact response quality.",
+          link: "https://plus.iasociety.org/webcasts/mpox-focus-global-insights-prevention-and-treatment?_gl=1*wyz0vy*_gcl_au*MTYxNTk3NjUyMy4xNzcwMDM5MTQ2",
         },
         {
           title: "Getting the Most from After-Action Reviews",
@@ -303,7 +331,7 @@ This case demonstrates how CLM helped protect chronic care during acute crises a
           type: "Article",
           readingTime: "15 min",
           description:
-            "Reviews the role of After Action Reviews (AARs) and how CLM can ensure that post-crisis learning reflects what people experienced on the ground.",
+            "This article reviews the role of After Action Reviews (AARs) as tools to observe how well preparedness systems performed in real conditions, and how to ensure that learning actually happens rather than just producing a polished report. It stresses that AARs are most effective when they include broad perspectives and reflect real system performance rather than a sanitised narrative.",
           link: "https://gh.bmj.com/content/5/10/e003276",
         },
       ],

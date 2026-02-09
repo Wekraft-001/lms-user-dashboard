@@ -218,7 +218,7 @@ const Dashboard = () => {
       assessmentPassed: mod.assessmentPassed,
     }))
     : modules;
-
+console.log(mappedModules[0].title,"checking what is returning")
   // Welcome/Onboarding View for New Users
   const WelcomeView = () => (
     <div className="container mx-auto px-4 py-8">

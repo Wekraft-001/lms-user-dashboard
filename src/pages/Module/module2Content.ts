@@ -4,7 +4,7 @@ export const module2Content: ModuleContent = {
   title: "The Principles and Practice of CLM",
   description:
     "This module goes deeper into the practice of CLM. It answers two big questions: How does CLM actually work in real life, from the first complaint to the final policy change? And how can we treat data not just as information, but as a tool for justice?",
-  totalSegments: 21,
+  totalSegments: 20,
   learningObjectives: [
     "Explain each step of the CLM cycle and give at least one practical example from your context",
     "Describe how CLM can be expanded to include PPPR issues such as laboratories, IPC, surveillance, immunisation and emergency response",

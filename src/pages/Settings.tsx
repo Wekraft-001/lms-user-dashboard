@@ -78,7 +78,7 @@ const Settings = () => {
         </Card>
 
         {/* Appearance */}
-        <Card className="border-2 mb-6">
+        {/* <Card className="border-2 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Moon className="h-5 w-5 text-primary" />
@@ -91,10 +91,10 @@ const Settings = () => {
               Theme customization coming soon. The platform currently uses a light theme optimized for readability.
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
 
         {/* Language */}
-        <Card className="border-2 mb-6">
+        {/* <Card className="border-2 mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Globe className="h-5 w-5 text-primary" />
@@ -107,10 +107,10 @@ const Settings = () => {
               Additional language support coming soon. The platform is currently available in English.
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
 
         {/* Privacy */}
-        <Card className="border-2">
+        {/* <Card className="border-2">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-primary" />
@@ -130,7 +130,7 @@ const Settings = () => {
               Your data is protected and handled according to our privacy policy. We do not share your personal information with third parties.
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );
