@@ -4,7 +4,7 @@ export const module3Content: ModuleContent = {
   title: "Integrating CLM into PPPR",
   description:
     "This module explores how CLM can be embedded into national and regional PPPR frameworks so that community evidence informs preparedness assessments, planning, response monitoring, and accountability processes.",
-  totalSegments: 16,
+  totalSegments: 17,
   learningObjectives: [
     "Identify concrete entry points where CLM data can be integrated into existing PPPR processes",
     "Explain how community-generated evidence can strengthen preparedness assessments, plans, and response monitoring",
@@ -73,8 +73,10 @@ Community evidence captures how policies, plans, and response measures perform i
 <li>A formal review or planning cycle</li>
 <li>A requirement to demonstrate accountability</li>
 <li>Political openness to community engagement</li>
-<li>Existing relationships between CLM networks and officials</li>
-</ul>`,
+</ul>
+
+This section emphasises that timing and governance rules often matter more than data quality alone.
+`,
       duration: "5 min",
     },
     {
@@ -90,11 +92,7 @@ Meaningful integration occurs when:
 <li>Follow-up monitoring is expected and acted upon.</li>
 </ul>
 
-<b>Watch out for symbolic integration:</b>
-
-This is when CLM is cited rhetorically but does not influence decisions, budgets, or response design. We must distinguish between genuine integration and window dressing.
-
-<b>Key insight:</b> Integration is shaped by power, mandates, and incentives—not just evidence strength.`,
+The module also highlights symbolic integration where CLM is citied rhetorically but does not influence decisions, budgets, or response design. We must distinguish between the two.`,
       duration: "4 min",
     },
     {
@@ -336,7 +334,21 @@ This case demonstrates how CLM helped protect chronic care during acute crises a
         },
       ],
     },
+    // INFORMATION BOX
+    {
+      title: "After-Action Reviews and the Politics of Memory",
+      type: "reading",
+      content: `After-Action Reviews (AARs) are meant to help health systems learn from crises by examining what worked, what failed, and what should change before the next emergency. In practice, many AARs produce carefully managed narratives that protect institutional reputations rather than fully confronting system failures.
+The article “Getting the most from after action reviews to improve global health security” explains how AARs often prioritise coherence and legitimacy over uncomfortable truths.
 
+Equity gaps, service disruptions, and the experiences of marginalised communities are frequently underplayed or excluded, even when they shaped how the crisis unfolded.
+
+Community-Led Monitoring (CLM) helps correct this problem. CLM generates evidence based on lived experience, documenting how preparedness and response measures actually functioned in real communities. When CLM data is integrated into AARs, it challenges selective memory and ensures that post-crisis learning reflects what people experienced on the ground, not only what institutions report.
+
+By widening whose evidence counts, CLM strengthens AARs as tools of accountability rather than image management. It shifts preparedness learning from asking whether systems performed as planned to asking whether they worked for those most at risk.
+`,
+      duration: "5 min",
+    },
     // SUMMARY
     {
       title: "Module 3 Summary",

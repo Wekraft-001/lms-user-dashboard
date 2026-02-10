@@ -418,13 +418,35 @@ At every step, communities decide which risks they are willing to take, and whic
       ],
       duration: "3 min",
     },
+    // {
+    //   title: "From Evidence to Action Game",
+    //   type: "game",
+    //   gameType: "evidence-to-action",
+    //   content:
+    //     "Match CLM findings to the most appropriate action pathway: Evidence to negotiation, Evidence to budget, Evidence to representation, or Evidence to narrative. Learn how different types of evidence require different advocacy strategies.",
+    //   duration: "12 min",
+    // },
     {
-      title: "From Evidence to Action Game",
-      type: "game",
-      gameType: "evidence-to-action",
-      content:
-        "Match CLM findings to the most appropriate action pathway: Evidence to negotiation, Evidence to budget, Evidence to representation, or Evidence to narrative. Learn how different types of evidence require different advocacy strategies.",
-      duration: "12 min",
+      title: "Using Evidence Without Harming People",
+      type: "reading",
+      content: `When CLM evidence risks exposing people to stigma, violence, arrest, or retaliation, the question is not whether to use the data, but how to use it responsibly.
+
+      The first safeguard is anonymisation. This means removing not only names, but also indirect identifiers such as exact locations, dates, job titles, clinic names, or distinctive quotes that could allow someone to be identified by context. In high-risk settings, anonymisation may also involve aggregating data so patterns are visible without revealing individual experiences.
+
+The second strategy is closed-door advocacy. Instead of releasing findings publicly,
+communities may choose to present evidence in private meetings with trusted duty
+bearers, ombudspersons, or oversight bodies. This allows problems to be addressed
+without exposing individuals or communities to public backlash or punitive responses.
+Closed-door advocacy is especially important where laws criminalise certain populations or where whistle-blowers are not protected.
+
+Third, secure storage and controlled access are essential. CLM data should be stored in password-protected systems, encrypted devices, or locked physical files, with clear rules about who can access what. Not every volunteer, partner, or external actor needs full access. Limiting access reduces the risk of leaks, misuse, or data being repurposed for surveillance or punishment.
+
+Finally, community control over dissemination is non-negotiable. Communities must
+decide what is shared, how it is framed, who shares it, and where it goes. This includes deciding whether data is released publicly, summarised for media, shared only with specific institutions, or withheld entirely. When communities control dissemination, evidence remains a tool for justice rather than extraction.
+
+Together, these strategies ensure that CLM remains both effective and ethical. Evidence should pressure systems, not endanger people. Protection is not the opposite of accountability, it is what makes accountability sustainable.
+`,
+      duration: "6 min",
     },
     {
       title: "Part 2: Data for Justice",
@@ -491,7 +513,7 @@ Together with local health workers and community volunteers, they:
 
     // REFLECTION ON CASE STUDY
     {
-      title: "Reflection: Equity Indicator",
+      title: "Reflection",
       type: "interactive",
       interactiveType: "reflection",
       reflectionData: {
@@ -504,11 +526,11 @@ Together with local health workers and community volunteers, they:
             question:
               "If you were part of this monitoring team, what one extra indicator would you add to capture equity concerns, and why?",
           },
-          {
-            id: 2,
-            question:
-              "How would you ensure that the communities most affected by IPC gaps are involved in the monitoring process itself?",
-          },
+          // {
+          //   id: 2,
+          //   question:
+          //     "How would you ensure that the communities most affected by IPC gaps are involved in the monitoring process itself?",
+          // },
         ],
         closingQuote:
           "Equity is not just about what we measure—it's about who does the measuring and who benefits from the findings.",
