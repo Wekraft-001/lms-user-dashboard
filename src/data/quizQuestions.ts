@@ -217,71 +217,71 @@ export const quizQuestionsByModule: Record<number, QuizQuestion[]> = {
     {
       id: 1,
       question:
-        "Which of the following is an entry point for CLM in national PPPR frameworks?",
+        "Why is integration of CLM evidence sufficient on its own?",
       options: [
-        "Private sector health insurance schemes",
-        "National Action Plans for Health Security (NAPHS)",
-        "International pharmaceutical companies",
-        "Academic research institutions",
+        "Evidence is always incomplete",
+        "Systems change only through advocacy and decision-making",
+        "Communities lack credibility",
+        "Integration replaces accountability",
       ],
       correctAnswer: 1,
       explanation:
-        "NAPHS is a key entry point where CLM can inform development and monitor implementation of national health security plans.",
+        "",
     },
     {
       id: 2,
       question:
-        "How can community evidence contribute to JEE and SPAR processes?",
+        "What is a key risk of project-based CLM?",
       options: [
-        "By replacing official government assessments",
-        "By validating and supplementing official assessments with ground-level perspectives",
-        "By providing financial data on health spending",
-        "By training government evaluators",
+        "Too much data",
+        "Short-terms impact without structural change",
+        "Excessive community control",
+        "Technical complexity",
       ],
       correctAnswer: 1,
       explanation:
-        "Community evidence can validate and supplement official JEE and SPAR assessments, providing ground-level perspectives that may not be captured in formal evaluations.",
+        "",
     },
     {
       id: 3,
-      question: "What is the most sustainable approach to CLM financing?",
+      question: "Which area is most critical for sustainability?",
       options: [
-        "Relying entirely on international donor funding",
-        "Diversifying funding sources including government budgets and domestic resources",
-        "Depending on volunteer labor only",
-        "Seeking one-time large grants",
+        "Media visibility",
+        "Donor branding",
+        "Governance and financing mechanisms",
+        "Academic publication",
       ],
-      correctAnswer: 1,
+      correctAnswer: 2,
       explanation:
-        "Sustainable CLM financing requires diversified funding sources, including government budget line items, domestic resource mobilization, and various funding streams.",
+        "",
     },
     {
       id: 4,
       question:
-        "What is the key argument for including CLM in Pandemic Fund investments?",
+        "What role does budgeting play in preparedness advocacy?",
       options: [
-        "CLM is cheaper than other monitoring approaches",
-        "Donors require community engagement",
-        "CLM provides early warning and builds community trust essential for pandemic response",
-        "International regulations mandate CLM",
+        "It limits ambition",
+        "It turns commitments into reality",
+        "It replaces planning",
+        "It reduces equity",
       ],
-      correctAnswer: 2,
+      correctAnswer: 1,
       explanation:
-        "CLM's value for pandemic preparedness lies in its early warning capabilities and its role in building the community trust that is essential for effective outbreak response.",
+        "",
     },
     {
       id: 5,
       question:
-        "What is essential for institutionalizing CLM beyond formal mechanisms?",
+        "What ethical tension can institutionalisation create?",
       options: [
-        "International certification",
-        "Advanced technology systems",
-        "Relationship building with PPPR governance structures",
-        "Legal enforcement powers",
+        "Reduces data quality",
+        "Increased workload",
+        "Risk of co-optation versus influence",
+        "Loss of community interest",
       ],
       correctAnswer: 2,
       explanation:
-        "Institutionalization requires both formal mechanisms and ongoing relationship building with PPPR governance structures to ensure community participation becomes permanent.",
+        "",
     },
   ],
 };

@@ -8,6 +8,9 @@ import html2canvas from "html2canvas";
 import { useRef } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import Logo from "@/assets/kujua360_logo.png";
+import AALogo from "@/assets/AA-LOGO.svg";
+import CopperLogo from "@/assets/copper-logo.png";
 
 const Certificate = () => {
   const apiURL = import.meta.env.VITE_REACT_APP_BASE_URL;
@@ -53,7 +56,7 @@ const Certificate = () => {
   });
 
   // Check if all 4 modules are completed
-  const allModulesComplete = progressData?.modules?.length === 4 && 
+  const allModulesComplete = progressData?.modules?.length === 4 &&
     progressData.modules.every((mod: { status: string }) => mod.status === "completed");
 
   // Sample user data - in production, this would come from authentication
@@ -168,10 +171,10 @@ const Certificate = () => {
             </Button>
 
             <div className="flex items-center gap-3">
-              <Button variant="outline" size="sm" onClick={handleShare}>
+              {/* <Button variant="outline" size="sm" onClick={handleShare}>
                 <Share2 className="mr-2 h-4 w-4" />
                 Share
-              </Button>
+              </Button> */}
               <Button
                 size="sm"
                 onClick={handleDownload}
@@ -223,43 +226,39 @@ const Certificate = () => {
               {/* Certificate Content */}
               <div className="relative h-full flex flex-col items-center justify-between text-center">
                 {/* Logos */}
-                <div className="flex items-center justify-center gap-8 mb-6">
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center font-bold text-2xl text-white"
-                    style={{ backgroundColor: "#e41f28" }}
-                  >
-                    AA
+                {/* <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-3">
+                    <img src={AALogo} className="w-[200px]" alt="African Alliance" />
+                    <span className="text-muted-foreground">+</span>
+                    <img src={CopperLogo} className="w-[115px]" alt="COPPER" />
                   </div>
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center font-bold text-2xl text-white"
-                    style={{ backgroundColor: "#007a87" }}
-                  >
-                    C
-                  </div>
+                </div> */}
+                <div className="flex items-center">
+                  <img src={Logo} className="w-[200px]" alt="Kujua360" />
                 </div>
 
                 {/* Title */}
-                <div className="mb-6">
+                <div className="my-2">
                   <h2
                     className="text-4xl md:text-5xl font-bold mb-2"
                     style={{ color: "#002776" }}
                   >
                     Certificate of Completion
                   </h2>
-                  <div
+                  {/* <div
                     className="w-32 h-1 mx-auto"
                     style={{ backgroundColor: "#6a8438" }}
-                  />
+                  /> */}
                 </div>
 
                 {/* Body Text */}
-                <div className="space-y-6 flex-1 flex flex-col justify-center">
+                <div className="space-y-4 flex flex-col justify-center">
                   <p className="text-lg" style={{ color: "#000000" }}>
                     This is to certify that
                   </p>
 
                   <h3
-                    className="text-3xl md:text-4xl font-bold px-8 py-2 border-b-2 inline-block"
+                    className="text-3xl md:text-4xl font-bold px-8 py-3 border-b-2 inline-block"
                     style={{ color: "#e41f28", borderColor: "#a9d04f" }}
                   >
                     {userData.name}
@@ -339,7 +338,7 @@ const Certificate = () => {
           </Card>
 
           {/* Action Cards */}
-          <div className="grid md:grid-cols-2 gap-6">
+          {/* <div className="grid md:grid-cols-2 gap-6">
             <Card
               className="p-6 hover:shadow-lg transition-shadow cursor-pointer"
               onClick={() => navigate("/dashboard")}
@@ -371,7 +370,7 @@ const Certificate = () => {
                 Visit Library
               </Button>
             </Card>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

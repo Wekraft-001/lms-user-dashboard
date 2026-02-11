@@ -78,7 +78,7 @@ const App = () => {
             <Route path="/module/:id" element={<Module />} />
             <Route path="/quiz/:id" element={<Quiz />} />
             <Route path="/library" element={<Library />} />
-            <Route path="/certificate/:moduleId" element={<Certificate />} />
+            <Route path="/certificate" element={<Certificate />} />
             <Route path="/policy" element={<Policy />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />

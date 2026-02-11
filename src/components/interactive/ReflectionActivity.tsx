@@ -99,14 +99,17 @@ export const ReflectionActivity = ({
 
       try {
         const response = await axios.get(
-          `${apiURL}/reflections/by-segment?moduleId=${moduleId}&segmentId=${segmentId}`,
+          `${apiURL}/reflections/by-segment`,
           {
+            params: {
+              moduleId: moduleId, segmentId: segmentId
+            },
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-
+        console.log(response)
         if (response.data && response.data.responses) {
           // Populate responses from saved data
           const savedResponses: Record<number, string> = {};
@@ -228,7 +231,7 @@ export const ReflectionActivity = ({
               {previouslyCompleted ? "Reflection Already Shared!" : "Reflection Complete!"}
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto">
-              {previouslyCompleted 
+              {previouslyCompleted
                 ? "You've already shared your thoughts on this topic. Here are your responses:"
                 : "Thank you for taking the time to reflect deeply. Your thoughts contribute to building a more community-centered understanding of health systems."}
             </p>

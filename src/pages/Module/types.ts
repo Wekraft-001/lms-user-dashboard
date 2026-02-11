@@ -33,7 +33,15 @@ export interface ModuleSegment {
   duration: string;
   videoUrl?: string;
   videos?: VideoItem[];
-  gameType?: "evidence-chain" | "voices-first" | "equity-builder" | "close-the-loop" | "evidence-to-action" | "risks-or-rights" | "find-the-entry-point";
+  gameType?:
+    | "evidence-chain"
+    | "voices-first"
+    | "equity-builder"
+    | "close-the-loop"
+    | "evidence-to-action"
+    | "risks-or-rights"
+    | "find-the-entry-point"
+    | "evidence-to-commitment";
   question?: string;
   options?: Array<{
     id: string;

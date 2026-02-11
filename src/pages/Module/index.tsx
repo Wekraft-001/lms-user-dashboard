@@ -20,6 +20,7 @@ import { CloseTheLoop } from "@/components/games/CloseTheLoop";
 import { EvidenceToAction } from "@/components/games/EvidenceToAction";
 import { RisksOrRights } from "@/components/games/RisksOrRights";
 import { FindTheEntryPoint } from "@/components/games/FindTheEntryPoint";
+import { FromEvidenceToCommitment } from "@/components/games/FromEvidenceToCommitment";
 import { KnowledgeCheck } from "@/components/KnowledgeCheck";
 import { ScenarioActivity } from "@/components/interactive/ScenarioActivity";
 import { ReflectionActivity } from "@/components/interactive/ReflectionActivity";
@@ -69,11 +70,11 @@ const Module = () => {
     if (type === "interactive") return true;
     return false;
   };
- 
-   // Check if segment is a resources segment (Read/Listen/Watch)
-   const isResourcesSegment = () => {
-     return currentContent.type === "resources";
-   };
+
+  // Check if segment is a resources segment (Read/Listen/Watch)
+  const isResourcesSegment = () => {
+    return currentContent.type === "resources";
+  };
 
   // Reset segment completion when changing segments
   useEffect(() => {
@@ -323,9 +324,9 @@ const Module = () => {
                   {currentContent.type === "interactive" && (
                     <Play className="h-4 w-4" />
                   )}
-                 {currentContent.type === "resources" && (
-                   <BookOpen className="h-4 w-4" />
-                 )}
+                  {currentContent.type === "resources" && (
+                    <BookOpen className="h-4 w-4" />
+                  )}
                   {currentContent.duration}
                 </CardDescription>
               </div>
@@ -340,13 +341,13 @@ const Module = () => {
           </CardHeader>
           <CardContent>
             {/* Your existing content rendering logic */}
-             {currentContent.type === "resources" ? (
-               <div className="py-4">
-                 {currentContent.summaryCards && currentContent.summaryCards.length > 0 && (
-                   <SummaryFlashCards cards={currentContent.summaryCards} />
-                 )}
-               </div>
-             ) : currentContent.type === "game" ? (
+            {currentContent.type === "resources" ? (
+              <div className="py-4">
+                {currentContent.summaryCards && currentContent.summaryCards.length > 0 && (
+                  <SummaryFlashCards cards={currentContent.summaryCards} />
+                )}
+              </div>
+            ) : currentContent.type === "game" ? (
               <div className="py-4">
                 {currentContent.gameType === "evidence-chain" && (
                   <EvidenceChain onComplete={handleSegmentComplete} />
@@ -368,6 +369,9 @@ const Module = () => {
                 )}
                 {currentContent.gameType === "find-the-entry-point" && (
                   <FindTheEntryPoint onComplete={handleSegmentComplete} />
+                )}
+                {currentContent.gameType === "evidence-to-commitment" && (
+                  <FromEvidenceToCommitment onComplete={handleSegmentComplete} />
                 )}
               </div>
             ) : currentContent.type === "quiz" ? (
