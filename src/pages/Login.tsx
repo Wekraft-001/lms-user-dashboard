@@ -41,7 +41,15 @@ const Login = () => {
     const url = `${apiURL}/auth/signin`;
     try {
       const response = await axios.post(url, loginDetails);
-      console.log(response, "response");
+      // console.log(response.data)
+
+      // Role Checker
+      if (response.data.user.role === 'admin') {
+        toast.error("Admin users cannot login here. Please use the admin portal.");
+        setLoading(false);
+        return;
+      }
+
       let accessToken = response.data.access_token;
       localStorage.setItem("userToken", accessToken);
       toast.success("Welcome back!");
