@@ -27,7 +27,9 @@ It asks a critical question:
 
 <i>If communities are producing credible, ethical, and actionable evidence through CLM, how does that evidence enter the formal systems that govern preparedness and response?</i>
 
-This module focuses on <b>integration, not participation</b>. It explores how CLM can be embedded into national and regional PPPR frameworks so that community evidence informs preparedness assessments, planning, response monitoring, and accountability processes, rather than sitting outside them.`,
+This module focuses on <b>integration, not participation</b>. It explores how CLM can be embedded into national and regional PPPR frameworks so that community evidence informs preparedness assessments, planning, response monitoring, and accountability processes, rather than sitting outside them.
+
+Don't forget – to access explainers of these frameworks and tools click <a href="/module/1?segment=1" class="text-primary hover:underline font-medium">here</a>.`,
       duration: "5 min",
     },
 

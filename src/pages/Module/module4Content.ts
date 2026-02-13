@@ -26,7 +26,7 @@ export const module4Content: ModuleContent = {
 
       It asks a harder question:
 
-      Once CLM evidence is inside PPR systems, how do communities use it to drive action, influence resource allocation, and ensure that CLM is not treated as a temporary project but as a permanent feature of health security architecture?
+      Once CLM evidence is inside PPPR systems, how do communities use it to drive action, influence resource allocation, and ensure that CLM is not treated as a temporary project but as a permanent feature of health security architecture?
 
       This module shifts from systems design to political practice. It explores advocacy strategies, budget influence, and sustainability pathways that help CLM move from evidence production to structural change.
 
@@ -79,7 +79,7 @@ This section stresses that advocacy is strategic communication grounded in evide
       type: "reading",
       content: `Budgets are where preparedness becomes real or remains rhetorical.
 
-      Many PPR plans fail not because priorities are unclear, but because resources are not allocated, released, or sustained. CLM data is particularly powerful when it reveals the gap between policy promises and funded reality.
+      Many PPPR plans fail not because priorities are unclear, but because resources are not allocated, released, or sustained. CLM data is particularly powerful when it reveals the gap between policy promises and funded reality.
 
 
 <b> Community evidence can be used to:</b>

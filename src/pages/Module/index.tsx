@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen, Play, FileText, Lock } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
@@ -53,6 +53,7 @@ const Module = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
   const [currentSegment, setCurrentSegment] = useState(0);
   const [completedSegments, setCompletedSegments] = useState<Set<number>>(
     new Set()
@@ -118,6 +119,16 @@ const Module = () => {
 
         setCompletedSegments(completed);
 
+        // Check if there's a segment parameter in URL
+        const segmentParam = searchParams.get('segment');
+        if (segmentParam !== null) {
+          const targetSegment = parseInt(segmentParam);
+          if (!isNaN(targetSegment) && targetSegment >= 0 && targetSegment < moduleContent.totalSegments) {
+            setCurrentSegment(targetSegment);
+            return; // Skip the normal first-incomplete logic
+          }
+        }
+
         // Set current segment to first incomplete part
         let firstIncomplete = -1;
         for (let i = 0; i < currentModule.parts.length; i++) {
@@ -135,7 +146,7 @@ const Module = () => {
         }
       }
     }
-  }, [progressData, id]);
+  }, [progressData, id, searchParams, moduleContent.totalSegments]);
 
   useEffect(() => {
     setCurrentSegment(0);
