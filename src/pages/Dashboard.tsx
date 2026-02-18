@@ -218,7 +218,7 @@ const Dashboard = () => {
       assessmentPassed: mod.assessmentPassed,
     }))
     : modules;
-console.log(mappedModules[0].title,"checking what is returning")
+  console.log(mappedModules[0].title, "checking what is returning")
   // Welcome/Onboarding View for New Users
   const WelcomeView = () => (
     <div className="container mx-auto px-4 py-8">
@@ -530,14 +530,17 @@ console.log(mappedModules[0].title,"checking what is returning")
           </div>
           {/* Add certificate button when all modules complete */}
           {progressData?.certificateEarned && (
-            <Button
-              onClick={() => navigate("/certificate")}
-              className="w-full mb-4"
-              size="lg"
-            >
-              <Award className="mr-2 h-5 w-5" />
-              View Your Certificate
-            </Button>
+            <div className="pt-10">
+              <Button
+                onClick={() => navigate("/certificate")}
+                className="w-full mb-4"
+                size="lg"
+              >
+                <Award className="mr-2 h-5 w-5" />
+                View Your Certificate
+              </Button>
+            </div>
+
           )}
         </div>
 

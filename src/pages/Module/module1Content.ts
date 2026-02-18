@@ -57,18 +57,21 @@ export const module1Content: ModuleContent = {
       </ol>
 
       `,
-      videoUrl: "https://extranet.who.int/sph/sites/default/files/IHRMEF%20Tutorial.mp4",
+      videoUrl:
+        "https://extranet.who.int/sph/sites/default/files/IHRMEF%20Tutorial.mp4",
       videos: [
         {
           label: "SPAR Explainer",
           url: "https://youtu.be/bzAPYSr6q-M?si=QCPZtJQmn7yZU_G3",
-          description: "Understanding the State Party Self-Assessment Annual Reporting (SPAR) process"
+          description:
+            "Understanding the State Party Self-Assessment Annual Reporting (SPAR) process",
         },
         {
-          label: "JEE Explainer", 
+          label: "JEE Explainer",
           url: "https://www.youtube.com/watch?v=RvLcDOijj6A",
-          description: "Understanding the Joint External Evaluation (JEE) framework"
-        }
+          description:
+            "Understanding the Joint External Evaluation (JEE) framework",
+        },
       ],
       duration: "12 min",
     },
@@ -90,18 +93,18 @@ export const module1Content: ModuleContent = {
         {
           label: "WHO Pandemic Agreement",
           url: "https://www.youtube.com/watch?v=FmUirzJ4X-4",
-          description: "Straight facts on pandemic"
+          description: "Straight facts on pandemic",
         },
         {
-          label: "World Bank's Pandemic Fund", 
+          label: "World Bank's Pandemic Fund",
           url: "https://www.youtube.com/watch?v=LJyjGQg2Qd4",
-          description: "Financial Intermediary Fund for PPR"
+          description: "Financial Intermediary Fund for PPR",
         },
         {
-          label: "Africa CDC", 
+          label: "Africa CDC",
           url: "https://www.youtube.com/watch?v=tZJenI6QQX0",
-          description: "Financial Intermediary Fund for PPR"
-        }
+          description: "Financial Intermediary Fund for PPR",
+        },
       ],
     },
     {
@@ -110,13 +113,27 @@ export const module1Content: ModuleContent = {
       interactiveType: "reflection",
       reflectionData: {
         title: "Reflective Activity",
-        context: "Think about the COVID-19 pandemic in your country. Reflect on how communities and institutions responded.",
+        context:
+          "Think about the COVID-19 pandemic in your country. Reflect on how communities and institutions responded.",
         prompts: [
-          { id: 1, question: "Who noticed the problem first communities or institutions? Share a specific example you witnessed or heard about." },
-          { id: 2, question: "How quickly did local concerns reach decision-makers? What barriers existed?" },
-          { id: 3, question: "What gaps existed between community experiences and official responses?" }
+          {
+            id: 1,
+            question:
+              "Who noticed the problem first communities or institutions? Share a specific example you witnessed or heard about.",
+          },
+          {
+            id: 2,
+            question:
+              "How quickly did local concerns reach decision-makers? What barriers existed?",
+          },
+          {
+            id: 3,
+            question:
+              "What gaps existed between community experiences and official responses?",
+          },
         ],
-        closingQuote: "Your reflections help contextualize how PPR systems work in practice versus theory."
+        closingQuote:
+          "Your reflections help contextualize how PPR systems work in practice versus theory.",
       },
       duration: "5 min",
     },
@@ -130,29 +147,38 @@ export const module1Content: ModuleContent = {
           source: "Africa CDC (2021)",
           type: "Policy Brief",
           readingTime: "8 min",
-          description: "Africa CDC outlines a bold continental vision for health sovereignty built on five pillars: workforce, manufacturing, institutions, financing, and leadership. The framework shows how Africa is shifting from dependency to ownership in pandemic preparedness."
+          description:
+            "Africa CDC outlines a bold continental vision for health sovereignty built on five pillars: workforce, manufacturing, institutions, financing, and leadership. The framework shows how Africa is shifting from dependency to ownership in pandemic preparedness, and anchoring PPPR in political will and continental coordination.",
+          link: "https://africacdc.org/news-item/the-new-public-health-order-africas-health-security-agenda/",
         },
         {
           title: "International Health Regulations (2005) Overview",
           source: "World Health Organization (2022)",
           type: "Framework",
           readingTime: "10 min",
-          description: "This overview explains the global legal foundation of PPR: how countries detect, report, and respond to outbreaks. It introduces the IHR's core capacities and reporting mechanisms such as JEE and SPAR."
+          description:
+            "This short overview explains the global legal foundation of PPPR: how countries detect, report, and respond to outbreaks. It introduces the IHR's core capacities and reporting mechanisms such as JEE and SPAR. Reading this will help you see where formal systems begin and where community evidence must plug the gaps.",
+          link: "https://www.who.int/publications/i/item/9789241580496",
         },
         {
-          title: "Joint External Evaluation Tool: 3rd Edition",
+          title:
+            "Joint External Evaluation Tool: 3rd Edition - Executive Summary",
           source: "WHO (2022)",
-          type: "Framework",
+          type: "Technical Summary",
           readingTime: "7 min",
-          description: "The JEE is the main global process for assessing national preparedness. This summary describes the JEE's indicators and scoring system."
+          description:
+            "The JEE is the main global process for assessing national preparedness. This executive summary describes the JEE's indicators and scoring system. You might want to reflect on how a tool designed for governments might change if communities were full participants in the evaluation.",
+          link: "https://www.who.int/publications/b/64271",
         },
         {
           title: "Pandemic Fund Overview",
           source: "World Bank (2023)",
           type: "Fact Sheet",
           readingTime: "5 min",
-          description: "A concise explainer of how the Pandemic Fund mobilises financing for prevention, preparedness, and response. It highlights funding priorities and governance arrangements."
-        }
+          description:
+            "A concise explainer of how the Pandemic Fund mobilises financing for prevention, preparedness, and response. It highlights funding priorities and governance arrangements. You may want to think about how community-level monitoring could influence equity and accountability in global pandemic financing.",
+          link: "https://fiftrustee.worldbank.org/en/about/unit/dfi/fiftrustee/fund-detail/pppr",
+        },
       ],
     },
     {
@@ -172,7 +198,7 @@ export const module1Content: ModuleContent = {
 The true power of CLM is that it shifts power to communities, centers lived experience, and ensures that no one speaks about communities without speaking with them.`,
       cycleDiagram: {
         title: "The CLM Cycle",
-        steps: ["Collect", "Analyse", "Share", "Advocate", "Improve"]
+        steps: ["Collect", "Analyse", "Share", "Advocate", "Improve"],
       },
       duration: "3 min",
     },
@@ -252,22 +278,27 @@ The true power of CLM is that it shifts power to communities, centers lived expe
           source: "UNAIDS & Global Fund (2021)",
           type: "Guide",
           readingTime: "15 min",
-          description: "The foundational global manual on CLM. It details how communities collect, analyse, and use data to drive accountability. Learners will see CLM not as data extraction but as a process of empowerment."
+          description:
+            "This is the foundational global manual on CLM. It details how communities collect, analyse, and use data to drive accountability. Learners will see CLM not as data extraction but as a process of empowerment that strengthens both health outcomes and democratic participation.",
+          link: "https://www.unaids.org/sites/default/files/media_asset/JC3085E_community-led-monitoring-in-action_en.pdf",
         },
         {
-          title: "Community-Led Monitoring in Practice: Case Studies from East and Southern Africa",
+          title:
+            "Community-Led Monitoring in Practice: Case Studies from East and Southern Africa",
           source: "EANNASO (2023)",
           type: "Case Study",
           readingTime: "12 min",
-          description: "Real stories from Malawi, Kenya, and Tanzania illustrate CLM in action. Each example shows how local groups gathered evidence and used it to negotiate change with authorities."
+          description:
+            "Real stories from Malawi, Kenya, and Tanzania illustrate CLM in action. Each example shows how local groups gathered evidence and used it to negotiate change with authorities. The cases make CLM tangible and relevant to PPPR contexts across Africa.",
         },
         {
           title: "Communities at the Centre: CLM Success Stories",
           source: "Global Fund (2022)",
           type: "Case Study",
           readingTime: "10 min",
-          description: "Short success stories show how communities have influenced national HIV, TB, and COVID-19 programmes. They demonstrate how data and advocacy merge to hold systems accountable."
-        }
+          description:
+            "Short success stories show how communities have influenced national HIV, TB, and COVID-19 programmes. They demonstrate how data and advocacy merge to hold systems accountable. Learners will recognise the same dynamics needed for effective pandemic preparedness.",
+        },
       ],
     },
     {
@@ -288,7 +319,7 @@ These examples show that CLM can act as an early warning system and feedback mec
         {
           label: "MPOX Nigeria",
           url: "https://www.youtube.com/watch?v=keWXhcUdscY",
-          description: ""
+          description: "",
         },
       ],
     },
@@ -297,14 +328,17 @@ These examples show that CLM can act as an early warning system and feedback mec
       type: "interactive",
       interactiveType: "scenario",
       scenarioData: {
-        scenario: "Your country's PPPR plan lists 'risk communication' as a key objective. The government wants to improve how health information reaches all communities during emergencies.",
-        question: "How could CLM contribute to ensuring that communication is inclusive, trusted, and grounded in local realities?",
+        scenario:
+          "Your country's PPPR plan lists 'risk communication' as a key objective. The government wants to improve how health information reaches all communities during emergencies.",
+        question:
+          "How could CLM contribute to ensuring that communication is inclusive, trusted, and grounded in local realities?",
         prompts: [
           "What community data would be valuable for improving risk communication?",
           "How would you ensure marginalized voices are included in the process?",
-          "What feedback loops would strengthen trust between communities and authorities?"
+          "What feedback loops would strengthen trust between communities and authorities?",
         ],
-        sampleResponse: "CLM could contribute by having community monitors collect data on which communication channels people actually use and trust (radio, WhatsApp groups, community leaders). They could identify language barriers and misinformation patterns. For marginalized groups like migrants or sex workers, trusted peer networks could provide feedback on whether messages reach them. Regular community dialogues would create feedback loops, allowing authorities to adapt messaging based on real-time community input."
+        sampleResponse:
+          "CLM could contribute by having community monitors collect data on which communication channels people actually use and trust (radio, WhatsApp groups, community leaders). They could identify language barriers and misinformation patterns. For marginalized groups like migrants or sex workers, trusted peer networks could provide feedback on whether messages reach them. Regular community dialogues would create feedback loops, allowing authorities to adapt messaging based on real-time community input.",
       },
       duration: "10 min",
     },
@@ -326,22 +360,27 @@ These examples show that CLM can act as an early warning system and feedback mec
           source: "Bhekisisa Centre for Health Journalism (2022)",
           type: "News Feature",
           readingTime: "6 min",
-          description: "A vivid journalistic look at why official statistics often miss the real story. Using examples from South Africa's COVID-19 response, it argues that data from below can expose hidden inequalities."
+          description:
+            "A vivid journalistic look at why official statistics often miss the real story. Using examples from South Africa's COVID-19 response, it argues that data from below can expose hidden inequalities. This reading reinforces why CLM is essential to credible PPPR.",
+          link: "https://bhekisisa.org/article/2022-09-07-why-community-data-matters-more-than-ever/",
         },
         {
-          title: "Reclaiming Preparedness: Community Knowledge in the Time of Crisis",
+          title:
+            "Reclaiming Preparedness: Community Knowledge in the Time of Crisis",
           source: "Tian Johnson, Devex / Health Policy Watch (2023)",
           type: "Article",
           readingTime: "7 min",
-          description: "This piece challenges top-down preparedness models and calls for decolonial, community-led approaches. It captures the moral and political argument for integrating CLM into PPR systems."
+          description:
+            "This piece challenges top-down preparedness models and calls for decolonial, community-led approaches. It captures the moral and political argument for integrating CLM into PPPR systems. Ideal for sparking discussion at the end of Module 1.",
         },
         {
           title: "Dr John Nkengasong on Africa's New Public Health Order",
           source: "Africa CDC YouTube (2022)",
           type: "Video",
           readingTime: "6 min",
-          description: "Dr Nkengasong explains why Africa must build its own institutions and manufacturing capacity for health security. His optimism and clarity anchor the idea that preparedness and self-determination go hand in hand."
-        }
+          description:
+            "In this short video, Dr Nkengasong explains why Africa must build its own institutions and manufacturing capacity for health security. His optimism and clarity provide a strong audiovisual counterpart to the readings. Use it to anchor the idea that preparedness and self-determination go hand in hand.",
+        },
       ],
     },
     {
@@ -373,13 +412,26 @@ Preparedness becomes not just the ability to respond to crises, but the ability 
       interactiveType: "reflection",
       reflectionData: {
         title: "Invisible Until Counted",
-        context: "Think about one community in your country that was overlooked during COVID-19 or another public health emergency.",
+        context:
+          "Think about one community in your country that was overlooked during COVID-19 or another public health emergency.",
         prompts: [
-          { id: 1, question: "What made them invisible to official systems? (e.g., lack of documentation, geographic isolation, social stigma)" },
-          { id: 2, question: "What kind of data or evidence could have made them visible earlier?" },
-          { id: 3, question: "How might a CLM approach have changed their outcome?" }
+          {
+            id: 1,
+            question:
+              "What made them invisible to official systems? (e.g., lack of documentation, geographic isolation, social stigma)",
+          },
+          {
+            id: 2,
+            question:
+              "What kind of data or evidence could have made them visible earlier?",
+          },
+          {
+            id: 3,
+            question: "How might a CLM approach have changed their outcome?",
+          },
         ],
-        closingQuote: "Visibility is power. CLM ensures that no life waits for permission to matter."
+        closingQuote:
+          "Visibility is power. CLM ensures that no life waits for permission to matter.",
       },
       duration: "8 min",
     },
@@ -416,13 +468,26 @@ CLM partners compiled weekly briefs for provincial health departments and advoca
       interactiveType: "reflection",
       reflectionData: {
         title: "Preparedness Through Community Evidence",
-        context: "Reflecting on the South Africa case study, consider how community-generated evidence can transform pandemic preparedness in your own context.",
+        context:
+          "Reflecting on the South Africa case study, consider how community-generated evidence can transform pandemic preparedness in your own context.",
         prompts: [
-          { id: 1, question: "What would preparedness look like if every community could produce evidence like this?" },
-          { id: 2, question: "What barriers exist in your context that prevent communities from generating this kind of real-time data?" },
-          { id: 3, question: "How could you help establish a CLM system to monitor vaccine or health service delivery in your community?" }
+          {
+            id: 1,
+            question:
+              "What would preparedness look like if every community could produce evidence like this?",
+          },
+          {
+            id: 2,
+            question:
+              "What barriers exist in your context that prevent communities from generating this kind of real-time data?",
+          },
+          {
+            id: 3,
+            question:
+              "How could you help establish a CLM system to monitor vaccine or health service delivery in your community?",
+          },
         ],
-        closingQuote: "Preparedness is not built in labs—it is built in trust."
+        closingQuote: "Preparedness is not built in labs—it is built in trust.",
       },
       duration: "8 min",
     },
@@ -456,19 +521,24 @@ Next, you'll take a comprehensive assessment to demonstrate your mastery of thes
       duration: "30 min",
       summaryCards: [
         {
-          title: "Accountability, Health Systems and the Politics of Participation",
+          title:
+            "Accountability, Health Systems and the Politics of Participation",
           source: "Parker & Kelly (2021) Global Public Health 16(8)",
           type: "Academic Article",
           readingTime: "20 min",
-          description: "An academic but accessible paper linking accountability and participation within health systems. It helps learners situate CLM in a broader theoretical context."
+          description:
+            "An academic but accessible paper linking accountability and participation within health systems. It helps learners situate CLM in a broader theoretical context. Recommended for those who want deeper grounding in social accountability scholarship.",
+          link: "https://www.tandfonline.com/doi/full/10.1080/17441692.2021.1947601",
         },
         {
-          title: "Decolonising Global Health Systems: Knowledge from the Margins",
+          title:
+            "Decolonising Global Health Systems: Knowledge from the Margins",
           source: "Abimbola S. (2023) BMJ Global Health 8(3)",
           type: "Commentary",
           readingTime: "10 min",
-          description: "A concise reflection on whose knowledge counts in global health governance. Abimbola argues for shifting epistemic power toward communities and local experts."
-        }
+          description:
+            "A concise reflection on whose knowledge counts in global health governance. Abimbola argues for shifting epistemic power toward communities and local experts. It provides a strong conceptual bridge to later modules on integration and advocacy.",
+        },
       ],
     },
   ],
